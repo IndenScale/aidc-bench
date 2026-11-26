@@ -43,3 +43,15 @@ To have the SPA query the D1/R2 Workers API (with automatic static fallback):
 VITE_API_BASE=/api bun run --cwd ../web build
 bun run --cwd . deploy
 ```
+
+## GitHub Push Auto-Deploy (Cloudflare Workers Builds + D1 Sync)
+
+Connect `IndenScale/aidc-bench` in **Cloudflare Dashboard → Workers & Pages → `aidc-bench` → Settings → Build**:
+
+- **Root directory**: `cloudflare`
+- **Production branch**: `main`
+- **Build command**: `bun run build:ci`
+- **Deploy command**: `bun run deploy:ci` (runs D1 migrations, regenerates & applies `seed_public_v1.sql`, then deploys Worker + Static Assets)
+- **Non-production branch / Preview command**: `bun run preview:ci` (uploads preview version without mutating production D1)
+- **Build watch paths (Include)**: `web/**`, `cloudflare/**`
+- **API token permissions**: Cloudflare's auto-generated Workers Builds token does **not** include D1 write permission by default. Edit the Workers Builds user token in **My Profile → API Tokens** and add **Account → D1 → Edit**.

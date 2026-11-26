@@ -8,8 +8,15 @@
     "typecheck": "tsc --noEmit",
     "dev": "wrangler dev",
     "db:migrate:local": "wrangler d1 migrations apply aidc-bench-db --local",
-    "db:migrate:remote": "wrangler d1 migrations apply aidc-bench-db --remote",
-    "deploy": "wrangler deploy"
+    "db:migrate:remote": "wrangler d1 migrations apply aidc-bench-db --remote --force",
+    "db:seed:gen": "bun seed_d1.mjs",
+    "db:seed:local": "bun run db:seed:gen && wrangler d1 execute aidc-bench-db --local --yes --file=seed_public_v1.sql",
+    "db:seed:remote": "bun run db:seed:gen && wrangler d1 execute aidc-bench-db --remote --yes --file=seed_public_v1.sql",
+    "db:sync:remote": "bun run db:migrate:remote && bun run db:seed:remote",
+    "build:ci": "bun install --cwd ../web --frozen-lockfile && bun run --cwd ../web build && bun run typecheck && bun run db:seed:gen",
+    "deploy": "wrangler deploy",
+    "deploy:ci": "bun run db:sync:remote && bun run deploy",
+    "preview:ci": "wrangler versions upload"
   },
   "devDependencies": {
     "typescript": "^5.8.0",
