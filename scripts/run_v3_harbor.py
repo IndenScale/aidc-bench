@@ -39,7 +39,6 @@ DEFAULT_AGENTS = [
   "agy-claude-sonnet-5-5",
   "codex-gpt-6.2-sol",
   "dsh-gpt-6.2-sol",
-  "qoder-qwen4-max",
   "kimi",
   "codex",
   "dsh-deepseek-v4.1-flash",
