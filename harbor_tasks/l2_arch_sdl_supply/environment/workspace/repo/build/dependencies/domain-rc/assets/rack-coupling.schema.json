@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rack terminal power, single-phase calorimetry and coupled heat allocation v1",
+  "type": "object",
+  "required": ["schema_version", "kind", "source", "scope", "baseline", "case", "zone", "frame", "complete", "items"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "scope": {"$ref": "#/definitions/text"},
+    "baseline": {"$ref": "#/definitions/text"},
+    "case": {"$ref": "#/definitions/text"},
+    "zone": {"$ref": "#/definitions/text"},
+    "frame": {"$ref": "#/definitions/text"},
+    "source": {"$ref": "#/definitions/text"},
+    "complete": {"type": "boolean"},
+    "items": {"type": "object", "propertyNames": {"$ref": "#/definitions/text"}}
+  },
+  "oneOf": [
+    {"properties": {
+      "kind": {"const": "terminal-power"},
+      "items": {"additionalProperties": {"type": "object", "properties": {
+        "basis": {"$ref": "#/definitions/text"},
+        "members": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": {
+          "type": "object", "properties": {"input_kw": {"$ref": "#/definitions/nonnegative"}}
+        }}}
+      }}}
+    }},
+    {"properties": {
+      "kind": {"const": "rack-calorimetry"},
+      "items": {"additionalProperties": {"type": "object", "properties": {
+        "room_kw": {"$ref": "#/definitions/nonnegative"},
+        "outside_kw": {"$ref": "#/definitions/nonnegative"},
+        "circuits": {"type": "object", "additionalProperties": {"$ref": "#/definitions/circuit"}}
+      }}}
+    }},
+    {"required": ["method", "federation_digest", "boundary_observations", "unresolved"], "properties": {
+      "kind": {"const": "rack-heat-allocation"},
+      "method": {"const": "federated-terminal-calorimetry"},
+      "federation_digest": {"$ref": "#/definitions/text"},
+      "sources": {"type": "object"},
+      "boundary_observations": {"type": "object", "additionalProperties": {
+        "type": "object", "required": ["interfaces", "power_inputs", "circuits", "room_kw", "outside_kw"],
+        "properties": {
+          "interfaces": {"type": "array", "items": {"type": "object", "required": ["member", "port", "instance", "connections", "binding_source"]}},
+          "power_inputs": {"type": "array", "items": {"type": "object", "required": ["member", "port", "input_kw"]}},
+          "circuits": {"type": "object", "additionalProperties": {"allOf": [
+            {"$ref": "#/definitions/circuit"},
+            {"required": ["liquid_kw"], "properties": {"liquid_kw": {"type": ["number", "null"]}}}
+          ]}},
+          "room_kw": {"$ref": "#/definitions/nonnegative"}, "outside_kw": {"$ref": "#/definitions/nonnegative"}
+        }
+      }},
+      "items": {"additionalProperties": {"type": "object",
+        "required": ["basis", "power_kw", "liquid_kw", "room_kw", "outside_kw", "residual_kw"],
+        "properties": {
+          "basis": {"$ref": "#/definitions/text"}, "power_kw": {"type": "number", "minimum": 0},
+          "liquid_kw": {"type": "number", "minimum": 0}, "room_kw": {"type": "number", "minimum": 0},
+          "outside_kw": {"type": "number", "minimum": 0}, "residual_kw": {"type": "number"}
+        }
+      }},
+      "unresolved": {"type": "array", "items": {"type": "object", "required": ["reason"]}}
+    }}
+  ],
+  "definitions": {
+    "text": {"type": "string", "minLength": 1},
+    "nonnegative": {"type": ["number", "null"], "minimum": 0},
+    "circuit": {"type": "object", "properties": {
+      "member": {"$ref": "#/definitions/text"}, "inlet": {"$ref": "#/definitions/text"}, "outlet": {"$ref": "#/definitions/text"},
+      "mass_flow_in_to_out_kg_s": {"type": ["number", "null"]},
+      "specific_heat_kj_kg_k": {"type": ["number", "null"], "exclusiveMinimum": 0},
+      "inlet_c": {"type": ["number", "null"]}, "outlet_c": {"type": ["number", "null"]}
+    }}
+  }
+}

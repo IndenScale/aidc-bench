@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "york-yz-600rt-r1233zd-maglev",
+  "state": "calibrated-reference",
+  "source": "Johnson Controls YORK YZ Magnetic Bearing Centrifugal Chiller (600 RT / 2110 kW, R-1233zd(E)) public AHRI 550/590 performance envelope (full-load COP ~6.4, IPLV ~0.36 kW/RT)",
+  "uncertainty_pct": 4.5,
+  "operating_envelope": {
+    "rated_capacity_kw": 2110.0,
+    "refrigerant": "R-1233zd(E)",
+    "evaporator_delta_t_k": 6.5,
+    "condenser_approach_k": 3.5,
+    "min_entering_cw_c": 4.5
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [0.25, 0.5, 0.75, 1.0]
+    },
+    {
+      "name": "wet_bulb_c",
+      "unit": "degC",
+      "values": [12.0, 20.0, 28.0]
+    },
+    {
+      "name": "chw_supply_c",
+      "unit": "degC",
+      "values": [10.0, 14.0, 18.0]
+    }
+  ],
+  "outputs": {
+    "cop": {
+      "unit": "1",
+      "min_bound": 1.5,
+      "values": [
+        [
+          [8.6, 10.1, 11.9],
+          [6.6, 7.7, 9.0],
+          [5.1, 5.8, 6.7]
+        ],
+        [
+          [10.8, 12.6, 14.8],
+          [8.5, 9.8, 11.3],
+          [6.5, 7.4, 8.5]
+        ],
+        [
+          [10.2, 11.9, 13.8],
+          [8.1, 9.3, 10.7],
+          [6.2, 7.0, 8.0]
+        ],
+        [
+          [8.6, 9.9, 11.5],
+          [6.9, 7.9, 9.0],
+          [5.5, 6.2, 7.0]
+        ]
+      ]
+    },
+    "capacity_factor": {
+      "unit": "1",
+      "min_bound": 0.25,
+      "max_bound": 1.2,
+      "values": [
+        [
+          [1.09, 1.13, 1.16],
+          [1.03, 1.07, 1.11],
+          [0.95, 0.99, 1.03]
+        ],
+        [
+          [1.09, 1.13, 1.16],
+          [1.03, 1.07, 1.11],
+          [0.95, 0.99, 1.03]
+        ],
+        [
+          [1.09, 1.13, 1.16],
+          [1.03, 1.07, 1.11],
+          [0.95, 0.99, 1.03]
+        ],
+        [
+          [1.09, 1.13, 1.16],
+          [1.03, 1.07, 1.11],
+          [0.95, 0.99, 1.03]
+        ]
+      ]
+    }
+  },
+  "limitations": "反映 YORK YZ R-1233zd(E) 磁悬浮变频机在 10–18 degC 中高温冷水下的典型公开性能水平；实际工程需以 YORKworks 选型曲线替换，严禁外推至 12–28 degC 湿球及 25–100% 负荷包络之外。"
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "OCP-COMPUTE-TRAY-1OU-LC",
+  "ocp_spec": "OCP ORv3 1OU Liquid-Cooled Compute Tray",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0",
+  "envelope_m": [
+    0.538,
+    0.9,
+    0.048
+  ],
+  "mass_kg": 34.0,
+  "clearances_m": {
+    "front_extraction_m": 1.1
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "dc_in": {
+      "position_m": [
+        0.269,
+        0.9,
+        0.024
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear 48V/50V DC blind-mate busbar clip"
+    },
+    "bmqc_supply": {
+      "position_m": [
+        0.42,
+        0.9,
+        0.024
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear BMQC cold-plate supply coupler"
+    },
+    "bmqc_return": {
+      "position_m": [
+        0.48,
+        0.9,
+        0.024
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear BMQC cold-plate return coupler"
+    },
+    "air_in": {
+      "position_m": [
+        0.269,
+        0.0,
+        0.024
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front perforated intake (~10% residual air cooling)"
+    },
+    "air_out": {
+      "position_m": [
+        0.269,
+        0.9,
+        0.024
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear hot-aisle exhaust"
+    },
+    "fabric_ew": {
+      "position_m": [
+        0.12,
+        0.0,
+        0.024
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front QSFP-DD/OSFP high-speed compute ports"
+    },
+    "bmc_interlock": {
+      "position_m": [
+        0.05,
+        0.0,
+        0.024
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "DC-SCM / OpenBMC leak & thermal interlock"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 1OU / 21-inch",
+    "rated_it_kw": 6.5,
+    "liquid_cooling_fraction": 0.9,
+    "nominal_flow_lpm": 8.5
+  },
+  "limitations": "冷板与 BMQC 快接按等效串联流阻建模，供液温度超 25–45 degC 返回 indeterminate。"
+}

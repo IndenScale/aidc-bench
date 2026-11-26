@@ -1,0 +1,58 @@
+schema_version = 1
+name = "OCP ORv3 HPR 高密液冷机柜框架 (48OU)"
+version = "0.1.0"
+entry = "orv3-hpr-frame-48ou.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0"
+fidelity = "600x1200x2495 mm ORv3 HPR 加深加高重型液冷机框"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0"
+fidelity = "ORv3 HPR 机框符号与顶部液冷接入锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0"
+fidelity = "1800 kg 承重、双歧管与 HPR 母排槽位参数"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0"
+fidelity = "重型超节点静态载荷与界面净距模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0"
+fidelity = "载荷比-静载/楼板压强包络表"
+
+[port_bindings.rails_ou]
+geometry = "/Module/Ports/rails_ou"
+symbol = "port-rails_ou"
+
+[port_bindings.busbar_slot]
+geometry = "/Module/Ports/busbar_slot"
+symbol = "port-busbar_slot"
+
+[port_bindings.manifold_slot]
+geometry = "/Module/Ports/manifold_slot"
+symbol = "port-manifold_slot"
+
+[port_bindings.tcs_header_top]
+geometry = "/Module/Ports/tcs_header_top"
+symbol = "port-tcs_header_top"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"

@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "OCP-CDU-INROW-1MW",
+  "ocp_spec": "OCP ACS Liquid-to-Liquid CDU Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ACS Liquid-to-Liquid CDU Requirements Specification Rev 1.0",
+  "envelope_m": [
+    0.6,
+    1.2,
+    2.2
+  ],
+  "mass_kg": 720.0,
+  "clearances_m": {
+    "front_pump_and_hx_service_m": 1.2,
+    "rear_piping_service_m": 0.9,
+    "top_header_tie_in_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "fws_supply": {
+      "position_m": [
+        0.16,
+        0.92,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "4-inch (DN100) primary FWS supply"
+    },
+    "fws_return": {
+      "position_m": [
+        0.44,
+        0.92,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "4-inch (DN100) primary FWS return"
+    },
+    "tcs_supply": {
+      "position_m": [
+        0.16,
+        0.25,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "4-inch (DN100) secondary TCS supply (1000 L/min N+1)"
+    },
+    "tcs_return": {
+      "position_m": [
+        0.44,
+        0.25,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "4-inch (DN100) secondary TCS return"
+    },
+    "power_a": {
+      "position_m": [
+        0.15,
+        0.6,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "400/480V 3-phase feed A"
+    },
+    "power_b": {
+      "position_m": [
+        0.45,
+        0.6,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "400/480V 3-phase feed B"
+    },
+    "dp_ctrl": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.6
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Redundant differential-pressure PID controller interface"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 Compatible In-Row CDU",
+    "rated_capacity_kw": 1000.0,
+    "nominal_approach_k": 4.0,
+    "nominal_flow_lpm": 1000.0,
+    "pipe_connection_size": "DN100",
+    "pump_configuration": "2+1 N+1 VFD pumps",
+    "geometry_parts": {
+      "Cabinet": {
+        "origin_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "size_m": [
+          0.6,
+          1.2,
+          2.2
+        ],
+        "color": [
+          0.18,
+          0.28,
+          0.36
+        ]
+      },
+      "HmiPanel": {
+        "origin_m": [
+          0.1,
+          0.0,
+          1.45
+        ],
+        "size_m": [
+          0.4,
+          0.03,
+          0.25
+        ],
+        "color": [
+          0.16,
+          0.68,
+          0.72
+        ]
+      }
+    }
+  },
+  "limitations": "仅适用于单相水-PG25 稳态包络（FWS 18–30 degC）；超温或过滤器堵塞压降增长须另行校核。"
+}

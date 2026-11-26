@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "NVIDIA",
+  "model_number": "SN5610",
+  "basis": "NVIDIA Spectrum-4 SN5610 Hardware User Manual & NVL72 AI Factory Enterprise RA (2026-03)",
+  "envelope_m": [0.438, 0.775, 0.088],
+  "mass_kg": 24.5,
+  "clearances_m": {
+    "front_transceiver_bend_m": 0.15,
+    "rear_psu_fan_service_m": 0.35
+  },
+  "frame": {
+    "origin": "chassis-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {"position_m": [0.11, 0.775, 0.044], "normal": [0, 1, 0], "spec": "High-line AC (200-240 VAC) or 48V DC MGX busbar feed A"},
+    "power_b": {"position_m": [0.33, 0.775, 0.044], "normal": [0, 1, 0], "spec": "Redundant feed B (N+1 PSU architecture)"},
+    "air_in": {"position_m": [0.219, 0.0, 0.044], "normal": [0, -1, 0], "spec": "Reversible C2P / P2C airflow intake"},
+    "air_out": {"position_m": [0.219, 0.775, 0.044], "normal": [0, 1, 0], "spec": "Hot-swap fan module exhaust"},
+    "downlink_400g": {"position_m": [0.12, 0.0, 0.055], "normal": [0, -1, 0], "spec": "64x800GbE OSFP (128x400G breakout) for Compute E-W rails"},
+    "converged_400g": {"position_m": [0.22, 0.0, 0.055], "normal": [0, -1, 0], "spec": "Converged N-S / Storage 400G ports"},
+    "uplink_800g": {"position_m": [0.32, 0.0, 0.055], "normal": [0, -1, 0], "spec": "800GbE OSFP leaf-to-spine uplinks"},
+    "oob_mgmt": {"position_m": [0.22, 0.775, 0.025], "normal": [0, 1, 0], "spec": "1GbE RJ45 OOB management + 2x SFP28 auxiliary"}
+  },
+  "properties": {
+    "rack_units": 2,
+    "switching_capacity_tbps": 51.2,
+    "ports": "64x 800GbE OSFP + 2x SFP28",
+    "airflow_options": ["C2P", "P2C"]
+  },
+  "limitations": "质量与深度因 AC/48V DC 电源子型号存在 18.5–26.9 kg 与 775–796 mm 差异；全插 800G 有源光模块时须计入约 15–16 W/口附加散热。"
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 3,
+  "cases": {
+    "case_urgent_56kw": {
+      "property_id": "prop_A",
+      "retrofit_tier": "tier0_light_patch",
+      "fws_supply_c": 20.0,
+      "extra_chiller_assist_musd": 0.0
+    },
+    "case_longterm_120kw": {
+      "property_id": "prop_A",
+      "retrofit_tier": "tier0_light_patch",
+      "fws_supply_c": 20.0,
+      "extra_chiller_assist_musd": 0.0
+    }
+  }
+}

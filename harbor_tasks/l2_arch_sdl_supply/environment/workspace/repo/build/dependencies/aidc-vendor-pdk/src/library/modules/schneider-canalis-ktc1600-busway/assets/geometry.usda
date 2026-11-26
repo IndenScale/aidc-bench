@@ -1,0 +1,69 @@
+#usda 1.0
+(
+    defaultPrim = "Module"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Module"
+{
+    def Scope "Geometry"
+    {
+        def Cube "BuswayTrunk3m"
+        {
+            color3f[] primvars:displayColor = [(0.82, 0.84, 0.86)]
+            double size = 1
+            double3 xformOp:scale = (3, 0.224, 0.164)
+            double3 xformOp:translate = (1.5, 0.132, 0.082)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "CopperStripe"
+        {
+            color3f[] primvars:displayColor = [(0.8, 0.45, 0.2)]
+            double size = 1
+            double3 xformOp:scale = (3, 0.02, 0.04)
+            double3 xformOp:translate = (1.5, 0.01, 0.082)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Ports"
+    {
+        def Xform "bus_in"
+        {
+            custom double3 texsys:normal = (-1, 0, 0)
+            double3 xformOp:translate = (0, 0.122, 0.082)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "bus_out"
+        {
+            custom double3 texsys:normal = (1, 0, 0)
+            double3 xformOp:translate = (3, 0.122, 0.082)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "tap_off_1"
+        {
+            custom double3 texsys:normal = (0, 0, -1)
+            double3 xformOp:translate = (1, 0.122, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "tap_off_2"
+        {
+            custom double3 texsys:normal = (0, 0, -1)
+            double3 xformOp:translate = (2, 0.122, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "pe_ground"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.25, 0.122, 0.164)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Cummins Power Generation",
+  "model_number": "C2750-D5-50Hz",
+  "basis": "Cummins Power Generation C2750 D5 50 Hz Open-Set Specification Sheet (QSK78-G9 engine)",
+  "envelope_m": [5.67, 2.305, 2.708],
+  "mass_kg": 18549.0,
+  "wet_mass_kg": 19145.0,
+  "clearances_m": {
+    "sides_maintenance_m": 1.5,
+    "radiator_discharge_plenum_m": 2.0,
+    "alternator_pull_end_m": 1.5,
+    "overhead_exhaust_and_crane_m": 1.5
+  },
+  "frame": {
+    "origin": "skid-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_out": {"position_m": [4.85, 1.1525, 1.97], "normal": [0, 0, 1], "spec": "10.5 kV / 11 kV MV or 400V LV generator breaker output (2,750 kVA Standby)"},
+    "fuel_supply": {"position_m": [2.4, 0.0, 0.35], "normal": [0, -1, 0], "spec": "Day-tank diesel supply line (up to 524 L/h standby burn)"},
+    "fuel_return": {"position_m": [2.75, 0.0, 0.35], "normal": [0, -1, 0], "spec": "Fuel return line to day tank"},
+    "exhaust_out": {"position_m": [2.55, 1.1525, 2.708], "normal": [0, 0, 1], "spec": "Dual/combined flue-gas exhaust outlet to silencer"},
+    "air_in": {"position_m": [5.67, 1.1525, 1.4], "normal": [1, 0, 0], "spec": "Combustion and room ventilation air intake"},
+    "air_out": {"position_m": [0.0, 1.1525, 1.56], "normal": [-1, 0, 0], "spec": "Radiator hot-air discharge"},
+    "start_cmd": {"position_m": [4.45, 2.305, 1.35], "normal": [0, 1, 0], "spec": "ATS / paralleling switchgear auto-start & sync command"}
+  },
+  "properties": {
+    "engine": "Cummins QSK78-G9 (V18-cylinder, 4-stroke diesel)",
+    "frequency_hz": 50,
+    "standby_rating": "2,750 kVA / 2,200 kW",
+    "prime_rating": "2,500 kVA / 2,000 kW"
+  },
+  "limitations": "外形 5670x2305x2708 mm 与干/湿重 18549/19145 kg 对应开架机组（Open Set）；如采用室外集装箱静音方舱（20/40 ft ISO），占地与总重须另按成套商方舱图复核，高海拔/高温现场降容须按环境条件修正。"
+}

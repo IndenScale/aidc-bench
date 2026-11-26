@@ -1,0 +1,32 @@
+schema_version = 1
+
+[project]
+name = "ocp-standards"
+version = "0.1.0"
+
+[layout]
+source = "src"
+assets = "assets"
+build = "build"
+
+[dependencies.ocp-pdk]
+path = "../ocp-pdk"
+version = "0.1.0"
+
+[dependencies.domain-rc]
+path = "../domain-rc"
+version = "0.1.0"
+
+[package]
+kind = "capability"
+description = "OCP（ORv3 / ACS 液冷 / DCF 设施）可执行工程规范库与合规校核规则包"
+capabilities = ["rules", "geometry"]
+scope = "覆盖 OCP Open Rack v3（Base/HPR）机械与净距、48V/50V 直流母排与电源框冗余、OCP ACS 直接液冷热工水力及 OCP DCF 设施接入等 17 条核心条款；缺少依据时返回 indeterminate，不替代中标厂商施工图与现场试验验收。"
+include = ["README.md", "tests"]
+tests = ["tests"]
+
+[package.runtime]
+api_version = 1
+modules = ["texsys_ocp_standards"]
+entry_point = "texsys_ocp_standards:package"
+requires = ["texsys>=0.1,<0.2"]

@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SysDA project physical netlist federation v1",
+  "type": "object", "required": ["kind", "schema_version", "scope", "baseline", "source", "members"],
+  "properties": {
+    "schema_version": { "const": 1 }, "scope": { "$ref": "#/definitions/text" },
+    "baseline": { "$ref": "#/definitions/text" }, "source": { "$ref": "#/definitions/text" }
+  },
+  "definitions": {
+    "text": { "type": "string", "minLength": 1 },
+    "selection": {
+      "type": "object", "required": ["scope", "domain", "baseline"],
+      "properties": {
+        "scope": { "$ref": "#/definitions/text" }, "baseline": { "$ref": "#/definitions/text" },
+        "domain": { "enum": ["spatial", "electrical", "thermal", "hydraulic", "hvac"] },
+        "netlist_digest": { "$ref": "#/definitions/text" }, "schematic_digest": { "$ref": "#/definitions/text" },
+        "lvs_basis": { "type": "object", "properties": {
+          "schematic_source": { "$ref": "#/definitions/text" }, "physical_source": { "$ref": "#/definitions/text" }
+        } }
+      }
+    },
+    "port": {
+      "type": "object", "required": ["interface", "requires_connection"],
+      "properties": { "interface": { "$ref": "#/definitions/text" }, "requires_connection": { "type": "boolean" } }
+    },
+    "binding": {
+      "type": "object", "required": ["instance", "ports"],
+      "properties": { "instance": { "$ref": "#/definitions/text" }, "ports": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/definitions/port" } } }
+    },
+    "asset": {
+      "type": "object", "required": ["source", "bindings"],
+      "properties": { "source": { "$ref": "#/definitions/text" }, "bindings": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/definitions/binding" } } }
+    },
+    "observation": {
+      "allOf": [
+        { "$ref": "#/definitions/port" },
+        {
+          "type": "object", "required": ["asset", "member", "instance", "port", "binding_source", "status"],
+          "properties": {
+            "asset": { "$ref": "#/definitions/text" }, "member": { "$ref": "#/definitions/text" },
+            "instance": { "$ref": "#/definitions/text" }, "port": { "$ref": "#/definitions/text" },
+            "binding_source": { "$ref": "#/definitions/text" }, "status": { "$ref": "#/definitions/status" }
+          }
+        }
+      ]
+    },
+    "view": {
+      "allOf": [
+        { "$ref": "#/definitions/selection" },
+        {
+          "type": "object",
+          "dependencies": { "complete": ["digest", "source_digest", "sources", "ports", "connections", "unresolved"] },
+          "properties": {
+            "digest": { "$ref": "#/definitions/text" }, "source_digest": { "$ref": "#/definitions/text" },
+            "sources": { "type": "object" }, "complete": { "type": "boolean" }, "unresolved": { "type": "array" },
+            "ports": {
+              "type": "object", "additionalProperties": {
+                "type": "object", "required": ["instance", "interface"],
+                "properties": { "instance": { "$ref": "#/definitions/text" }, "interface": { "$ref": "#/definitions/text" } }
+              }
+            },
+            "connections": {
+              "type": "object", "additionalProperties": {
+                "type": "object", "required": ["ports", "evidence"],
+                "properties": { "evidence": { "$ref": "#/definitions/text" }, "ports": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/definitions/text" } } }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "status": { "enum": ["pass", "fail", "indeterminate"] }
+  },
+  "oneOf": [
+    {
+      "required": ["assets"],
+      "properties": {
+        "kind": { "const": "federation-spec" }, "lvs_inventory_complete": { "type": "boolean" },
+        "members": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/definitions/selection" } },
+        "assets": { "type": "object", "additionalProperties": { "$ref": "#/definitions/asset" } }
+      }
+    },
+    {
+      "required": ["origin", "interfaces", "mismatches", "unresolved", "complete", "status"],
+      "properties": {
+        "kind": { "const": "physical-netlist-federation" }, "origin": { "const": "physical" },
+        "members": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/definitions/view" } },
+        "interfaces": { "type": "array", "items": { "$ref": "#/definitions/observation" } },
+        "mismatches": { "type": "array" }, "unresolved": { "type": "array" },
+        "complete": { "type": "boolean" }, "status": { "$ref": "#/definitions/status" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+schema_version = 1
+name = "NVIDIA Spectrum SN2201 48口 1GbE 带外管理交换机"
+version = "0.1.0"
+entry = "nvidia-sn2201-oob-switch.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "NVIDIA Spectrum SN2201 公开硬件手册（1U, 428x432x43.9 mm）"
+fidelity = "1U 紧凑机箱包络、前部 48xRJ45 + 4x100G 面板与后部冗余电源口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) §NVIDIA SN2201 Switch"
+fidelity = "功能符号与 1GbE 带外端口、100GbE 上联及供电/气流锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "NVIDIA Spectrum SN2201 Hardware User Manual & NVL72 Enterprise RA (2026-03)"
+fidelity = "尺寸、质量、1+1 电源、气流及接口规范"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "NVIDIA Spectrum SN2201 公开规格（94–100 W ATIS 典型功耗）"
+fidelity = "带外管理端口利用率稳态功耗与散热模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "NVIDIA Spectrum SN2201 Hardware User Manual (94-100 W ATIS typical)"
+fidelity = "一维稳态工况查表（chassis_power_kw / heat_rejection_kw / airflow_cfm）"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.mgmt_1g]
+geometry = "/Module/Ports/mgmt_1g"
+symbol = "port-mgmt_1g"
+
+[port_bindings.uplink_100g]
+geometry = "/Module/Ports/uplink_100g"
+symbol = "port-uplink_100g"

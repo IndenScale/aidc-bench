@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "domain": "orv3-power-shelf-busbar",
+  "spec": "OCP ORv3 Rack & Power (Busbar / Power Shelf / BBU)",
+  "revision": "Rev 1.0",
+  "rules": {
+    "OCP-ORV3-PWR-001": {
+      "clause": "ORv3 Power §3.2 Internal 48V/50V DC Busbar Voltage Window",
+      "title": "机柜内部直流盲插母排电压窗口（48–51 V DC）",
+      "limits": {
+        "min_dc_bus_v": 48.0,
+        "max_dc_bus_v": 51.0
+      },
+      "quote": "ORv3 power shelves regulate the rack-level blind-mate DC bus within the nominal 48 V–51 V DC window (50 V nominal)."
+    },
+    "OCP-ORV3-PWR-002": {
+      "clause": "ORv3 Power §5.1 Power Shelf N+1 / N+N Redundancy",
+      "title": "电源框 N+1 / N+N 冗余供电容量校核",
+      "limits": {
+        "min_redundant_margin_ratio": 1.0
+      },
+      "quote": "Installed power shelf capacity after deducting at least one redundant shelf (N-1) must equal or exceed nominal rack IT power."
+    },
+    "OCP-ORV3-PWR-003": {
+      "clause": "OCP DCF Power §4.2 Busway Voltage Drop & EDPp Provisioning",
+      "title": "列顶母线压降限值与峰值功耗（EDPp）馈电裕度",
+      "limits": {
+        "max_busway_vdrop_pct": 2.5,
+        "min_busway_to_edpp_ratio": 1.0
+      },
+      "quote": "Overhead AC busway voltage drop shall not exceed 2.5% at rated load, and feeder provisioning shall cover rack EDPp peak demand."
+    },
+    "OCP-ORV3-PWR-004": {
+      "clause": "ORv3 BBU §3.4 Rack-Level Battery Ride-Through Autonomy",
+      "title": "机柜级 BBU 后备穿越续航时间",
+      "limits": {
+        "min_autonomy_s": 90.0
+      },
+      "quote": "When ORv3 BBU shelves are deployed for utility-outage ride-through, minimum full-load autonomy shall be >= 90 s to bridge genset sync."
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "root": "NvidiaSn2201OobSwitch",
+  "components": {
+    "NvidiaSn2201OobSwitch": {
+      "ports": {
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "mgmt_1g": {
+          "direction": "inout",
+          "kind": "ethernet-1g-rj45",
+          "max_connections": 48
+        },
+        "uplink_100g": {
+          "direction": "inout",
+          "kind": "ethernet-100g-oob",
+          "max_connections": 4
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "NVIDIA Spectrum SN2201 Hardware User Manual & NVL72 Enterprise RA (2026-03)",
+        "parameters": {
+          "rj45_1g_port_count": {
+            "value": 48,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.23: 48-port 1 Gb"
+          },
+          "qsfp28_100g_uplink_count": {
+            "value": 4,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.23: 4-port 100 Gb/s"
+          },
+          "typical_power_kw": {
+            "value": 0.097,
+            "unit": "kW",
+            "state": "known",
+            "source": "NVIDIA SN2201 datasheet ATIS typical power (94-100 W)"
+          },
+          "rack_units": {
+            "value": 1,
+            "unit": "U",
+            "state": "known",
+            "source": "NVIDIA SN2201 datasheet (1U, 43.9 mm)"
+          },
+          "chassis_mass_kg": {
+            "value": 7.41,
+            "unit": "kg",
+            "state": "known",
+            "source": "NVIDIA SN2201 datasheet weight (7.41 kg / 16.34 lbs)"
+          }
+        }
+      }
+    }
+  }
+}

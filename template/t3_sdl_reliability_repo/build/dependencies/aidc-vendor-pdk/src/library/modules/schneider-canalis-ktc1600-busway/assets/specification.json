@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Schneider Electric",
+  "model_number": "Canalis-KTC-1600A-Cu-3LNPE",
+  "ocp_base_unit": "@ocp-pdk/library/modules/ocp-busway-tap-ac",
+  "ocp_compliance_profile": "OCP-DCF-Busway",
+  "ocp_port_map": {
+    "in": "bus_in",
+    "out": "bus_out",
+    "tap_1": "tap_off_1",
+    "tap_2": "tap_off_2"
+  },
+  "basis": "Schneider Electric Canalis KTC 1600A Copper Technical Catalogue (DEBU024EN, 3L+N+PE)",
+  "envelope_m": [3.0, 0.244, 0.164],
+  "mass_kg": 105.0,
+  "mass_per_m_kg": 35.0,
+  "clearances_m": {
+    "tap_off_box_bottom_drop_m": 0.45,
+    "side_thermal_clearance_m": 0.15,
+    "top_hanger_zone_m": 0.3
+  },
+  "frame": {
+    "origin": "segment-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "bus_in": {"position_m": [0.0, 0.122, 0.082], "normal": [-1, 0, 0], "spec": "1600A 3L+N+PE copper feeder joint input"},
+    "bus_out": {"position_m": [3.0, 0.122, 0.082], "normal": [1, 0, 0], "spec": "1600A 3L+N+PE copper continuation joint"},
+    "tap_off_1": {"position_m": [1.0, 0.122, 0.0], "normal": [0, 0, -1], "spec": "Plug-in tap-off box outlet 1 (to GB300/rack power whips)"},
+    "tap_off_2": {"position_m": [2.0, 0.122, 0.0], "normal": [0, 0, -1], "spec": "Plug-in tap-off box outlet 2"},
+    "pe_ground": {"position_m": [0.25, 0.122, 0.164], "normal": [0, 0, 1], "spec": "Integral PE housing earth bond"}
+  },
+  "properties": {
+    "conductor_material": "Copper (Cu)",
+    "polarity": "3L + N + PE",
+    "r20_mohm_per_m": 0.024,
+    "r1_35c_mohm_per_m": 0.029,
+    "x1_50hz_mohm_per_m": 0.015,
+    "z1_mohm_per_m": 0.033,
+    "icw_1s_ka": 65.0,
+    "ipk_ka": 143.0
+  },
+  "limitations": "线阻抗适用于 35 degC 环境温度与 50 Hz 基波工况；40–50 degC 热通道上方安装时须按目录降容系数修正载流量，60 Hz 感抗按 1.2x 换算。"
+}

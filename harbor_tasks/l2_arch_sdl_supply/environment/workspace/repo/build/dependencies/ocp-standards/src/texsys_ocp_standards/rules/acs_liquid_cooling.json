@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "domain": "acs-liquid-cooling",
+  "spec": "OCP ACS Cold Plate, UQD/BMQC & Liquid-to-Liquid CDU",
+  "revision": "Rev 1.1",
+  "rules": {
+    "OCP-LC-THM-001": {
+      "clause": "OCP ACS §4.1 TCS Supply Coolant Temperature Envelope",
+      "title": "TCS 供液温度工作包络（25–45 °C）",
+      "limits": {
+        "min_tcs_supply_c": 25.0,
+        "max_tcs_supply_c": 45.0
+      },
+      "quote": "Direct-to-chip TCS supply coolant temperature shall remain within the calibrated 25 degC to 45 degC operating envelope."
+    },
+    "OCP-LC-THM-002": {
+      "clause": "OCP ACS §4.3 Liquid/Air Heat Split & Coolant Delta-T",
+      "title": "机柜液冷/风冷热量闭合与供回液温差控制",
+      "limits": {
+        "min_liquid_fraction": 0.7,
+        "max_liquid_fraction": 0.98,
+        "sum_tolerance": 0.001,
+        "min_delta_t_k": 5.0,
+        "max_delta_t_k": 15.0
+      },
+      "quote": "High-density liquid-cooled racks shall close liquid + residual air heat fractions to 1.0 and keep coolant temperature rise within 5–15 K."
+    },
+    "OCP-LC-HYD-001": {
+      "clause": "OCP ACS §5.2 Rack & TCS Secondary Loop Pressure Drop Budget",
+      "title": "机柜级与二次侧管网总压降上限",
+      "limits": {
+        "max_tcs_dp_kpa": 240.0
+      },
+      "quote": "Total secondary TCS loop pressure drop (headers + rack manifold + couplers + cold plates) shall not exceed 240 kPa or CDU external head."
+    },
+    "OCP-LC-HYD-002": {
+      "clause": "OCP UQD/BMQC §3.1 Coupler Dynamic Pressure Rating",
+      "title": "UQD / BMQC 盲插快接头动态工作压力上限",
+      "limits": {
+        "max_working_pressure_kpa_g": 450.0
+      },
+      "quote": "UQD04 and BMQC blind-mate couplers shall operate at or below 450 kPa(g) including hot-swap and valve-closure transients."
+    },
+    "OCP-LC-CDU-001": {
+      "clause": "OCP ACS CDU §4.2 CDU N+1 Capacity & Heat Exchanger Approach",
+      "title": "CDU N+1 换热冗余容量与端温差（Approach）上限",
+      "limits": {
+        "max_approach_k": 5.0,
+        "min_n_plus_1_margin": 1.0
+      },
+      "quote": "Liquid-to-liquid CDU assemblies shall maintain plate heat exchanger approach <= 5.0 K and meet full liquid load with N+1 unit redundancy."
+    },
+    "OCP-LC-CDU-002": {
+      "clause": "OCP ACS CDU §6.1 Coolant Chemistry & Leak Detection Interlock",
+      "title": "液冷工质规范（PG25/处理水）与漏液检测联锁",
+      "limits": {
+        "allowed_coolants": ["pg25-water", "pg25", "treated-water", "water"]
+      },
+      "quote": "Secondary TCS loop must declare qualified coolant chemistry (PG25 or treated water) and integrated rack/tray leak detection."
+    }
+  }
+}

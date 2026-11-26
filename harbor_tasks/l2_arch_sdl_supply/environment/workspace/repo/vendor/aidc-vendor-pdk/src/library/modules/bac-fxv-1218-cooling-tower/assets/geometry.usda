@@ -1,0 +1,77 @@
+#usda 1.0
+(
+    defaultPrim = "Module"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Module"
+{
+    def Scope "Geometry"
+    {
+        def Cube "ColdWaterBasin"
+        {
+            color3f[] primvars:displayColor = [(0.34, 0.40, 0.46)]
+            double size = 1
+            double3 xformOp:scale = (5.49, 3.66, 0.85)
+            double3 xformOp:translate = (2.745, 1.83, 0.425)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "CoilAndFillCasing"
+        {
+            color3f[] primvars:displayColor = [(0.68, 0.74, 0.80)]
+            double size = 1
+            double3 xformOp:scale = (5.49, 3.66, 2.25)
+            double3 xformOp:translate = (2.745, 1.83, 1.975)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "TripleFanDeck"
+        {
+            color3f[] primvars:displayColor = [(0.16, 0.46, 0.68)]
+            double size = 1
+            double3 xformOp:scale = (5.20, 3.20, 0.75)
+            double3 xformOp:translate = (2.745, 1.83, 3.475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Ports"
+    {
+        def Xform "cw_in"
+        {
+            custom double3 texsys:normal = (-1, 0, 0)
+            double3 xformOp:translate = (0.0, 1.83, 2.55)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "cw_out"
+        {
+            custom double3 texsys:normal = (-1, 0, 0)
+            double3 xformOp:translate = (0.0, 1.83, 1.10)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "makeup_in"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (1.10, 0.0, 0.55)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "drain_out"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (4.40, 0.0, 0.20)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "power_in"
+        {
+            custom double3 texsys:normal = (1, 0, 0)
+            double3 xformOp:translate = (5.49, 1.83, 1.60)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "root": "OcpOrv3Busbar48vHpr",
+  "components": {
+    "OcpOrv3Busbar48vHpr": {
+      "ports": {
+        "power_shelf_in": {
+          "direction": "in",
+          "kind": "dc-48v-busbar",
+          "max_connections": 8
+        },
+        "bbu_in": {
+          "direction": "inout",
+          "kind": "dc-48v-busbar",
+          "max_connections": 4
+        },
+        "tray_tap": {
+          "direction": "out",
+          "kind": "dc-48v-busbar",
+          "max_connections": 48
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0",
+        "parameters": {
+          "nominal_voltage_v": {
+            "value": 50.0,
+            "unit": "V",
+            "state": "known",
+            "source": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+          },
+          "rated_current_a": {
+            "value": 3000.0,
+            "unit": "A",
+            "state": "known",
+            "source": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+          },
+          "rated_power_kw": {
+            "value": 144.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

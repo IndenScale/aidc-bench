@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-BUSBAR-48V-HPR",
+  "ocp_spec": "OCP ORv3 HPR Busbar Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0",
+  "envelope_m": [
+    0.12,
+    0.08,
+    2.2
+  ],
+  "mass_kg": 42.0,
+  "clearances_m": {
+    "rear_busbar_access_m": 0.4
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_shelf_in": {
+      "position_m": [
+        0.06,
+        0.0,
+        0.4
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Power shelf blind-mate clip zone (up to 8 shelves)"
+    },
+    "bbu_in": {
+      "position_m": [
+        0.06,
+        0.0,
+        0.85
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "BBU shelf bidirectional 48V-50V blind-mate zone"
+    },
+    "tray_tap": {
+      "position_m": [
+        0.06,
+        0.0,
+        1.5
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "48OU IT compute tray blind-mate busbar taps"
+    }
+  },
+  "properties": {
+    "nominal_voltage_v": 50.0,
+    "voltage_window_v": [
+      48.0,
+      51.0
+    ],
+    "rated_current_a": 3000.0,
+    "rated_power_kw": 144.0,
+    "conductor": "Silver-plated copper"
+  },
+  "limitations": "稳态 DC 汇流模型，未包含毫秒级 GPU EDPp 脉冲下的寄生电感暂态压降。"
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-orv3-frame-48ou-envelope",
+  "state": "calibrated-reference",
+  "source": "OCP Open Rack v3 Base Specification Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP Open Rack v3 Base Specification",
+    "ocp_revision": "Rev 1.0",
+    "load_fraction_range": [
+      0.25,
+      1.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ]
+    }
+  ],
+  "outputs": {
+    "static_load_kg": {
+      "unit": "kg",
+      "min_bound": 148.0,
+      "values": [
+        511.0,
+        874.0,
+        1237.0,
+        1600.0
+      ]
+    },
+    "floor_pressure_kpa": {
+      "unit": "kPa",
+      "min_bound": 0.0,
+      "values": [
+        7.82,
+        13.38,
+        18.93,
+        24.49
+      ]
+    }
+  },
+  "limitations": "依据 OCP ORv3 Base Rev 1.0 包络标定；抗震斜撑与地脚锚固按项目结构验算。"
+}

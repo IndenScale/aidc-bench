@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "root": "OcpOrv3Frame48Ou",
+  "components": {
+    "OcpOrv3Frame48Ou": {
+      "ports": {
+        "rails_ou": {
+          "direction": "inout",
+          "kind": "rack-mount-ou",
+          "max_connections": 48
+        },
+        "busbar_slot": {
+          "direction": "inout",
+          "kind": "dc-48v-busbar",
+          "max_connections": 2
+        },
+        "manifold_slot": {
+          "direction": "inout",
+          "kind": "tcs-bmqc",
+          "max_connections": 2
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP Open Rack v3 Base Specification Rev 1.0",
+        "parameters": {
+          "max_static_load_kg": {
+            "value": 1600.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "OCP Open Rack v3 Base Specification Rev 1.0"
+          },
+          "unit_pitch_m": {
+            "value": 0.048,
+            "unit": "m",
+            "state": "known",
+            "source": "OCP Open Rack v3 Base Specification Rev 1.0"
+          },
+          "total_ou": {
+            "value": 48.0,
+            "unit": "OU",
+            "state": "known",
+            "source": "OCP Open Rack v3 Base Specification Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

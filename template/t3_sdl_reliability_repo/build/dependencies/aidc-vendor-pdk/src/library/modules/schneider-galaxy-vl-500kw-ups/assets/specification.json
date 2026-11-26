@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Schneider Electric",
+  "model_number": "Galaxy-VL-500kW",
+  "basis": "Schneider Electric Galaxy VL 200-500 kW Technical Datasheet & ENERGY STAR Public Certified Data",
+  "envelope_m": [0.85, 0.925, 1.97],
+  "mass_kg": 778.0,
+  "clearances_m": {
+    "front_live_swap_service_m": 1.2,
+    "top_exhaust_and_cable_m": 0.6,
+    "rear_wall_clearance_m": 0.0
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "ac_main_in": {"position_m": [0.18, 0.68, 1.97], "normal": [0, 0, 1], "spec": "400V 3-phase 50/60Hz rectifier main input"},
+    "ac_bypass_in": {"position_m": [0.36, 0.68, 1.97], "normal": [0, 0, 1], "spec": "400V 3-phase static bypass input"},
+    "ac_critical_out": {"position_m": [0.54, 0.68, 1.97], "normal": [0, 0, 1], "spec": "400V 3-phase 500 kW critical load output (PF=1.0)"},
+    "dc_battery_bus": {"position_m": [0.72, 0.68, 1.97], "normal": [0, 0, 1], "spec": "External Lithium-ion / VRLA battery cabinet DC bus"},
+    "air_in": {"position_m": [0.425, 0.0, 0.95], "normal": [0, -1, 0], "spec": "Front intake cooling air"},
+    "air_out": {"position_m": [0.425, 0.3, 1.97], "normal": [0, 0, 1], "spec": "Top exhaust (allows back-to-wall installation)"}
+  },
+  "properties": {
+    "topology": "Modular Live Swap Double-Conversion & eConversion (IEC 62040-3 Class 1)",
+    "power_modules": "Up to 10x 50 kW Live Swap power modules (500 kW N or 450 kW N+1)",
+    "back_to_wall_capable": true
+  },
+  "limitations": "质量 778 kg 与外形 850x925x1970 mm 为 500 kW 满配主机柜数据，不含外置锂电/铅酸电池柜占地与重量；双变换效率按 ENERGY STAR 公开认证点位标定。"
+}

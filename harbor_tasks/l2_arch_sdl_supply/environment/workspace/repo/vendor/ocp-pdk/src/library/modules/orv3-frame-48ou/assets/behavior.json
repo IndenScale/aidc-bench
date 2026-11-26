@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-mechanical-frame",
+  "parameters": {
+    "max_static_load_kg": "kg",
+    "unit_pitch_m": "m",
+    "total_ou": "OU"
+  },
+  "method": "定义 ORv3 48OU 机械包络、21 英寸导轨间距、静态承载上限与前后检修净距。",
+  "limitations": "依据 OCP ORv3 Base Rev 1.0 包络标定；抗震斜撑与地脚锚固按项目结构验算。"
+}

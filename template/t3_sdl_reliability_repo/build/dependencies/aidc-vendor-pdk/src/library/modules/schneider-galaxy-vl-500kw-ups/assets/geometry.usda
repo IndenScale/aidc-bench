@@ -1,0 +1,85 @@
+#usda 1.0
+(
+    defaultPrim = "Module"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Module"
+{
+    def Scope "Geometry"
+    {
+        def Cube "UpsCabinet"
+        {
+            color3f[] primvars:displayColor = [(0.86, 0.88, 0.9)]
+            double size = 1
+            double3 xformOp:scale = (0.85, 0.895, 1.97)
+            double3 xformOp:translate = (0.425, 0.47750000000000004, 0.985)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "LiveSwapModuleBay"
+        {
+            color3f[] primvars:displayColor = [(0.16, 0.22, 0.28)]
+            double size = 1
+            double3 xformOp:scale = (0.72, 0.03, 1.38)
+            double3 xformOp:translate = (0.425, 0.015, 0.95)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "SchneiderGreenAccent"
+        {
+            color3f[] primvars:displayColor = [(0.24, 0.82, 0.36)]
+            double size = 1
+            double3 xformOp:scale = (0.72, 0.024999999999999998, 0.14000000000000012)
+            double3 xformOp:translate = (0.42500000000000004, 0.017499999999999998, 1.8)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Ports"
+    {
+        def Xform "ac_main_in"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.18, 0.68, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "ac_bypass_in"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.36, 0.68, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "ac_critical_out"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.54, 0.68, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "dc_battery_bus"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.72, 0.68, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_in"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (0.425, 0, 0.95)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_out"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.425, 0.3, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

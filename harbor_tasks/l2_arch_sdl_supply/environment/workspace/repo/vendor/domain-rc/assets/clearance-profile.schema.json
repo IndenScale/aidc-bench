@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SysDA straight clearance profile v1",
+  "type": "object",
+  "definitions": {
+    "interval": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "point": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "volume": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "enum": [
+            "entrance",
+            "main-room-entry",
+            "transport-door",
+            "transport-corridor",
+            "transport-obstacle"
+          ]
+        },
+        "bounds_m": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/point"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "role",
+        "bounds_m"
+      ]
+    },
+    "section": {
+      "type": "object",
+      "properties": {
+        "station_range_m": {
+          "$ref": "#/definitions/interval"
+        },
+        "corridor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "openings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "obstacles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "floor_obstacles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "floor_intervals_m": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/interval"
+          }
+        }
+      },
+      "required": [
+        "station_range_m",
+        "corridor",
+        "openings",
+        "obstacles",
+        "floor_obstacles",
+        "floor_intervals_m"
+      ]
+    }
+  },
+  "properties": {
+    "kind": {
+      "const": "straight-clearance-profile"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "domain": {
+      "const": "spatial"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frame": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "axis": {
+      "enum": [
+        "x",
+        "y"
+      ]
+    },
+    "route_prim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "complete": {
+      "type": "boolean"
+    },
+    "volumes": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/volume"
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/section"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "scene": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1
+            },
+            "digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "digest"
+          ]
+        }
+      },
+      "required": [
+        "scene"
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "domain",
+    "scope",
+    "frame",
+    "complete",
+    "volumes",
+    "sections",
+    "unresolved",
+    "sources"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "complete": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "axis",
+          "route_prim"
+        ],
+        "properties": {
+          "frame": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unresolved": {
+            "maxItems": 0
+          },
+          "sections": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+schema_version = 1
+manifest_digest = "sha256:cacced2a992159c314f3251e0c775ad6eda5a1103fd3c6fd420b05d1b45006c6"
+
+[[packages]]
+name = "aidc-vendor-pdk"
+version = "0.1.0"
+source = "path"
+path = "../../../texsys/packages/aidc-vendor-pdk"
+digest = "sha256:04180728f91bc4c257f010dff476279e7ac7b0829968ffe3a58c229000d3ecc2"
+direct = true
+dependencies = ["ocp-pdk"]
+
+[[packages]]
+name = "domain-rc"
+version = "0.1.0"
+source = "path"
+path = "../../../texsys/packages/domain-rc"
+digest = "sha256:f293a66be389d7494891414bb16d97ffde3c547a6ae8c6a6f704f5f26fa01ace"
+direct = false
+dependencies = []
+
+[[packages]]
+name = "ocp-pdk"
+version = "0.1.0"
+source = "path"
+path = "../../../texsys/packages/ocp-pdk"
+digest = "sha256:e3cca779fa5fcdab8ba4cea4ca141065c3451e36c87f99e74e4e3b97ccf12ef8"
+direct = false
+dependencies = []
+
+[[packages]]
+name = "ocp-standards"
+version = "0.1.0"
+source = "path"
+path = "../../../texsys/packages/ocp-standards"
+digest = "sha256:f2c16f6eb792ce853e4a5c1e984215b184278a800217118dbeccbc7c194ea95a"
+direct = true
+dependencies = ["domain-rc", "ocp-pdk"]

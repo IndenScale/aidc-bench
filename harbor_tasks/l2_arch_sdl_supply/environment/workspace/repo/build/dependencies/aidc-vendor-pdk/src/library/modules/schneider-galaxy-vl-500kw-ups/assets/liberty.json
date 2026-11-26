@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "schneider-galaxy-vl-500kw",
+  "state": "calibrated-reference",
+  "source": "Schneider Electric Galaxy VL 500 kW Technical Datasheet & ENERGY STAR Certified Data (Double Conversion: 96.3/97.1/97.2/97.2%; eConversion: 98.9/99.3/99.4/99.5%)",
+  "uncertainty_pct": 1.0,
+  "operating_envelope": {
+    "rated_kw": 500.0,
+    "power_factor": 1.0,
+    "nominal_voltage_v": 400.0,
+    "default_mode": "double-conversion"
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [0.1, 0.25, 0.5, 0.75, 1.0]
+    }
+  ],
+  "outputs": {
+    "efficiency": {
+      "unit": "1",
+      "min_bound": 0.85,
+      "max_bound": 0.995,
+      "values": [0.935, 0.963, 0.971, 0.972, 0.972]
+    },
+    "econversion_efficiency": {
+      "unit": "1",
+      "min_bound": 0.9,
+      "max_bound": 0.998,
+      "values": [0.978, 0.989, 0.993, 0.994, 0.995]
+    },
+    "heat_rejection_fraction": {
+      "unit": "1",
+      "min_bound": 0.005,
+      "max_bound": 0.2,
+      "values": [0.06952, 0.03842, 0.02987, 0.02881, 0.02881]
+    }
+  },
+  "limitations": "25/50/75/100% 负荷点位直接对应 ENERGY STAR 公开认证效率，10% 轻载点按模块化休眠策略保守插值；电池均充期间输入功率另计。"
+}

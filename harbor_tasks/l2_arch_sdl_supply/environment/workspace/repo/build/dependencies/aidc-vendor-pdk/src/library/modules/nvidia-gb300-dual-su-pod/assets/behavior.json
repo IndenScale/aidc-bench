@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "nvidia-gb300-dual-su-pod-144gpu",
+  "parameters": {
+    "su_rack_count": "count",
+    "total_gpu_count": "count",
+    "nominal_pod_power_kw": "kW",
+    "pod_mass_kg": "kg"
+  },
+  "method": "由 2 台并联 nvidia-gb300-nvl72-rack 液冷负荷叠加 10 台 SN5610（半数有源光模块典型配置）与 2 台 SN2201 风侧显热构成；并联流量翻倍，压降等于单柜压降叠加 4.5 kPa 支管歧管局部损失。",
+  "limitations": "适用于标准 2-SU 双平面构建块；扩展至 4-SU / 8-SU 时须在集群级额外计入 Spine 交换机柜功耗与风侧负荷。"
+}

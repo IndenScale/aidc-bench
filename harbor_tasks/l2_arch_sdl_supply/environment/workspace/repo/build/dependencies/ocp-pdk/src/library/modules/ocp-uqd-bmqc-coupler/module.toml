@@ -1,0 +1,42 @@
+schema_version = 1
+name = "OCP UQD04 / BMQC 无滴漏盲插快接头对"
+version = "0.1.0"
+entry = "ocp-uqd-bmqc-coupler.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+fidelity = "UQD04/BMQC 快接头机械包络与插合方向"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+fidelity = "干断快接头工程符号与进出口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+fidelity = "Cv 值、允许工作压力 450 kPa(g) 与微滴漏限值"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+fidelity = "局部阻力平方律模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+fidelity = "(单路流量, 流体温度) 二维快接压降表"
+
+[port_bindings.inlet]
+geometry = "/Module/Ports/inlet"
+symbol = "port-inlet"
+
+[port_bindings.outlet]
+geometry = "/Module/Ports/outlet"
+symbol = "port-outlet"

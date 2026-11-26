@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "root": "SchneiderCanalisKtc1600Busway",
+  "imports": {
+    "OcpBusway": "@ocp-pdk/library/modules/ocp-busway-tap-ac/ocp-busway-tap-ac.sdl.json"
+  },
+  "components": {
+    "SchneiderCanalisKtc1600Busway": {
+      "instances": {
+        "ocp_segment": {"component": "OcpBusway"}
+      },
+      "connections": [],
+      "nets": {},
+      "ports": {
+        "bus_in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "bus_out": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_off_1": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_off_2": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "pe_ground": {
+          "direction": "inout",
+          "kind": "earthing",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Schneider Electric Canalis KTC 1600A Copper Technical Catalogue (DEBU024EN)",
+        "parameters": {
+          "rated_current_a": {
+            "value": 1600.0,
+            "unit": "A",
+            "state": "known",
+            "source": "Schneider Electric Canalis KTC 1600A nominal current rating (35 degC ambient)"
+          },
+          "resistance_20c_mohm_per_m": {
+            "value": 0.024,
+            "unit": "mOhm/m",
+            "state": "known",
+            "source": "Canalis KTC 1600A Copper datasheet average resistance R20 = 0.024 mOhm/m"
+          },
+          "resistance_35c_mohm_per_m": {
+            "value": 0.029,
+            "unit": "mOhm/m",
+            "state": "known",
+            "source": "Canalis KTC 1600A Copper datasheet operational resistance R1 = 0.029 mOhm/m at Inc & 35 degC"
+          },
+          "reactance_50hz_mohm_per_m": {
+            "value": 0.015,
+            "unit": "mOhm/m",
+            "state": "known",
+            "source": "Canalis KTC 1600A Copper datasheet reactance X1 = 0.015 mOhm/m at 50 Hz"
+          },
+          "impedance_mohm_per_m": {
+            "value": 0.033,
+            "unit": "mOhm/m",
+            "state": "known",
+            "source": "Canalis KTC 1600A Copper datasheet impedance Z1 = 0.033 mOhm/m"
+          },
+          "icw_1s_ka": {
+            "value": 65.0,
+            "unit": "kA",
+            "state": "known",
+            "source": "Canalis KTC 1600A 3L+N+PE rated short-time withstand current Icw(1s) = 65 kA"
+          },
+          "ipk_ka": {
+            "value": 143.0,
+            "unit": "kA",
+            "state": "known",
+            "source": "Canalis KTC 1600A rated peak withstand current Ipk = 143 kA"
+          },
+          "mass_per_m_kg": {
+            "value": 35.0,
+            "unit": "kg/m",
+            "state": "known",
+            "source": "Canalis KTC 1600A 3L+N+PE copper linear mass = 35 kg/m"
+          }
+        }
+      }
+    }
+  }
+}

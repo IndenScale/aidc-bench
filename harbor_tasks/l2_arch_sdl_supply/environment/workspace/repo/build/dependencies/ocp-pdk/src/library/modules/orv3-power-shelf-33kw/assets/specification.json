@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-POWER-SHELF-33KW",
+  "ocp_spec": "OCP ORv3 Power Shelf Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0",
+  "envelope_m": [
+    0.538,
+    0.75,
+    0.088
+  ],
+  "mass_kg": 26.5,
+  "clearances_m": {
+    "front_hot_swap_m": 0.9
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "ac_in_a": {
+      "position_m": [
+        0.14,
+        0.75,
+        0.044
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear 3-phase AC feed A whip"
+    },
+    "ac_in_b": {
+      "position_m": [
+        0.4,
+        0.75,
+        0.044
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear 3-phase AC feed B whip (N+N/5+1)"
+    },
+    "dc_out": {
+      "position_m": [
+        0.269,
+        0.75,
+        0.044
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear blind-mate 50V DC busbar clip"
+    },
+    "mgmt": {
+      "position_m": [
+        0.08,
+        0.0,
+        0.044
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front PMC / Redfish Modbus telemetry port"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 2OU / 21-inch",
+    "psu_count": 6,
+    "psu_rated_kw": 5.5,
+    "rated_dc_kw": 33.0,
+    "output_voltage_v": 50.0
+  },
+  "limitations": "不含单 PSU 热插拔毫秒瞬态谐波；单柜需按 N+1 或 N+N 配置冗余框。"
+}

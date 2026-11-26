@@ -1,0 +1,280 @@
+{
+  "schema_version": 2,
+  "root": "NvidiaGb300Nvl72Rack",
+  "imports": {
+    "OcpFrame": "@ocp-pdk/library/modules/orv3-hpr-frame-48ou/orv3-hpr-frame-48ou.sdl.json",
+    "OcpBusbar": "@ocp-pdk/library/modules/orv3-busbar-48v-hpr/orv3-busbar-48v-hpr.sdl.json",
+    "OcpPowerShelf": "@ocp-pdk/library/modules/orv3-power-shelf-33kw/orv3-power-shelf-33kw.sdl.json",
+    "OcpManifold": "@ocp-pdk/library/modules/orv3-rack-manifold-bmqc/orv3-rack-manifold-bmqc.sdl.json",
+    "OcpComputeTray": "@ocp-pdk/library/modules/ocp-compute-tray-1ou-lc/ocp-compute-tray-1ou-lc.sdl.json",
+    "Sn2201": "library/modules/nvidia-sn2201-oob-switch/nvidia-sn2201-oob-switch.sdl.json"
+  },
+  "components": {
+    "NvSwitchTray": {
+      "ports": {
+        "dc_in": {"direction": "in", "kind": "dc-48v-busbar", "max_connections": 1},
+        "bmqc_supply": {"direction": "in", "kind": "tcs-bmqc", "max_connections": 1},
+        "bmqc_return": {"direction": "out", "kind": "tcs-bmqc", "max_connections": 1}
+      }
+    },
+    "NvidiaGb300Nvl72Rack": {
+      "ports": {
+        "power_a": {"direction": "in", "kind": "ac-power", "max_connections": 1},
+        "power_b": {"direction": "in", "kind": "ac-power", "max_connections": 1},
+        "tcs_supply": {"direction": "in", "kind": "tcs", "max_connections": 1},
+        "tcs_return": {"direction": "out", "kind": "tcs", "max_connections": 1},
+        "air_in": {"direction": "in", "kind": "room-air", "max_connections": 1},
+        "air_out": {"direction": "out", "kind": "room-air", "max_connections": 1},
+        "fabric_ew_p1": {"direction": "inout", "kind": "ethernet-400g-plane", "max_connections": 4},
+        "fabric_ew_p2": {"direction": "inout", "kind": "ethernet-400g-plane", "max_connections": 4},
+        "fabric_ns_a": {"direction": "inout", "kind": "ethernet-400g-converged", "max_connections": 1},
+        "fabric_ns_b": {"direction": "inout", "kind": "ethernet-400g-converged", "max_connections": 1},
+        "oob_mgmt": {"direction": "inout", "kind": "ethernet-100g-oob", "max_connections": 2}
+      },
+      "instances": {
+        "frame": {"component": "OcpFrame"},
+        "busbar": {"component": "OcpBusbar"},
+        "manifold_a": {"component": "OcpManifold"},
+        "manifold_b": {"component": "OcpManifold"},
+        "oob_a": {"component": "Sn2201"},
+        "oob_b": {"component": "Sn2201"},
+        "ps_1": {"component": "OcpPowerShelf"},
+        "ps_2": {"component": "OcpPowerShelf"},
+        "ps_3": {"component": "OcpPowerShelf"},
+        "ps_4": {"component": "OcpPowerShelf"},
+        "ps_5": {"component": "OcpPowerShelf"},
+        "ps_6": {"component": "OcpPowerShelf"},
+        "ps_7": {"component": "OcpPowerShelf"},
+        "ps_8": {"component": "OcpPowerShelf"},
+        "tray_01": {"component": "OcpComputeTray"},
+        "tray_02": {"component": "OcpComputeTray"},
+        "tray_03": {"component": "OcpComputeTray"},
+        "tray_04": {"component": "OcpComputeTray"},
+        "tray_05": {"component": "OcpComputeTray"},
+        "tray_06": {"component": "OcpComputeTray"},
+        "tray_07": {"component": "OcpComputeTray"},
+        "tray_08": {"component": "OcpComputeTray"},
+        "tray_09": {"component": "OcpComputeTray"},
+        "tray_10": {"component": "OcpComputeTray"},
+        "tray_11": {"component": "OcpComputeTray"},
+        "tray_12": {"component": "OcpComputeTray"},
+        "tray_13": {"component": "OcpComputeTray"},
+        "tray_14": {"component": "OcpComputeTray"},
+        "tray_15": {"component": "OcpComputeTray"},
+        "tray_16": {"component": "OcpComputeTray"},
+        "tray_17": {"component": "OcpComputeTray"},
+        "tray_18": {"component": "OcpComputeTray"},
+        "nvsw_1": {"component": "NvSwitchTray"},
+        "nvsw_2": {"component": "NvSwitchTray"},
+        "nvsw_3": {"component": "NvSwitchTray"},
+        "nvsw_4": {"component": "NvSwitchTray"},
+        "nvsw_5": {"component": "NvSwitchTray"},
+        "nvsw_6": {"component": "NvSwitchTray"},
+        "nvsw_7": {"component": "NvSwitchTray"},
+        "nvsw_8": {"component": "NvSwitchTray"},
+        "nvsw_9": {"component": "NvSwitchTray"}
+      },
+      "connections": [
+        {"id": "dc-ps-1", "from": "ps_1.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-2", "from": "ps_2.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-3", "from": "ps_3.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-4", "from": "ps_4.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-5", "from": "ps_5.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-6", "from": "ps_6.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-7", "from": "ps_7.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-ps-8", "from": "ps_8.dc_out", "to": "busbar.power_shelf_in"},
+        {"id": "dc-t01", "from": "busbar.tray_tap", "to": "tray_01.dc_in"},
+        {"id": "dc-t02", "from": "busbar.tray_tap", "to": "tray_02.dc_in"},
+        {"id": "dc-t03", "from": "busbar.tray_tap", "to": "tray_03.dc_in"},
+        {"id": "dc-t04", "from": "busbar.tray_tap", "to": "tray_04.dc_in"},
+        {"id": "dc-t05", "from": "busbar.tray_tap", "to": "tray_05.dc_in"},
+        {"id": "dc-t06", "from": "busbar.tray_tap", "to": "tray_06.dc_in"},
+        {"id": "dc-t07", "from": "busbar.tray_tap", "to": "tray_07.dc_in"},
+        {"id": "dc-t08", "from": "busbar.tray_tap", "to": "tray_08.dc_in"},
+        {"id": "dc-t09", "from": "busbar.tray_tap", "to": "tray_09.dc_in"},
+        {"id": "dc-t10", "from": "busbar.tray_tap", "to": "tray_10.dc_in"},
+        {"id": "dc-t11", "from": "busbar.tray_tap", "to": "tray_11.dc_in"},
+        {"id": "dc-t12", "from": "busbar.tray_tap", "to": "tray_12.dc_in"},
+        {"id": "dc-t13", "from": "busbar.tray_tap", "to": "tray_13.dc_in"},
+        {"id": "dc-t14", "from": "busbar.tray_tap", "to": "tray_14.dc_in"},
+        {"id": "dc-t15", "from": "busbar.tray_tap", "to": "tray_15.dc_in"},
+        {"id": "dc-t16", "from": "busbar.tray_tap", "to": "tray_16.dc_in"},
+        {"id": "dc-t17", "from": "busbar.tray_tap", "to": "tray_17.dc_in"},
+        {"id": "dc-t18", "from": "busbar.tray_tap", "to": "tray_18.dc_in"},
+        {"id": "dc-sw-1", "from": "busbar.tray_tap", "to": "nvsw_1.dc_in"},
+        {"id": "dc-sw-2", "from": "busbar.tray_tap", "to": "nvsw_2.dc_in"},
+        {"id": "dc-sw-3", "from": "busbar.tray_tap", "to": "nvsw_3.dc_in"},
+        {"id": "dc-sw-4", "from": "busbar.tray_tap", "to": "nvsw_4.dc_in"},
+        {"id": "dc-sw-5", "from": "busbar.tray_tap", "to": "nvsw_5.dc_in"},
+        {"id": "dc-sw-6", "from": "busbar.tray_tap", "to": "nvsw_6.dc_in"},
+        {"id": "dc-sw-7", "from": "busbar.tray_tap", "to": "nvsw_7.dc_in"},
+        {"id": "dc-sw-8", "from": "busbar.tray_tap", "to": "nvsw_8.dc_in"},
+        {"id": "dc-sw-9", "from": "busbar.tray_tap", "to": "nvsw_9.dc_in"},
+        {"id": "tcs-sup-t01", "from": "manifold_a.branch_supply", "to": "tray_01.bmqc_supply"},
+        {"id": "tcs-ret-t01", "from": "tray_01.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t02", "from": "manifold_a.branch_supply", "to": "tray_02.bmqc_supply"},
+        {"id": "tcs-ret-t02", "from": "tray_02.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t03", "from": "manifold_a.branch_supply", "to": "tray_03.bmqc_supply"},
+        {"id": "tcs-ret-t03", "from": "tray_03.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t04", "from": "manifold_a.branch_supply", "to": "tray_04.bmqc_supply"},
+        {"id": "tcs-ret-t04", "from": "tray_04.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t05", "from": "manifold_a.branch_supply", "to": "tray_05.bmqc_supply"},
+        {"id": "tcs-ret-t05", "from": "tray_05.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t06", "from": "manifold_a.branch_supply", "to": "tray_06.bmqc_supply"},
+        {"id": "tcs-ret-t06", "from": "tray_06.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t07", "from": "manifold_a.branch_supply", "to": "tray_07.bmqc_supply"},
+        {"id": "tcs-ret-t07", "from": "tray_07.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t08", "from": "manifold_a.branch_supply", "to": "tray_08.bmqc_supply"},
+        {"id": "tcs-ret-t08", "from": "tray_08.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t09", "from": "manifold_a.branch_supply", "to": "tray_09.bmqc_supply"},
+        {"id": "tcs-ret-t09", "from": "tray_09.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t10", "from": "manifold_a.branch_supply", "to": "tray_10.bmqc_supply"},
+        {"id": "tcs-ret-t10", "from": "tray_10.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t11", "from": "manifold_a.branch_supply", "to": "tray_11.bmqc_supply"},
+        {"id": "tcs-ret-t11", "from": "tray_11.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t12", "from": "manifold_a.branch_supply", "to": "tray_12.bmqc_supply"},
+        {"id": "tcs-ret-t12", "from": "tray_12.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t13", "from": "manifold_a.branch_supply", "to": "tray_13.bmqc_supply"},
+        {"id": "tcs-ret-t13", "from": "tray_13.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t14", "from": "manifold_a.branch_supply", "to": "tray_14.bmqc_supply"},
+        {"id": "tcs-ret-t14", "from": "tray_14.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t15", "from": "manifold_a.branch_supply", "to": "tray_15.bmqc_supply"},
+        {"id": "tcs-ret-t15", "from": "tray_15.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t16", "from": "manifold_a.branch_supply", "to": "tray_16.bmqc_supply"},
+        {"id": "tcs-ret-t16", "from": "tray_16.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t17", "from": "manifold_a.branch_supply", "to": "tray_17.bmqc_supply"},
+        {"id": "tcs-ret-t17", "from": "tray_17.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-t18", "from": "manifold_a.branch_supply", "to": "tray_18.bmqc_supply"},
+        {"id": "tcs-ret-t18", "from": "tray_18.bmqc_return", "to": "manifold_a.branch_return"},
+        {"id": "tcs-sup-sw1", "from": "manifold_b.branch_supply", "to": "nvsw_1.bmqc_supply"},
+        {"id": "tcs-ret-sw1", "from": "nvsw_1.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw2", "from": "manifold_b.branch_supply", "to": "nvsw_2.bmqc_supply"},
+        {"id": "tcs-ret-sw2", "from": "nvsw_2.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw3", "from": "manifold_b.branch_supply", "to": "nvsw_3.bmqc_supply"},
+        {"id": "tcs-ret-sw3", "from": "nvsw_3.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw4", "from": "manifold_b.branch_supply", "to": "nvsw_4.bmqc_supply"},
+        {"id": "tcs-ret-sw4", "from": "nvsw_4.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw5", "from": "manifold_b.branch_supply", "to": "nvsw_5.bmqc_supply"},
+        {"id": "tcs-ret-sw5", "from": "nvsw_5.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw6", "from": "manifold_b.branch_supply", "to": "nvsw_6.bmqc_supply"},
+        {"id": "tcs-ret-sw6", "from": "nvsw_6.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw7", "from": "manifold_b.branch_supply", "to": "nvsw_7.bmqc_supply"},
+        {"id": "tcs-ret-sw7", "from": "nvsw_7.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw8", "from": "manifold_b.branch_supply", "to": "nvsw_8.bmqc_supply"},
+        {"id": "tcs-ret-sw8", "from": "nvsw_8.bmqc_return", "to": "manifold_b.branch_return"},
+        {"id": "tcs-sup-sw9", "from": "manifold_b.branch_supply", "to": "nvsw_9.bmqc_supply"},
+        {"id": "tcs-ret-sw9", "from": "nvsw_9.bmqc_return", "to": "manifold_b.branch_return"}
+      ],
+      "nets": {
+        "DcBus48V": {
+          "kind": "dc-48v-busbar",
+          "connections": [
+            "dc-ps-1", "dc-ps-2", "dc-ps-3", "dc-ps-4", "dc-ps-5", "dc-ps-6", "dc-ps-7", "dc-ps-8",
+            "dc-t01", "dc-t02", "dc-t03", "dc-t04", "dc-t05", "dc-t06", "dc-t07", "dc-t08", "dc-t09",
+            "dc-t10", "dc-t11", "dc-t12", "dc-t13", "dc-t14", "dc-t15", "dc-t16", "dc-t17", "dc-t18",
+            "dc-sw-1", "dc-sw-2", "dc-sw-3", "dc-sw-4", "dc-sw-5", "dc-sw-6", "dc-sw-7", "dc-sw-8", "dc-sw-9"
+          ]
+        },
+        "TcsBranches": {
+          "kind": "tcs-bmqc",
+          "connections": [
+            "tcs-sup-t01", "tcs-ret-t01", "tcs-sup-t02", "tcs-ret-t02", "tcs-sup-t03", "tcs-ret-t03",
+            "tcs-sup-t04", "tcs-ret-t04", "tcs-sup-t05", "tcs-ret-t05", "tcs-sup-t06", "tcs-ret-t06",
+            "tcs-sup-t07", "tcs-ret-t07", "tcs-sup-t08", "tcs-ret-t08", "tcs-sup-t09", "tcs-ret-t09",
+            "tcs-sup-t10", "tcs-ret-t10", "tcs-sup-t11", "tcs-ret-t11", "tcs-sup-t12", "tcs-ret-t12",
+            "tcs-sup-t13", "tcs-ret-t13", "tcs-sup-t14", "tcs-ret-t14", "tcs-sup-t15", "tcs-ret-t15",
+            "tcs-sup-t16", "tcs-ret-t16", "tcs-sup-t17", "tcs-ret-t17", "tcs-sup-t18", "tcs-ret-t18",
+            "tcs-sup-sw1", "tcs-ret-sw1", "tcs-sup-sw2", "tcs-ret-sw2", "tcs-sup-sw3", "tcs-ret-sw3",
+            "tcs-sup-sw4", "tcs-ret-sw4", "tcs-sup-sw5", "tcs-ret-sw5", "tcs-sup-sw6", "tcs-ret-sw6",
+            "tcs-sup-sw7", "tcs-ret-sw7", "tcs-sup-sw8", "tcs-ret-sw8", "tcs-sup-sw9", "tcs-ret-sw9"
+          ]
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) & NVIDIA DGX GB Rack Scale User Guide (2026-09)（基于 @ocp-pdk ORv3 HPR/电源框/母排/BMQC 歧管/1OU 托盘重建，NVLink 交换框保持厂商定制）",
+        "parameters": {
+          "nominal_rack_power_kw": {
+            "value": 142.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.7: Full rack requiring up to 142 kW"
+          },
+          "peak_edpp_power_kw": {
+            "value": 155.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OEM/HPE/Lenovo public GB300 NVL72 rack electrical design peak specification"
+          },
+          "busway_provision_kw": {
+            "value": 192.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "HPE/Schneider public GB200/GB300 NVL72 facility busway provisioning recommendation"
+          },
+          "power_shelf_count": {
+            "value": 8,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.7: 8 power shelves of 33 kW"
+          },
+          "power_shelf_capacity_kw": {
+            "value": 33.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.7: six 5.5 kW PSUs per shelf"
+          },
+          "gpu_count": {
+            "value": 72,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.5: 72 Blackwell Ultra GPUs per SU"
+          },
+          "cpu_count": {
+            "value": 36,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.5: 36 Grace CPUs per SU"
+          },
+          "compute_tray_count": {
+            "value": 18,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.5: 18 compute trays per SU"
+          },
+          "nvswitch_tray_count": {
+            "value": 9,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.7: 9 NVLink 5.0 switch trays"
+          },
+          "liquid_cooling_fraction": {
+            "value": 0.9,
+            "unit": "1",
+            "state": "known",
+            "source": "OEM/NVIDIA GB200/GB300 direct-to-chip liquid cooling thermal split (~90% liquid / 10% air)"
+          },
+          "loaded_mass_kg": {
+            "value": 1497.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "OEM public GB300 NVL72 fully populated rack weight (~3,300 lbs / 1,497 kg)"
+          },
+          "min_tcs_supply_c": {
+            "value": 25.0,
+            "unit": "degC",
+            "state": "known",
+            "source": "OEM/Lenovo public NVL72 coolant supply curve lower operating point (25 degC)"
+          },
+          "max_tcs_supply_c": {
+            "value": 45.0,
+            "unit": "degC",
+            "state": "known",
+            "source": "OEM/Lenovo public NVL72 coolant supply curve upper operating point (45 degC)"
+          }
+        }
+      }
+    }
+  }
+}

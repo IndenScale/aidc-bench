@@ -1,0 +1,50 @@
+schema_version = 1
+name = "Grundfos NK 150-250/242 变频卧式端吸离心水泵 (22 kW / 350 m3/h)"
+version = "0.1.0"
+entry = "grundfos-nk150-250-pump.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Grundfos NK 150-250/242 EN 733 / ISO 3661 公开底座与泵体包络（1550x650x820 mm）"
+fidelity = "公共底座、蜗壳泵头、加长联轴器、IE3 22 kW 电机及 DN200 进 / DN150 出法兰位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Grundfos NK 150-250/242 公开规格与离心泵符号"
+fidelity = "功能符号与吸入/压出法兰、变频电源及转速控制端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Grundfos NK 150-250/242 (1450 rpm 50 Hz, 22 kW, EN 733 / ISO 5199) 公开产品规格"
+fidelity = "外形尺寸、净重（355 kg）、后拉式检修净空与 EN 1092-2 PN16 法兰定义"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Grundfos NK 150-250/242 额定工况（350 m3/h @ 15.0 m, 22 kW 4-pole）与水泵相似律"
+fidelity = "二维 (flow_m3_h, speed_fraction) 扬程、水力效率与轴功率查表模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Grundfos NK 150-250/242 1450 rpm 50 Hz 公开 BEP（350 m3/h @ 15.0 m, 82.5%）相似律标定表"
+fidelity = "二维稳态工况查表（flow_m3_h x speed_fraction -> head_m / hydraulic_efficiency / shaft_power_kw）"
+
+[port_bindings.water_in]
+geometry = "/Module/Ports/water_in"
+symbol = "port-water_in"
+
+[port_bindings.water_out]
+geometry = "/Module/Ports/water_out"
+symbol = "port-water_out"
+
+[port_bindings.power_in]
+geometry = "/Module/Ports/power_in"
+symbol = "port-power_in"
+
+[port_bindings.vfd_speed_cmd]
+geometry = "/Module/Ports/vfd_speed_cmd"
+symbol = "port-vfd_speed_cmd"

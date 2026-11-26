@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-RACK-MANIFOLD-BMQC",
+  "ocp_spec": "OCP ACS Cold Plate Rack Manifold Specification",
+  "ocp_revision": "Rev 1.1",
+  "basis": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1",
+  "envelope_m": [
+    0.09,
+    0.12,
+    2.2
+  ],
+  "mass_kg": 28.0,
+  "clearances_m": {
+    "rear_manifold_service_m": 0.9
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "supply_in": {
+      "position_m": [
+        0.045,
+        0.06,
+        2.2
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Top DN32 (1.25-inch) TCS supply tie-in"
+    },
+    "return_out": {
+      "position_m": [
+        0.045,
+        0.06,
+        0.0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "spec": "Bottom/top TCS return manifold outlet"
+    },
+    "branch_supply": {
+      "position_m": [
+        0.045,
+        0.0,
+        1.1
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "24x BMQC blind-mate supply drops"
+    },
+    "branch_return": {
+      "position_m": [
+        0.045,
+        0.12,
+        1.1
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "24x BMQC blind-mate return risers"
+    },
+    "pressure_sense": {
+      "position_m": [
+        0.09,
+        0.06,
+        2.0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "spec": "Differential pressure transmitter tap"
+    }
+  },
+  "properties": {
+    "material": "316L Stainless Steel",
+    "inner_diameter_mm": 34.8,
+    "branch_coupler_type": "BMQC / UQD04",
+    "branch_count": 24,
+    "max_working_pressure_kpa_g": 450.0
+  },
+  "limitations": "单相 PG25-water 稳态流动；高瞬态水锤需配合特征线法（MOC）模型复核。"
+}

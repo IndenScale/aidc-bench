@@ -1,0 +1,62 @@
+schema_version = 1
+name = "OCP ORv3 HPR 液冷整机柜装配体 (96 kW)"
+version = "0.1.0"
+entry = "ocp-orv3-liquid-rack-assembly.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+fidelity = "OCP ORv3 HPR 液冷整机柜组合包络与接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+fidelity = "ORv3 复合整机柜符号与外部机电液端口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+fidelity = "复合机柜边界端口、48V 母排与液冷歧管集成规格"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+fidelity = "机柜级电/水/风耦合行为模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+fidelity = "(负载率, 供液温度) 25-45 degC 整机柜水力与热量包络表"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.tcs_supply]
+geometry = "/Module/Ports/tcs_supply"
+symbol = "port-tcs_supply"
+
+[port_bindings.tcs_return]
+geometry = "/Module/Ports/tcs_return"
+symbol = "port-tcs_return"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.oob_mgmt]
+geometry = "/Module/Ports/oob_mgmt"
+symbol = "port-oob_mgmt"

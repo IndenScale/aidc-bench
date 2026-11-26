@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "york-yz-600rt-maglev-vsd-chiller",
+  "parameters": {
+    "rated_cooling_capacity_kw": "kW",
+    "rated_tons": "RT",
+    "full_load_cop_ahri": "1",
+    "iplv_kw_per_ton": "kW/RT",
+    "min_entering_cw_c": "degC",
+    "operating_mass_kg": "kg"
+  },
+  "method": "基于 YORK YZ 无油磁悬浮变频离心机公开 AHRI 550/590 性能区间构建 (load_fraction, wet_bulb_c, chw_supply_c) 三维 Liberty 查表，突出低冷凝水温与中高温冷冻水工况下的高部分负荷 COP 优势。",
+  "limitations": "不含冷却塔风机与冷冻/冷却水泵耗电；低于 25% 负荷率须进入喘振旁通或群控切机，高于 18 degC 供水由自然冷却/混合换热路径承接。"
+}

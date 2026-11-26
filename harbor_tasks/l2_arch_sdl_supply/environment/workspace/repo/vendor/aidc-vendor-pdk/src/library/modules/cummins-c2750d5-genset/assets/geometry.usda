@@ -1,0 +1,100 @@
+#usda 1.0
+(
+    defaultPrim = "Module"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Module"
+{
+    def Scope "Geometry"
+    {
+        def Cube "BaseSkid"
+        {
+            color3f[] primvars:displayColor = [(0.16, 0.18, 0.20)]
+            double size = 1
+            double3 xformOp:scale = (5.67, 2.305, 0.42)
+            double3 xformOp:translate = (2.835, 1.1525, 0.21)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "EngineQsk78"
+        {
+            color3f[] primvars:displayColor = [(0.74, 0.16, 0.16)]
+            double size = 1
+            double3 xformOp:scale = (2.80, 1.65, 1.88)
+            double3 xformOp:translate = (2.55, 1.1525, 1.36)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "Alternator"
+        {
+            color3f[] primvars:displayColor = [(0.26, 0.30, 0.35)]
+            double size = 1
+            double3 xformOp:scale = (1.35, 1.45, 1.55)
+            double3 xformOp:translate = (4.80, 1.1525, 1.195)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "RadiatorModule"
+        {
+            color3f[] primvars:displayColor = [(0.34, 0.38, 0.42)]
+            double size = 1
+            double3 xformOp:scale = (0.95, 2.15, 2.288)
+            double3 xformOp:translate = (0.50, 1.1525, 1.564)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Ports"
+    {
+        def Xform "power_out"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (4.85, 1.1525, 1.97)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "fuel_supply"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (2.40, 0.0, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "fuel_return"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (2.75, 0.0, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "exhaust_out"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (2.55, 1.1525, 2.708)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_in"
+        {
+            custom double3 texsys:normal = (1, 0, 0)
+            double3 xformOp:translate = (5.67, 1.1525, 1.40)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_out"
+        {
+            custom double3 texsys:normal = (-1, 0, 0)
+            double3 xformOp:translate = (0.0, 1.1525, 1.56)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "start_cmd"
+        {
+            custom double3 texsys:normal = (0, 1, 0)
+            double3 xformOp:translate = (4.45, 2.305, 1.35)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}

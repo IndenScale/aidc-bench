@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-orv3-rack-manifold-dn32-pg25",
+  "state": "calibrated-reference",
+  "source": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP ACS Cold Plate Rack Manifold Specification",
+    "ocp_revision": "Rev 1.1",
+    "flow_lpm_range": [
+      40.0,
+      180.0
+    ],
+    "coolant_temp_c_range": [
+      25.0,
+      45.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "flow_lpm",
+      "unit": "L/min",
+      "values": [
+        40.0,
+        80.0,
+        120.0,
+        180.0
+      ]
+    },
+    {
+      "name": "coolant_temp_c",
+      "unit": "degC",
+      "values": [
+        25.0,
+        35.0,
+        45.0
+      ]
+    }
+  ],
+  "outputs": {
+    "manifold_dp_kpa": {
+      "unit": "kPa",
+      "min_bound": 0.1,
+      "values": [
+        [
+          0.9,
+          0.84,
+          0.79
+        ],
+        [
+          3.5,
+          3.25,
+          3.05
+        ],
+        [
+          7.8,
+          7.25,
+          6.8
+        ],
+        [
+          17.4,
+          16.2,
+          15.2
+        ]
+      ]
+    },
+    "velocity_m_s": {
+      "unit": "m/s",
+      "min_bound": 0.0,
+      "values": [
+        [
+          0.7,
+          0.7,
+          0.7
+        ],
+        [
+          1.4,
+          1.4,
+          1.4
+        ],
+        [
+          2.1,
+          2.1,
+          2.1
+        ],
+        [
+          3.15,
+          3.15,
+          3.15
+        ]
+      ]
+    }
+  },
+  "limitations": "单相 PG25-water 稳态流动；高瞬态水锤需配合特征线法（MOC）模型复核。"
+}

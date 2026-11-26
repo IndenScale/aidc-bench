@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP ORv3 1OU 液冷算力托盘 (6.5 kW)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">538x900x48 mm | 90% LC / 10% Air | 48V DC</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">ocp-compute-tray-1ou-lc</text>
+  <circle id="port-dc_in" data-port="dc_in" cx="52.7" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-bmqc_supply" data-port="bmqc_supply" cx="90.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-air_in" data-port="air_in" cx="127.3" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-bmqc_return" data-port="bmqc_return" cx="48.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-air_out" data-port="air_out" cx="76.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-fabric_ew" data-port="fabric_ew" cx="104.0" cy="98" r="3.2" fill="#f59e0b" />
+  <circle id="port-bmc_interlock" data-port="bmc_interlock" cx="132.0" cy="98" r="3.2" fill="#f59e0b" />
+</svg>

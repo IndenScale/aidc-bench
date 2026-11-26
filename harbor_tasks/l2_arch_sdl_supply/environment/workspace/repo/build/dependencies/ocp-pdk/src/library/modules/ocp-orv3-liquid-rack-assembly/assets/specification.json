@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "OCP-ORV3-LIQUID-RACK-ASSEMBLY",
+  "ocp_spec": "OCP ORv3 HPR + ACS Composite Rack",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0",
+  "envelope_m": [
+    0.6,
+    1.2,
+    2.495
+  ],
+  "mass_kg": 1480.0,
+  "clearances_m": {
+    "front_service_m": 1.2,
+    "rear_manifold_and_backplane_m": 1.2,
+    "top_cable_and_busway_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {
+      "position_m": [
+        0.16,
+        1.0,
+        2.495
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Feed A 3-phase AC to power shelves (N+N)"
+    },
+    "power_b": {
+      "position_m": [
+        0.44,
+        1.0,
+        2.495
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Feed B 3-phase AC to power shelves (N+N)"
+    },
+    "tcs_supply": {
+      "position_m": [
+        0.46,
+        1.2,
+        2.35
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear/top rack manifold supply inlet"
+    },
+    "tcs_return": {
+      "position_m": [
+        0.54,
+        1.2,
+        2.35
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear/top rack manifold return outlet"
+    },
+    "air_in": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.25
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front cold-aisle residual intake"
+    },
+    "air_out": {
+      "position_m": [
+        0.3,
+        1.2,
+        1.25
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear hot-aisle residual exhaust"
+    },
+    "oob_mgmt": {
+      "position_m": [
+        0.55,
+        0.24,
+        2.495
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "In-rack management switch OOB uplink"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 HPR 21-inch",
+    "mounting_width_in": 21,
+    "total_ou": 48,
+    "unit_pitch_m": 0.048,
+    "power_shelves": 4,
+    "bbu_shelves": 2,
+    "compute_trays": 16,
+    "internal_dc_bus_v": 50.0,
+    "leak_detection": "Integrated tray & rack manifold leak detection",
+    "geometry_parts": {
+      "Cabinet": {
+        "origin_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "size_m": [
+          0.6,
+          1.2,
+          2.495
+        ],
+        "color": [
+          0.14,
+          0.19,
+          0.26
+        ]
+      },
+      "PowerZone": {
+        "origin_m": [
+          0.03,
+          0.02,
+          0.15
+        ],
+        "size_m": [
+          0.54,
+          0.78,
+          0.56
+        ],
+        "color": [
+          0.85,
+          0.55,
+          0.18
+        ]
+      },
+      "ComputeZone": {
+        "origin_m": [
+          0.03,
+          0.02,
+          0.76
+        ],
+        "size_m": [
+          0.54,
+          0.9,
+          1.5
+        ],
+        "color": [
+          0.16,
+          0.54,
+          0.74
+        ]
+      }
+    }
+  },
+  "limitations": "标准参考整机柜装配，真实项目更换 OEM 超节点时须核对端口兼容与厂商流阻曲线。"
+}

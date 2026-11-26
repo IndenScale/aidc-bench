@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-1ou-direct-to-chip-compute-tray",
+  "parameters": {
+    "rated_it_kw": "kW",
+    "nominal_flow_lpm": "L/min",
+    "liquid_cooling_fraction": "1"
+  },
+  "method": "90% 冷板直冷 + 10% 残余风冷热分配；按供液温度与负载率查算托盘流阻与需求流量。",
+  "limitations": "冷板与 BMQC 快接按等效串联流阻建模，供液温度超 25–45 degC 返回 indeterminate。"
+}

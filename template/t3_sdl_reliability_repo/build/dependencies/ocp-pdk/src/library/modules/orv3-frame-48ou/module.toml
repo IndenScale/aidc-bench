@@ -1,0 +1,54 @@
+schema_version = 1
+name = "OCP ORv3 标准机柜框架 (21\" / 48OU)"
+version = "0.1.0"
+entry = "orv3-frame-48ou.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP Open Rack v3 Base Specification Rev 1.0"
+fidelity = "600x1068x2278 mm ORv3 框架外形与后部母排/歧管槽位"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP Open Rack v3 Base Specification Rev 1.0"
+fidelity = "ORv3 标准 48OU 框架符号与端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP Open Rack v3 Base Specification Rev 1.0"
+fidelity = "21 英寸导轨模数、48 mm OU 间距、承重及净距约束"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP Open Rack v3 Base Specification Rev 1.0"
+fidelity = "结构承载与风道压降参考包络"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP Open Rack v3 Base Specification Rev 1.0"
+fidelity = "载荷比-静载/楼板等效压强包络表"
+
+[port_bindings.rails_ou]
+geometry = "/Module/Ports/rails_ou"
+symbol = "port-rails_ou"
+
+[port_bindings.busbar_slot]
+geometry = "/Module/Ports/busbar_slot"
+symbol = "port-busbar_slot"
+
+[port_bindings.manifold_slot]
+geometry = "/Module/Ports/manifold_slot"
+symbol = "port-manifold_slot"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"

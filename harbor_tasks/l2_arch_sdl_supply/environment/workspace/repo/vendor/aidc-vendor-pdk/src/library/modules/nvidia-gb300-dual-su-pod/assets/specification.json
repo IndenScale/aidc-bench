@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "NVIDIA",
+  "model_number": "GB300-NVL72-2SU-POD",
+  "basis": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) §2 Racks, 36 Trays with 144 Blackwell Ultra GPUs (dual-plane rail-optimized topology)",
+  "envelope_m": [1.8, 1.068, 2.495],
+  "mass_kg": 3454.0,
+  "clearances_m": {
+    "front_cold_aisle_m": 1.2,
+    "rear_hot_aisle_and_manifold_m": 1.2,
+    "top_overhead_tray_m": 0.6
+  },
+  "frame": {
+    "origin": "pod-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {"position_m": [0.45, 0.9, 2.495], "normal": [0, 0, 1], "spec": "Pod Busway A (recommended 384 kW+ provisioning for 2x SU + switches)"},
+    "power_b": {"position_m": [1.35, 0.9, 2.495], "normal": [0, 0, 1], "spec": "Pod Busway B (N+N redundant)"},
+    "tcs_supply": {"position_m": [0.75, 1.068, 2.35], "normal": [0, 1, 0], "spec": "Parallel TCS supply manifold feeding SU-1 and SU-2"},
+    "tcs_return": {"position_m": [1.05, 1.068, 2.35], "normal": [0, 1, 0], "spec": "Parallel TCS return manifold from SU-1 and SU-2"},
+    "air_in": {"position_m": [0.9, 0.0, 1.25], "normal": [0, -1, 0], "spec": "Front cold-aisle intake (2x SU residual air + 1x network switch rack)"},
+    "air_out": {"position_m": [0.9, 1.068, 1.25], "normal": [0, 1, 0], "spec": "Rear hot-aisle exhaust"},
+    "spine_ew_uplink": {"position_m": [0.75, 0.24, 2.495], "normal": [0, 0, 1], "spec": "8x SN5610 dual-plane leaf uplinks to Spine layer (for 4-SU / 8-SU expansion)"},
+    "core_ns_uplink": {"position_m": [0.95, 0.24, 2.495], "normal": [0, 0, 1], "spec": "2x SN5610 converged N-S uplinks to storage & customer core"},
+    "core_oob_uplink": {"position_m": [1.12, 0.24, 2.495], "normal": [0, 0, 1], "spec": "2x100G HA OOB uplinks to management core"}
+  },
+  "properties": {
+    "compute_racks": 2,
+    "network_racks": 1,
+    "gpus": 144,
+    "cpus": 72,
+    "compute_trays": 36,
+    "ew_leaf_switches": 8,
+    "ns_converged_switches": 2,
+    "oob_switches": 2
+  },
+  "limitations": "三柜居中网络柜排布（SU-1 | Network | SU-2）可使叶交换机到两台算力柜的高速链路长度最小化；实际机房采用列端网络柜（EoR）时须按 PEX 提取真实线长复核光/铜选型。"
+}

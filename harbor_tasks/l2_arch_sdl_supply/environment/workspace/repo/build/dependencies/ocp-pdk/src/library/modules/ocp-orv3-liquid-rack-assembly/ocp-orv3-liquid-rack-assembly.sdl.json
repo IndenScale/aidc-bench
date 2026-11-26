@@ -1,0 +1,517 @@
+{
+  "schema_version": 2,
+  "root": "OcpOrv3LiquidRackAssembly",
+  "components": {
+    "OcpOrv3LiquidRackAssembly": {
+      "ports": {
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tcs_supply": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "tcs_return": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "oob_mgmt": {
+          "direction": "inout",
+          "kind": "ethernet-100g-oob",
+          "max_connections": 2
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0",
+        "parameters": {
+          "nominal_rack_power_kw": {
+            "value": 96.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "power_shelf_count": {
+            "value": 4.0,
+            "unit": "count",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "power_shelf_capacity_kw": {
+            "value": 33.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "liquid_cooling_fraction": {
+            "value": 0.9,
+            "unit": "1",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "loaded_mass_kg": {
+            "value": 1480.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "min_tcs_supply_c": {
+            "value": 25.0,
+            "unit": "degC",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          },
+          "max_tcs_supply_c": {
+            "value": 45.0,
+            "unit": "degC",
+            "state": "known",
+            "source": "OCP ORv3 HPR + OCP ACS Direct-to-Chip Rack Reference Assembly Rev 1.0"
+          }
+        }
+      },
+      "instances": {
+        "frame": {
+          "component": "Frame"
+        },
+        "busbar": {
+          "component": "Busbar"
+        },
+        "manifold": {
+          "component": "Manifold"
+        },
+        "bbu_1": {
+          "component": "BbuShelf"
+        },
+        "bbu_2": {
+          "component": "BbuShelf"
+        },
+        "ps_1": {
+          "component": "PowerShelf"
+        },
+        "ps_2": {
+          "component": "PowerShelf"
+        },
+        "ps_3": {
+          "component": "PowerShelf"
+        },
+        "ps_4": {
+          "component": "PowerShelf"
+        },
+        "tray_01": {
+          "component": "ComputeTray"
+        },
+        "tray_02": {
+          "component": "ComputeTray"
+        },
+        "tray_03": {
+          "component": "ComputeTray"
+        },
+        "tray_04": {
+          "component": "ComputeTray"
+        },
+        "tray_05": {
+          "component": "ComputeTray"
+        },
+        "tray_06": {
+          "component": "ComputeTray"
+        },
+        "tray_07": {
+          "component": "ComputeTray"
+        },
+        "tray_08": {
+          "component": "ComputeTray"
+        },
+        "tray_09": {
+          "component": "ComputeTray"
+        },
+        "tray_10": {
+          "component": "ComputeTray"
+        },
+        "tray_11": {
+          "component": "ComputeTray"
+        },
+        "tray_12": {
+          "component": "ComputeTray"
+        },
+        "tray_13": {
+          "component": "ComputeTray"
+        },
+        "tray_14": {
+          "component": "ComputeTray"
+        },
+        "tray_15": {
+          "component": "ComputeTray"
+        },
+        "tray_16": {
+          "component": "ComputeTray"
+        }
+      },
+      "connections": [
+        {
+          "id": "link-001",
+          "from": "ps_1.dc_out",
+          "to": "busbar.power_shelf_in"
+        },
+        {
+          "id": "link-002",
+          "from": "ps_2.dc_out",
+          "to": "busbar.power_shelf_in"
+        },
+        {
+          "id": "link-003",
+          "from": "ps_3.dc_out",
+          "to": "busbar.power_shelf_in"
+        },
+        {
+          "id": "link-004",
+          "from": "ps_4.dc_out",
+          "to": "busbar.power_shelf_in"
+        },
+        {
+          "id": "link-005",
+          "from": "bbu_1.dc_bus",
+          "to": "busbar.bbu_in"
+        },
+        {
+          "id": "link-006",
+          "from": "bbu_2.dc_bus",
+          "to": "busbar.bbu_in"
+        },
+        {
+          "id": "link-007",
+          "from": "busbar.tray_tap",
+          "to": "tray_01.dc_in"
+        },
+        {
+          "id": "link-008",
+          "from": "manifold.branch_supply",
+          "to": "tray_01.bmqc_supply"
+        },
+        {
+          "id": "link-009",
+          "from": "tray_01.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-010",
+          "from": "busbar.tray_tap",
+          "to": "tray_02.dc_in"
+        },
+        {
+          "id": "link-011",
+          "from": "manifold.branch_supply",
+          "to": "tray_02.bmqc_supply"
+        },
+        {
+          "id": "link-012",
+          "from": "tray_02.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-013",
+          "from": "busbar.tray_tap",
+          "to": "tray_03.dc_in"
+        },
+        {
+          "id": "link-014",
+          "from": "manifold.branch_supply",
+          "to": "tray_03.bmqc_supply"
+        },
+        {
+          "id": "link-015",
+          "from": "tray_03.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-016",
+          "from": "busbar.tray_tap",
+          "to": "tray_04.dc_in"
+        },
+        {
+          "id": "link-017",
+          "from": "manifold.branch_supply",
+          "to": "tray_04.bmqc_supply"
+        },
+        {
+          "id": "link-018",
+          "from": "tray_04.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-019",
+          "from": "busbar.tray_tap",
+          "to": "tray_05.dc_in"
+        },
+        {
+          "id": "link-020",
+          "from": "manifold.branch_supply",
+          "to": "tray_05.bmqc_supply"
+        },
+        {
+          "id": "link-021",
+          "from": "tray_05.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-022",
+          "from": "busbar.tray_tap",
+          "to": "tray_06.dc_in"
+        },
+        {
+          "id": "link-023",
+          "from": "manifold.branch_supply",
+          "to": "tray_06.bmqc_supply"
+        },
+        {
+          "id": "link-024",
+          "from": "tray_06.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-025",
+          "from": "busbar.tray_tap",
+          "to": "tray_07.dc_in"
+        },
+        {
+          "id": "link-026",
+          "from": "manifold.branch_supply",
+          "to": "tray_07.bmqc_supply"
+        },
+        {
+          "id": "link-027",
+          "from": "tray_07.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-028",
+          "from": "busbar.tray_tap",
+          "to": "tray_08.dc_in"
+        },
+        {
+          "id": "link-029",
+          "from": "manifold.branch_supply",
+          "to": "tray_08.bmqc_supply"
+        },
+        {
+          "id": "link-030",
+          "from": "tray_08.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-031",
+          "from": "busbar.tray_tap",
+          "to": "tray_09.dc_in"
+        },
+        {
+          "id": "link-032",
+          "from": "manifold.branch_supply",
+          "to": "tray_09.bmqc_supply"
+        },
+        {
+          "id": "link-033",
+          "from": "tray_09.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-034",
+          "from": "busbar.tray_tap",
+          "to": "tray_10.dc_in"
+        },
+        {
+          "id": "link-035",
+          "from": "manifold.branch_supply",
+          "to": "tray_10.bmqc_supply"
+        },
+        {
+          "id": "link-036",
+          "from": "tray_10.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-037",
+          "from": "busbar.tray_tap",
+          "to": "tray_11.dc_in"
+        },
+        {
+          "id": "link-038",
+          "from": "manifold.branch_supply",
+          "to": "tray_11.bmqc_supply"
+        },
+        {
+          "id": "link-039",
+          "from": "tray_11.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-040",
+          "from": "busbar.tray_tap",
+          "to": "tray_12.dc_in"
+        },
+        {
+          "id": "link-041",
+          "from": "manifold.branch_supply",
+          "to": "tray_12.bmqc_supply"
+        },
+        {
+          "id": "link-042",
+          "from": "tray_12.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-043",
+          "from": "busbar.tray_tap",
+          "to": "tray_13.dc_in"
+        },
+        {
+          "id": "link-044",
+          "from": "manifold.branch_supply",
+          "to": "tray_13.bmqc_supply"
+        },
+        {
+          "id": "link-045",
+          "from": "tray_13.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-046",
+          "from": "busbar.tray_tap",
+          "to": "tray_14.dc_in"
+        },
+        {
+          "id": "link-047",
+          "from": "manifold.branch_supply",
+          "to": "tray_14.bmqc_supply"
+        },
+        {
+          "id": "link-048",
+          "from": "tray_14.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-049",
+          "from": "busbar.tray_tap",
+          "to": "tray_15.dc_in"
+        },
+        {
+          "id": "link-050",
+          "from": "manifold.branch_supply",
+          "to": "tray_15.bmqc_supply"
+        },
+        {
+          "id": "link-051",
+          "from": "tray_15.bmqc_return",
+          "to": "manifold.branch_return"
+        },
+        {
+          "id": "link-052",
+          "from": "busbar.tray_tap",
+          "to": "tray_16.dc_in"
+        },
+        {
+          "id": "link-053",
+          "from": "manifold.branch_supply",
+          "to": "tray_16.bmqc_supply"
+        },
+        {
+          "id": "link-054",
+          "from": "tray_16.bmqc_return",
+          "to": "manifold.branch_return"
+        }
+      ],
+      "nets": {
+        "DcBus48V": {
+          "kind": "dc-48v-busbar",
+          "connections": [
+            "link-001",
+            "link-002",
+            "link-003",
+            "link-004",
+            "link-005",
+            "link-006",
+            "link-007",
+            "link-010",
+            "link-013",
+            "link-016",
+            "link-019",
+            "link-022",
+            "link-025",
+            "link-028",
+            "link-031",
+            "link-034",
+            "link-037",
+            "link-040",
+            "link-043",
+            "link-046",
+            "link-049",
+            "link-052"
+          ]
+        },
+        "TcsBranches": {
+          "kind": "tcs-bmqc",
+          "connections": [
+            "link-008",
+            "link-009",
+            "link-011",
+            "link-012",
+            "link-014",
+            "link-015",
+            "link-017",
+            "link-018",
+            "link-020",
+            "link-021",
+            "link-023",
+            "link-024",
+            "link-026",
+            "link-027",
+            "link-029",
+            "link-030",
+            "link-032",
+            "link-033",
+            "link-035",
+            "link-036",
+            "link-038",
+            "link-039",
+            "link-041",
+            "link-042",
+            "link-044",
+            "link-045",
+            "link-047",
+            "link-048",
+            "link-050",
+            "link-051",
+            "link-053",
+            "link-054"
+          ]
+        }
+      }
+    }
+  },
+  "imports": {
+    "Frame": "library/modules/orv3-hpr-frame-48ou/orv3-hpr-frame-48ou.sdl.json",
+    "Busbar": "library/modules/orv3-busbar-48v-hpr/orv3-busbar-48v-hpr.sdl.json",
+    "PowerShelf": "library/modules/orv3-power-shelf-33kw/orv3-power-shelf-33kw.sdl.json",
+    "BbuShelf": "library/modules/orv3-bbu-shelf-15kw/orv3-bbu-shelf-15kw.sdl.json",
+    "Manifold": "library/modules/orv3-rack-manifold-bmqc/orv3-rack-manifold-bmqc.sdl.json",
+    "ComputeTray": "library/modules/ocp-compute-tray-1ou-lc/ocp-compute-tray-1ou-lc.sdl.json"
+  }
+}

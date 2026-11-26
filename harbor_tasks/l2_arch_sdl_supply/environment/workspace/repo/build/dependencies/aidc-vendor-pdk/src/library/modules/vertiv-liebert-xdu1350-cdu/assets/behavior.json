@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "vertiv-liebert-xdu1350-liquid-to-liquid-cdu",
+  "parameters": {
+    "nominal_cooling_capacity_kw": "kW",
+    "nominal_approach_k": "K",
+    "nominal_secondary_flow_lpm": "L/min",
+    "max_secondary_flow_lpm": "L/min",
+    "nominal_external_dp_kpa": "kPa",
+    "dual_pump_max_power_kw": "kW",
+    "triple_pump_max_power_kw": "kW",
+    "dry_mass_kg": "kg"
+  },
+  "method": "基于公开 N+1 双泵额定工况（1368 kW @ 4.0 K ATD, 1200 L/min, 244 kPa 机外压头, 13.7 kW 上限）建立负荷率与一次侧供水温度二维 Liberty 工况表。",
+  "limitations": "Liberty 表对应 N+1 双泵稳态运行包络；三泵满开（1800 L/min / 20.5 kW）短时应急模式、板换结垢系数及变频器低频谐波未在此表内展开。"
+}

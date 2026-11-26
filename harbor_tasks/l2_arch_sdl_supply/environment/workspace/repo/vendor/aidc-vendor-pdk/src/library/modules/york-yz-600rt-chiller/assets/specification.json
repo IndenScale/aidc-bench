@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Johnson Controls (YORK)",
+  "model_number": "YORK-YZ-600RT",
+  "basis": "Johnson Controls YORK YZ Magnetic Bearing Centrifugal Chiller Public Engineering Guide (R-1233zd(E), 600 RT / 2,110 kW representative shell selection)",
+  "envelope_m": [3.9, 2.05, 2.55],
+  "mass_kg": 6300.0,
+  "operating_mass_kg": 7100.0,
+  "clearances_m": {
+    "tube_removal_end_m": 3.9,
+    "vsd_front_electrical_m": 1.2,
+    "sides_service_m": 1.0,
+    "overhead_rigging_m": 0.9
+  },
+  "frame": {
+    "origin": "unit-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "chw_in": {"position_m": [0.0, 0.52, 0.45], "normal": [-1, 0, 0], "spec": "DN200 (8-inch) Victaulic/flanged falling-film evaporator return"},
+    "chw_out": {"position_m": [0.0, 0.52, 0.92], "normal": [-1, 0, 0], "spec": "DN200 (8-inch) evaporator chilled water supply (10-18 degC AIDC envelope)"},
+    "cw_in": {"position_m": [0.0, 1.54, 0.45], "normal": [-1, 0, 0], "spec": "DN250 (10-inch) condenser water inlet (relief down to 4.5 degC)"},
+    "cw_out": {"position_m": [0.0, 1.54, 0.92], "normal": [-1, 0, 0], "spec": "DN250 (10-inch) condenser water outlet"},
+    "power_in": {"position_m": [2.6, 1.025, 2.55], "normal": [0, 0, 1], "spec": "3-phase 400V/480V/MV factory-mounted VSD input"}
+  },
+  "properties": {
+    "refrigerant": "R-1233zd(E) (GWP ~1, ASHRAE A1)",
+    "compressor": "Oil-free active magnetic bearing single-stage centrifugal with VSD",
+    "evaporator": "Patented falling-film shell-and-tube",
+    "sound_pressure_dba_at_1m": 74.0
+  },
+  "limitations": "YORK YZ 属工程定制筒体选型机组；本族采用 600 RT（2,110 kW）公开工程指南代表尺寸、质量与 AHRI 550/590 效率区间标定，施工图与招标阶段须以 YORKworks 项目选型单复核精确筒体代号、接管口径与冷剂充注量。"
+}

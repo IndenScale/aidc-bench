@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Baltimore Aircoil Company (BAC)",
+  "model_number": "FXV-1218",
+  "basis": "BAC FXV Closed Circuit Cooling Tower Product & Application Handbook (18x12 ft single-cell combined crossflow module, 8-inch riser)",
+  "envelope_m": [5.49, 3.66, 3.85],
+  "mass_kg": 6100.0,
+  "operating_mass_kg": 10800.0,
+  "clearances_m": {
+    "air_inlet_louver_sides_m": 2.4,
+    "piping_end_service_m": 1.5,
+    "top_discharge_unobstructed_m": 4.5
+  },
+  "frame": {
+    "origin": "basin-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "cw_in": {"position_m": [0.0, 1.83, 2.55], "normal": [-1, 0, 0], "spec": "DN200 (8-inch) closed-coil hot condenser water inlet"},
+    "cw_out": {"position_m": [0.0, 1.83, 1.1], "normal": [-1, 0, 0], "spec": "DN200 (8-inch) cooled condenser water outlet"},
+    "makeup_in": {"position_m": [1.1, 0.0, 0.55], "normal": [0, -1, 0], "spec": "DN40 (1.5-inch) float-controlled municipal makeup water"},
+    "drain_out": {"position_m": [4.4, 0.0, 0.2], "normal": [0, -1, 0], "spec": "DN50 (2-inch) basin blowdown/drain + DN80 overflow"},
+    "power_in": {"position_m": [5.49, 1.83, 1.6], "normal": [1, 0, 0], "spec": "400V 3-phase VFD fan motors (22.4 kW) + spray pump (5.5 kW)"}
+  },
+  "properties": {
+    "flow_type": "Combined crossflow closed-circuit induced draft",
+    "fans": "3x axial fans driven by 2x VFD fan motors (30 HP / 22.4 kW class)",
+    "cert_standard": "CTI STD-201"
+  },
+  "limitations": "FXV-1218 具体高度、盘管排数与干/湿重随热工选型后缀变化；施工图及钢结构屋面承载验算须以 BAC 工厂签字总装图复核最重吊装件与锚栓位置。"
+}

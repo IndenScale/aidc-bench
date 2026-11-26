@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP ORv3 HPR 液冷整机柜装配体 (96 kW)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">4x33kW PSU + 2xBBU + 16x1OU LC | 48V DC</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">ocp-orv3-liquid-rack-assembly</text>
+  <circle id="port-power_a" data-port="power_a" cx="48.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-power_b" data-port="power_b" cx="76.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-tcs_supply" data-port="tcs_supply" cx="104.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-air_in" data-port="air_in" cx="132.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-tcs_return" data-port="tcs_return" cx="52.7" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-air_out" data-port="air_out" cx="90.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-oob_mgmt" data-port="oob_mgmt" cx="127.3" cy="98" r="3.2" fill="#f59e0b" />
+</svg>

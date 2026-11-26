@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-hpr-dc-busbar",
+  "parameters": {
+    "nominal_voltage_v": "V",
+    "rated_current_a": "A",
+    "rated_power_kw": "kW"
+  },
+  "method": "依据欧姆定律与焦耳热计算 48V/50V 铜母排在不同电流与环境温度下的压降、焦耳损耗与温升。",
+  "limitations": "稳态 DC 汇流模型，未包含毫秒级 GPU EDPp 脉冲下的寄生电感暂态压降。"
+}

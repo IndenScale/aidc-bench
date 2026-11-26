@@ -1,0 +1,42 @@
+schema_version = 1
+name = "OCP ORv3 机柜级 BBU 备电框 (15 kW)"
+version = "0.1.0"
+entry = "orv3-bbu-shelf-15kw.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+fidelity = "21英寸 2OU 机柜级 BBU 备电模块包络"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+fidelity = "机柜级直流备电 BBU 符号与端口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+fidelity = "15 kW / 240 s 放电能力与质量参数"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+fidelity = "市电切换穿越期内机柜级直流备电模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+fidelity = "(放电功率, SOC) 二维续航时长与热耗曲线"
+
+[port_bindings.dc_bus]
+geometry = "/Module/Ports/dc_bus"
+symbol = "port-dc_bus"
+
+[port_bindings.mgmt]
+geometry = "/Module/Ports/mgmt"
+symbol = "port-mgmt"

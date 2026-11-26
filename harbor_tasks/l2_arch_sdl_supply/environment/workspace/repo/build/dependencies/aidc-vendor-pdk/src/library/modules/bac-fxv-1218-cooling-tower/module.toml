@@ -1,0 +1,54 @@
+schema_version = 1
+name = "BAC FXV-1218 闭式冷却塔 (单格 1400 kW 级)"
+version = "0.1.0"
+entry = "bac-fxv-1218-cooling-tower.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Baltimore Aircoil Company FXV-1218 公开产品应用手册（18x12 ft 模块：5490x3660x3850 mm）"
+fidelity = "冷集水盘、复合流换热盘管舱、顶部三轴流风机罩及 DN200 闭式进出口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "BAC FXV 闭式冷却塔工程符号（含闭式盘管、喷淋补水排污与变频风机）"
+fidelity = "功能符号与冷却水进出口、市政补水、排污及风机/喷淋供电锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "BAC FXV Closed Circuit Cooling Tower Product & Application Handbook (FXV-1218, 8-inch riser)"
+fidelity = "模块尺寸、运输/运行重量、进风百叶净距与接管口径规范"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "BAC FXV-1218 公开风机功率区间（30 HP / 22.4 kW 级）与 CTI STD-201 闭式热力学规律"
+fidelity = "风机立方律能耗、湿球迫近度与蒸发补水核算模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "BAC FXV-1218 公开热力/风机特性区间与 CTI 闭式复合流热质传递标定表"
+fidelity = "二维稳态工况查表（fan_speed_fraction x wet_bulb_c -> heat_rejection_kw / fan_power_kw / leaving_water_c / evaporation_m3_per_h）"
+
+[port_bindings.cw_in]
+geometry = "/Module/Ports/cw_in"
+symbol = "port-cw_in"
+
+[port_bindings.cw_out]
+geometry = "/Module/Ports/cw_out"
+symbol = "port-cw_out"
+
+[port_bindings.makeup_in]
+geometry = "/Module/Ports/makeup_in"
+symbol = "port-makeup_in"
+
+[port_bindings.drain_out]
+geometry = "/Module/Ports/drain_out"
+symbol = "port-drain_out"
+
+[port_bindings.power_in]
+geometry = "/Module/Ports/power_in"
+symbol = "port-power_in"

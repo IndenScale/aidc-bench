@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "texsys-ocp-standards"
+version = "0.1.0"
+description = "Executable OCP (ORv3 / ACS / DCF) engineering compliance rules for TexSys"
+requires-python = ">=3.11"
+dependencies = [
+  "texsys",
+  "texsys-ocp-pdk",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["texsys_ocp_standards*"]
+
+[tool.uv.sources]
+texsys = { workspace = true }
+texsys-ocp-pdk = { workspace = true }

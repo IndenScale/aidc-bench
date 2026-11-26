@@ -1,0 +1,78 @@
+schema_version = 1
+name = "NVIDIA GB300 NVL72 液冷超节点整机柜 (1 SU)"
+version = "0.1.0"
+entry = "nvidia-gb300-nvl72-rack.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) & OEM GB300 NVL72 公开尺寸规格（600x1068x2495 mm）"
+fidelity = "机柜包络、前部算力/交换托盘区、8x33 kW 电源框与后部液冷歧管/背板接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) 端口与双平面拓扑视图"
+fidelity = "功能符号与供电/液冷/风冷/双平面算力网/南北向融合网/带外管理端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) & NVIDIA DGX GB Rack Scale User Guide (2026-09)"
+fidelity = "外形尺寸、满载质量、前后检修净距、接口坐标与适用边界"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) & OEM 公开直冷选型表"
+fidelity = "90% 液冷 / 10% 风冷热分配、供液温升-流量-压降耦合模型与网络扇出契约"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "NVIDIA GB300 NVL72 Enterprise RA (2026-03) 与 OEM 公开 25–45 degC 直冷流量/压降选型曲线"
+fidelity = "二维稳态工况查表（required_flow_lpm / rack_dp_kpa / liquid_heat_kw / air_heat_kw / total_power_kw）"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.tcs_supply]
+geometry = "/Module/Ports/tcs_supply"
+symbol = "port-tcs_supply"
+
+[port_bindings.tcs_return]
+geometry = "/Module/Ports/tcs_return"
+symbol = "port-tcs_return"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.fabric_ew_p1]
+geometry = "/Module/Ports/fabric_ew_p1"
+symbol = "port-fabric_ew_p1"
+
+[port_bindings.fabric_ew_p2]
+geometry = "/Module/Ports/fabric_ew_p2"
+symbol = "port-fabric_ew_p2"
+
+[port_bindings.fabric_ns_a]
+geometry = "/Module/Ports/fabric_ns_a"
+symbol = "port-fabric_ns_a"
+
+[port_bindings.fabric_ns_b]
+geometry = "/Module/Ports/fabric_ns_b"
+symbol = "port-fabric_ns_b"
+
+[port_bindings.oob_mgmt]
+geometry = "/Module/Ports/oob_mgmt"
+symbol = "port-oob_mgmt"

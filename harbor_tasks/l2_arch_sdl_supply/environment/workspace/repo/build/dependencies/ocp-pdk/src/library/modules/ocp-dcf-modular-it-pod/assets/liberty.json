@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-dcf-416kw-modular-it-pod",
+  "state": "calibrated-reference",
+  "source": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP DCF Modular IT Pod Reference",
+    "ocp_revision": "Rev 1.0",
+    "load_fraction_range": [
+      0.25,
+      1.0
+    ],
+    "fws_supply_c_range": [
+      18.0,
+      30.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ]
+    },
+    {
+      "name": "fws_supply_c",
+      "unit": "degC",
+      "values": [
+        18.0,
+        22.0,
+        26.0,
+        30.0
+      ]
+    }
+  ],
+  "outputs": {
+    "total_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          107.0,
+          107.2,
+          107.5,
+          107.8
+        ],
+        [
+          213.0,
+          213.4,
+          213.9,
+          214.5
+        ],
+        [
+          322.0,
+          322.6,
+          323.4,
+          324.2
+        ],
+        [
+          434.0,
+          435.0,
+          436.2,
+          437.5
+        ]
+      ]
+    },
+    "liquid_heat_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          93.6,
+          93.6,
+          93.6,
+          93.6
+        ],
+        [
+          187.2,
+          187.2,
+          187.2,
+          187.2
+        ],
+        [
+          280.8,
+          280.8,
+          280.8,
+          280.8
+        ],
+        [
+          374.4,
+          374.4,
+          374.4,
+          374.4
+        ]
+      ]
+    },
+    "air_heat_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          10.4,
+          10.4,
+          10.4,
+          10.4
+        ],
+        [
+          20.8,
+          20.8,
+          20.8,
+          20.8
+        ],
+        [
+          31.2,
+          31.2,
+          31.2,
+          31.2
+        ],
+        [
+          41.6,
+          41.6,
+          41.6,
+          41.6
+        ]
+      ]
+    }
+  },
+  "limitations": "概念参考模块化 Pod，具体防火分区、气体灭火与箱体抗震按项目所在地规范深化。"
+}

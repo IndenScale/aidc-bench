@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-acs-1mw-liquid-to-liquid-cdu",
+  "parameters": {
+    "rated_capacity_kw": "kW",
+    "nominal_approach_k": "K",
+    "nominal_flow_lpm": "L/min"
+  },
+  "method": "OCP ACS 1 MW 液-液 CDU 换热迫近度、泵功耗、最大可提供外部压头与板换阻力查表。",
+  "limitations": "仅适用于单相水-PG25 稳态包络（FWS 18–30 degC）；超温或过滤器堵塞压降增长须另行校核。"
+}

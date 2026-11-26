@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP ACS 1 MW 列间液-液冷却分配单元 (CDU)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">600x1200x2200 mm | 1000 kW | DN100 FWS/TCS</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">ocp-cdu-inrow-1mw</text>
+  <circle id="port-fws_supply" data-port="fws_supply" cx="48.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-tcs_return" data-port="tcs_return" cx="76.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-power_a" data-port="power_a" cx="104.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-power_b" data-port="power_b" cx="132.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-fws_return" data-port="fws_return" cx="52.7" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-tcs_supply" data-port="tcs_supply" cx="90.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-dp_ctrl" data-port="dp_ctrl" cx="127.3" cy="98" r="3.2" fill="#f59e0b" />
+</svg>

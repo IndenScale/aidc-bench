@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "root": "NvidiaSn5610Switch",
+  "components": {
+    "NvidiaSn5610Switch": {
+      "ports": {
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "downlink_400g": {
+          "direction": "inout",
+          "kind": "ethernet-400g-plane",
+          "max_connections": 64
+        },
+        "converged_400g": {
+          "direction": "inout",
+          "kind": "ethernet-400g-converged",
+          "max_connections": 64
+        },
+        "uplink_800g": {
+          "direction": "inout",
+          "kind": "ethernet-800g-spine",
+          "max_connections": 32
+        },
+        "oob_mgmt": {
+          "direction": "inout",
+          "kind": "ethernet-1g-rj45",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "NVIDIA Spectrum-4 SN5610 Hardware User Manual & NVL72 Enterprise RA (2026-03)",
+        "parameters": {
+          "osfp_800g_port_count": {
+            "value": 64,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.14: 64 total ports of 800 Gbps"
+          },
+          "breakout_400g_port_count": {
+            "value": 128,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.23: 128-port 400 Gb/s breakout"
+          },
+          "typical_passive_power_kw": {
+            "value": 0.92,
+            "unit": "kW",
+            "state": "known",
+            "source": "NVIDIA SN5610 datasheet typical power with passive cables (900-940 W)"
+          },
+          "rack_units": {
+            "value": 2,
+            "unit": "U",
+            "state": "known",
+            "source": "NVIDIA SN5610 datasheet (2U height, 88 mm)"
+          },
+          "chassis_mass_kg": {
+            "value": 24.5,
+            "unit": "kg",
+            "state": "known",
+            "source": "NVIDIA SN5610 datasheet chassis mass range (18.5-26.9 kg)"
+          }
+        }
+      }
+    }
+  }
+}

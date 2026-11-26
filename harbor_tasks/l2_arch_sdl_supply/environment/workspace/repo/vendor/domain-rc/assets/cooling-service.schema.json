@@ -1,0 +1,936 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "HVAC unit-to-room service network, scheduled allocations and steady redistribution v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-service-layout"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "units": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rooms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "routes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "scope",
+        "baseline",
+        "frame",
+        "scene_digest",
+        "domain",
+        "complete",
+        "units",
+        "rooms",
+        "routes"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "domain-netlist"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "origin": {
+          "const": "physical"
+        },
+        "method": {
+          "const": "direct-unit-to-zone-centerline"
+        },
+        "granularity": {
+          "const": "port"
+        },
+        "ports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "instance": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interface": {
+                "const": "cooling-service"
+              }
+            },
+            "required": ["instance", "interface"]
+          }
+        },
+        "connections": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "ports": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": ["ports", "evidence"]
+          }
+        },
+        "service_routes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/routeObservation"
+          }
+        },
+        "source_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_complete": {
+          "type": "boolean"
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "rooms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "observed_objects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "unit_prims": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "products": {
+          "type": "object",
+          "additionalProperties": {
+            "type": ["string", "null"]
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "scope",
+        "baseline",
+        "frame",
+        "scene_digest",
+        "domain",
+        "complete",
+        "origin",
+        "method",
+        "granularity",
+        "ports",
+        "connections",
+        "service_routes",
+        "source_digest",
+        "inventory_complete",
+        "units",
+        "rooms",
+        "observed_objects",
+        "unit_prims",
+        "products",
+        "unresolved"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-service-plan"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "routes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              },
+              "room": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "required": ["schema_version", "kind", "scope", "baseline", "complete", "routes"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-dispatch-cases"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "dispatch_kw": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              },
+              "dispatch_routes": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "unavailable_units": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "unavailable_routes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "required": ["schema_version", "kind", "scope", "baseline", "complete", "cases"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-dispatch"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "network_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "schedule_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_prims": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "network_inventory_complete": {
+          "type": "boolean"
+        },
+        "plan_inventory_complete": {
+          "type": "boolean"
+        },
+        "case_inventory_complete": {
+          "type": "boolean"
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/caseIssue"
+              },
+              {
+                "$ref": "#/definitions/allocationCase"
+              }
+            ]
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "scope",
+        "baseline",
+        "frame",
+        "scene_digest",
+        "network_digest",
+        "plan_digest",
+        "domain",
+        "schedule_digest",
+        "unit_prims",
+        "complete",
+        "network_inventory_complete",
+        "plan_inventory_complete",
+        "case_inventory_complete",
+        "cases",
+        "unresolved"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-redistribution-cases"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "catalog_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conditions_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ambient_c": {
+                "type": "number"
+              },
+              "independent_routes": {
+                "type": "boolean"
+              },
+              "room_loads_kw": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "routes": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/transferLimit"
+                }
+              },
+              "unavailable_units": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "unavailable_routes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "source",
+              "ambient_c",
+              "independent_routes",
+              "room_loads_kw",
+              "unavailable_units",
+              "routes"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "scope",
+        "baseline",
+        "catalog_digest",
+        "conditions_digest",
+        "cases"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cooling-redistribution"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "network_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "plan_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "performance_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "study_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "network_inventory_complete": {
+          "type": "boolean"
+        },
+        "plan_inventory_complete": {
+          "type": "boolean"
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/caseIssue"
+              },
+              {
+                "$ref": "#/definitions/redistributionCase"
+              }
+            ]
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "scope",
+        "baseline",
+        "frame",
+        "scene_digest",
+        "network_digest",
+        "plan_digest",
+        "domain",
+        "performance_digest",
+        "study_digest",
+        "network_inventory_complete",
+        "plan_inventory_complete",
+        "cases",
+        "unresolved"
+      ]
+    }
+  ],
+  "definitions": {
+    "caseIssue": {
+      "type": "object",
+      "properties": {
+        "issue": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["issue"]
+    },
+    "allocation": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "room": {
+          "type": "string",
+          "minLength": 1
+        },
+        "route": {
+          "type": ["string", "null"]
+        },
+        "kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "status": {
+          "enum": ["routed_kw", "withheld_kw", "pending_kw"]
+        },
+        "candidate_routes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": ["unit", "room", "route", "kw", "status", "candidate_routes"]
+    },
+    "allocationCase": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_dispatch_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "rooms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "routed_kw": {
+                "type": "number",
+                "minimum": 0
+              },
+              "pending_kw": {
+                "type": "number",
+                "minimum": 0
+              },
+              "withheld_kw": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": ["routed_kw", "pending_kw", "withheld_kw"]
+          }
+        },
+        "allocations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/allocation"
+          }
+        },
+        "paths": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": ["string", "null"]
+              },
+              "room": {
+                "type": ["string", "null"]
+              },
+              "state": {
+                "enum": ["available", "offline", "unverified", "wrong-endpoint"]
+              }
+            },
+            "required": ["unit", "room", "state"]
+          }
+        },
+        "unavailable_units": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "unavailable_routes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source",
+        "unit_dispatch_kw",
+        "rooms",
+        "allocations",
+        "paths",
+        "unavailable_units",
+        "unavailable_routes"
+      ]
+    },
+    "routeObservation": {
+      "type": "object",
+      "properties": {
+        "length_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "prim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ends": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "candidates": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "xyz_m": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": ["candidates", "xyz_m"]
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": ["length_m", "prim", "ends"]
+    },
+    "transferLimit": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "maximum_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nonlimiting": {
+          "const": true
+        }
+      },
+      "required": ["source"],
+      "oneOf": [
+        {
+          "required": ["maximum_kw"]
+        },
+        {
+          "required": ["nonlimiting"]
+        }
+      ]
+    },
+    "solution": {
+      "type": "object",
+      "properties": {
+        "maximum_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cut_capacity_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "cut_edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "to": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "capacity_kw": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": ["from", "to", "capacity_kw"]
+          }
+        },
+        "room_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "route_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      },
+      "required": ["maximum_kw", "cut_capacity_kw", "cut_edges", "room_kw", "route_kw"]
+    },
+    "redistributionCase": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ambient_c": {
+          "type": "number"
+        },
+        "demand_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit_capacity_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "room_loads_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "confirmed_routes": {
+          "$ref": "#/definitions/solution"
+        },
+        "including_unverified_routes": {
+          "$ref": "#/definitions/solution"
+        },
+        "unverified_routes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "source",
+        "ambient_c",
+        "demand_kw",
+        "unit_capacity_kw",
+        "room_loads_kw",
+        "confirmed_routes",
+        "including_unverified_routes",
+        "unverified_routes"
+      ]
+    }
+  }
+}

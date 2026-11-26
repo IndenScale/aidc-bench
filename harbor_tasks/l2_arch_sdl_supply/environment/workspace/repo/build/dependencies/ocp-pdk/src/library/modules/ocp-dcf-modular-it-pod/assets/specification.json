@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "OCP-DCF-MODULAR-IT-POD",
+  "ocp_spec": "OCP DCF Modular IT Pod Reference",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0",
+  "envelope_m": [
+    3.6,
+    2.8,
+    2.9
+  ],
+  "mass_kg": 8600.0,
+  "clearances_m": {
+    "front_service_m": 1.2,
+    "rear_service_m": 1.2
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {
+      "position_m": [
+        0.4,
+        0.0,
+        2.9
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Pod Busway A primary AC feed"
+    },
+    "power_b": {
+      "position_m": [
+        3.2,
+        0.0,
+        2.9
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Pod Busway B redundant AC feed"
+    },
+    "fws_supply": {
+      "position_m": [
+        1.2,
+        2.8,
+        2.6
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Pod primary FWS supply header (2x DN100)"
+    },
+    "fws_return": {
+      "position_m": [
+        2.4,
+        2.8,
+        2.6
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Pod primary FWS return header (2x DN100)"
+    },
+    "oob_mgmt": {
+      "position_m": [
+        1.8,
+        0.0,
+        2.6
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Pod OOB management uplink"
+    },
+    "alarm": {
+      "position_m": [
+        3.6,
+        1.4,
+        2.2
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "spec": "Pod leak detection & fire interlock alarm"
+    }
+  },
+  "properties": {
+    "ocp_dcf_profile": "OCP-DCF-Modular-IT-Pod",
+    "racks_per_pod": 4,
+    "cdu_count": 2,
+    "rated_it_kw": 416.0,
+    "liquid_cooling_fraction": 0.9,
+    "geometry_parts": {
+      "PodEnclosure": {
+        "origin_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "size_m": [
+          3.6,
+          2.8,
+          2.9
+        ],
+        "color": [
+          0.22,
+          0.3,
+          0.38
+        ]
+      },
+      "CduBay": {
+        "origin_m": [
+          0.1,
+          0.2,
+          0.05
+        ],
+        "size_m": [
+          1.2,
+          1.2,
+          2.2
+        ],
+        "color": [
+          0.18,
+          0.56,
+          0.68
+        ]
+      }
+    }
+  },
+  "limitations": "概念参考模块化 Pod，具体防火分区、气体灭火与箱体抗震按项目所在地规范深化。"
+}

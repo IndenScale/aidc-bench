@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SysDA qualification and acceptance conditions v1",
+  "type": "object",
+  "required": ["domain", "conditions"],
+  "properties": {
+    "domain": { "type": "string", "minLength": 1 },
+    "qualifiers": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          { "$ref": "#/definitions/comparison" },
+          { "not": { "required": ["on_violation"] } }
+        ]
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/comparison" }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "reference": { "type": "string", "pattern": "^(fact|parameter)\\..+$" },
+    "operand": {
+      "anyOf": [
+        { "type": "number" }, { "type": "boolean" },
+        { "$ref": "#/definitions/reference" }
+      ]
+    },
+    "comparison": {
+      "type": "object",
+      "required": ["left", "relation", "right"],
+      "properties": {
+        "left": { "$ref": "#/definitions/operand" },
+        "right": { "$ref": "#/definitions/operand" },
+        "relation": { "enum": ["equals", "one_of", "minimum", "maximum", "within", "between", "above", "below"] },
+        "tolerance": {
+          "anyOf": [
+            { "type": "number", "minimum": 0 }, { "$ref": "#/definitions/reference" }
+          ]
+        },
+        "on_violation": { "enum": ["fail", "indeterminate"] }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "relation": { "enum": ["equals", "one_of"] } } },
+          "then": { "not": { "required": ["tolerance"] } },
+          "else": {
+            "properties": {
+              "left": { "not": { "type": "boolean" } },
+              "right": { "not": { "type": "boolean" } }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "relation": { "enum": ["one_of", "between"] } } },
+          "then": { "properties": { "right": { "$ref": "#/definitions/reference" } } }
+        }
+      ]
+    }
+  }
+}

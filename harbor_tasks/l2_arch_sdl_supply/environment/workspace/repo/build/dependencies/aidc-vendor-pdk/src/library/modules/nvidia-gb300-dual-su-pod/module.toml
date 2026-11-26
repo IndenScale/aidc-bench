@@ -1,0 +1,70 @@
+schema_version = 1
+name = "NVIDIA GB300 NVL72 双机柜算力宏单元 Pod (144 GPUs / Dual-Plane)"
+version = "0.1.0"
+entry = "nvidia-gb300-dual-su-pod.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) §2 Racks, 36 Trays with 144 Blackwell Ultra GPUs"
+fidelity = "2x GB300 NVL72 液冷柜 + 1x Spectrum-X 交换机柜宏单元三柜包络与统一接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) Figure 11 Dual-Plane 144-GPU Pod"
+fidelity = "双机柜 SU 宏单元符号与供配电、液冷汇总、风侧及上游 Spine/存储/带外核心端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.25-26"
+fidelity = "宏单元尺寸（1800x1068x2495 mm）、质量、3 柜布局及接口边界"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.25-26"
+fidelity = "2 SU + 10x SN5610 + 2x SN2201 聚合热电与液冷需求模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "基于 nvidia-gb300-nvl72-rack、nvidia-sn5610-switch 与 nvidia-sn2201-oob-switch 公开标定表组合的 144-GPU Pod 工况表"
+fidelity = "二维稳态工况查表（total_power_kw / liquid_heat_kw / air_heat_kw / required_flow_lpm / pod_dp_kpa）"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.tcs_supply]
+geometry = "/Module/Ports/tcs_supply"
+symbol = "port-tcs_supply"
+
+[port_bindings.tcs_return]
+geometry = "/Module/Ports/tcs_return"
+symbol = "port-tcs_return"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.spine_ew_uplink]
+geometry = "/Module/Ports/spine_ew_uplink"
+symbol = "port-spine_ew_uplink"
+
+[port_bindings.core_ns_uplink]
+geometry = "/Module/Ports/core_ns_uplink"
+symbol = "port-core_ns_uplink"
+
+[port_bindings.core_oob_uplink]
+geometry = "/Module/Ports/core_oob_uplink"
+symbol = "port-core_oob_uplink"

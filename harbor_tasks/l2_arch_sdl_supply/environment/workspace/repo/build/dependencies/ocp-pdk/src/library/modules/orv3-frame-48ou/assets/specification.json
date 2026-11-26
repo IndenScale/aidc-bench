@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-FRAME-48OU",
+  "ocp_spec": "OCP Open Rack v3 Base Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP Open Rack v3 Base Specification Rev 1.0",
+  "envelope_m": [
+    0.6,
+    1.068,
+    2.278
+  ],
+  "mass_kg": 1600.0,
+  "clearances_m": {
+    "front_service_m": 1.2,
+    "rear_manifold_and_busbar_m": 1.2,
+    "top_cable_and_busway_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "rails_ou": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.14
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "21-inch (538 mm) EIA/ORv3 48OU rails, 48 mm pitch"
+    },
+    "busbar_slot": {
+      "position_m": [
+        0.3,
+        1.068,
+        1.14
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear central 48V/50V blind-mate busbar bay"
+    },
+    "manifold_slot": {
+      "position_m": [
+        0.52,
+        1.068,
+        1.14
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear right vertical BMQC rack manifold bay"
+    },
+    "air_in": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.0
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front cold-aisle open perforated intake"
+    },
+    "air_out": {
+      "position_m": [
+        0.3,
+        1.068,
+        1.0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear hot-aisle exhaust"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 21-inch",
+    "mounting_width_in": 21,
+    "mounting_width_mm": 538.0,
+    "total_ou": 48,
+    "unit_pitch_m": 0.048,
+    "max_static_load_kg": 1600.0,
+    "geometry_parts": {
+      "Frame": {
+        "origin_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "size_m": [
+          0.6,
+          1.068,
+          2.278
+        ],
+        "color": [
+          0.16,
+          0.21,
+          0.27
+        ]
+      },
+      "FrontBezel": {
+        "origin_m": [
+          0.03,
+          0.0,
+          0.04
+        ],
+        "size_m": [
+          0.54,
+          0.025,
+          2.18
+        ],
+        "color": [
+          0.1,
+          0.14,
+          0.19
+        ]
+      }
+    }
+  },
+  "limitations": "依据 OCP ORv3 Base Rev 1.0 包络标定；抗震斜撑与地脚锚固按项目结构验算。"
+}

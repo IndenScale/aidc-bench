@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 90">
+  <rect x="26" y="18" width="108" height="54" rx="3" fill="#1e293b" stroke="#76b900" stroke-width="1.3" />
+  <text x="80" y="38" text-anchor="middle" fill="#a8e036" font-size="8.5" font-weight="bold">SN5610 (2U)</text>
+  <text x="80" y="52" text-anchor="middle" fill="#e2e8f0" font-size="7.5">64x 800GbE OSFP</text>
+  <text x="80" y="63" text-anchor="middle" fill="#94a3b8" font-size="7">51.2 Tbps Spectrum-4</text>
+  <circle id="port-power_a" data-port="power_a" cx="54" cy="18" r="2.8" fill="#f6c453" />
+  <circle id="port-power_b" data-port="power_b" cx="106" cy="18" r="2.8" fill="#f6c453" />
+  <circle id="port-downlink_400g" data-port="downlink_400g" cx="26" cy="34" r="2.8" fill="#76b900" />
+  <circle id="port-converged_400g" data-port="converged_400g" cx="26" cy="54" r="2.8" fill="#a78bfa" />
+  <circle id="port-uplink_800g" data-port="uplink_800g" cx="134" cy="34" r="2.8" fill="#38bdf8" />
+  <circle id="port-air_in" data-port="air_in" cx="134" cy="50" r="2.8" fill="#94a3b8" />
+  <circle id="port-air_out" data-port="air_out" cx="134" cy="62" r="2.8" fill="#cbd5e1" />
+  <circle id="port-oob_mgmt" data-port="oob_mgmt" cx="80" cy="72" r="2.8" fill="#34d399" />
+</svg>

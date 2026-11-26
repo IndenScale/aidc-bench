@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "cummins-c2750d5-50hz-standby-genset",
+  "parameters": {
+    "standby_power_kw": "kW",
+    "standby_apparent_kva": "kVA",
+    "prime_power_kw": "kW",
+    "fuel_rate_100pct_lph": "L/h",
+    "dry_mass_kg": "kg",
+    "wet_mass_kg": "kg"
+  },
+  "method": "依据 Cummins C2750 D5 50 Hz 公开规格书备用工况四点油耗曲线（25%: 163, 50%: 284, 75%: 404, 100%: 524 L/h）建立稳态油耗与输出功率 Liberty 查表，支持 12 h / 24 h 储油核算。",
+  "limitations": "本表为稳态燃油消耗曲线，不含冷启动并机 10–15 s 暂态频率/电压跌落波形、步进加载限制及高海拔/高温降容。"
+}

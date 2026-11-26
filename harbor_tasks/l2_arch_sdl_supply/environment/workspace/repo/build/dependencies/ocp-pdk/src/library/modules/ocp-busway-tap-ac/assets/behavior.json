@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-dcf-overhead-busway-1600a",
+  "parameters": {
+    "rated_current_a": "A",
+    "segment_length_m": "m"
+  },
+  "method": "三相三线焦耳损耗 P = 3 * I^2 * R1 与单位米压降 dU = sqrt(3) * I * (R1*cos + X1*sin)。",
+  "limitations": "覆盖 400–1600 A 连续工作区，短路热稳定与插接箱分断须配合开关选型复核。"
+}

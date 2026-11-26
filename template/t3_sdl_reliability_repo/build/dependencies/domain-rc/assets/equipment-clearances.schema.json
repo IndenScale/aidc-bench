@@ -1,0 +1,292 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "equipment-clearances v1",
+  "definitions": {
+    "unit": {
+      "type": "object",
+      "required": ["prim", "space"],
+      "properties": {
+        "prim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "space": {
+          "type": ["null", "string"]
+        },
+        "tasks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["face", "depth_m", "width_m", "height_m"],
+            "properties": {
+              "face": {
+                "enum": ["-x", "+x", "-y", "+y"]
+              },
+              "depth_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "width_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "distance": {
+      "type": "object",
+      "required": ["clear_m", "boundary_m", "controls"],
+      "properties": {
+        "clear_m": {
+          "type": "number"
+        },
+        "boundary_m": {
+          "type": "number"
+        },
+        "controls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "serviceVolume": {
+      "type": "object",
+      "required": ["service_envelope_xyz_m", "envelope_inside_room", "collisions"],
+      "properties": {
+        "service_envelope_xyz_m": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "envelope_inside_room": {
+          "type": "boolean"
+        },
+        "collisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["object", "prim", "overlap_xyz_m"],
+            "properties": {
+              "object": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "overlap_xyz_m": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "required": ["prim", "space", "bounds_m", "faces", "collisions"],
+      "properties": {
+        "prim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "space": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bounds_m": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "faces": {
+          "type": "object",
+          "required": ["-x", "+x", "-y", "+y", "-z", "+z"],
+          "properties": {
+            "-x": {
+              "$ref": "#/definitions/distance"
+            },
+            "+x": {
+              "$ref": "#/definitions/distance"
+            },
+            "-y": {
+              "$ref": "#/definitions/distance"
+            },
+            "+y": {
+              "$ref": "#/definitions/distance"
+            },
+            "-z": {
+              "$ref": "#/definitions/distance"
+            },
+            "+z": {
+              "$ref": "#/definitions/distance"
+            }
+          }
+        },
+        "collisions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "tasks": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/serviceVolume"
+          }
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "frame",
+        "scene_digest",
+        "spaces",
+        "obstacles",
+        "units",
+        "obstacles_complete"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "equipment-placement"
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spaces": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "obstacles": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "units": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/unit"
+          }
+        },
+        "obstacles_complete": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "frame",
+        "scene_digest",
+        "domain",
+        "selection_digest",
+        "units",
+        "obstacles_complete",
+        "unresolved"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "equipment-clearances"
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "drc"
+        },
+        "selection_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/observation"
+          }
+        },
+        "obstacles_complete": {
+          "type": "boolean"
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["reason"],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

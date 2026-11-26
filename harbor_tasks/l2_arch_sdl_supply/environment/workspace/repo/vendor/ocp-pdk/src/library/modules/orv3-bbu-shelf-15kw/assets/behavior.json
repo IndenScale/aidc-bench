@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-bbu-discharge",
+  "parameters": {
+    "rated_discharge_kw": "kW",
+    "nominal_autonomy_s": "s"
+  },
+  "method": "基于放电功率与荷电状态查算机柜级后备支撑时间与放电发热。",
+  "limitations": "未包含电芯长期老化容量衰减与热失控泄压风道设计。"
+}

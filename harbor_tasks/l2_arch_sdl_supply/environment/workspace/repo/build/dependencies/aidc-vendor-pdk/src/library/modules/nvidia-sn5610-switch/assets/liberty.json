@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "nvidia-sn5610-64x800g-osfp",
+  "state": "calibrated-reference",
+  "source": "NVIDIA Spectrum-4 SN5610 Hardware User Manual (900-940 W typical passive) & 800G OSFP optical transceiver power (~16 W/module) public engineering table",
+  "uncertainty_pct": 5.0,
+  "operating_envelope": {
+    "max_ports_800g": 64,
+    "passive_typical_kw": 0.92,
+    "optical_adder_per_800g_w": 16.0,
+    "inlet_air_temp_range_c": [18.0, 35.0]
+  },
+  "axes": [
+    {
+      "name": "active_port_fraction",
+      "unit": "1",
+      "values": [0.25, 0.5, 0.75, 1.0]
+    },
+    {
+      "name": "optical_transceiver_ratio",
+      "unit": "1",
+      "values": [0.0, 0.5, 1.0]
+    }
+  ],
+  "outputs": {
+    "chassis_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.4,
+      "values": [
+        [0.64, 0.768, 0.896],
+        [0.74, 0.996, 1.252],
+        [0.83, 1.214, 1.598],
+        [0.92, 1.432, 1.944]
+      ]
+    },
+    "heat_rejection_kw": {
+      "unit": "kW",
+      "min_bound": 0.4,
+      "values": [
+        [0.64, 0.768, 0.896],
+        [0.74, 0.996, 1.252],
+        [0.83, 1.214, 1.598],
+        [0.92, 1.432, 1.944]
+      ]
+    },
+    "airflow_cfm": {
+      "unit": "CFM",
+      "min_bound": 80.0,
+      "values": [
+        [140.0, 165.0, 190.0],
+        [165.0, 215.0, 265.0],
+        [190.0, 265.0, 340.0],
+        [220.0, 320.0, 420.0]
+      ]
+    }
+  },
+  "limitations": "假设 25 degC 进风温度及 16 W/只 800G OSFP 双口光模块典型值；LPO 低功耗光模块或 ZR+ 相干模块须替换对应光模块功耗增量。"
+}

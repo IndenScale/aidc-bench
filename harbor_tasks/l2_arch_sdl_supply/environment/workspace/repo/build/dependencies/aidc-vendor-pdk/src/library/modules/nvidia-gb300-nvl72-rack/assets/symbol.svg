@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="34" y="20" width="112" height="80" rx="4" fill="#18222a" stroke="#76b900" stroke-width="1.5" />
+  <rect x="42" y="28" width="96" height="14" rx="2" fill="#22313d" />
+  <text x="90" y="38" text-anchor="middle" fill="#a8e036" font-size="8" font-weight="bold">GB300 NVL72 (1 SU)</text>
+  <text x="90" y="56" text-anchor="middle" fill="#e4f0f5" font-size="8">72x B300 / 36x Grace</text>
+  <text x="90" y="69" text-anchor="middle" fill="#9bc7d8" font-size="7.5">142 kW | 90% Liquid</text>
+  <text x="90" y="82" text-anchor="middle" fill="#9bc7d8" font-size="7">144x400G E-W | 36x400G N-S</text>
+  <circle id="port-power_a" data-port="power_a" cx="56" cy="20" r="3" fill="#f6c453" />
+  <circle id="port-power_b" data-port="power_b" cx="124" cy="20" r="3" fill="#f6c453" />
+  <circle id="port-tcs_supply" data-port="tcs_supply" cx="34" cy="40" r="3" fill="#38bdf8" />
+  <circle id="port-tcs_return" data-port="tcs_return" cx="34" cy="60" r="3" fill="#f87171" />
+  <circle id="port-air_in" data-port="air_in" cx="34" cy="82" r="3" fill="#94a3b8" />
+  <circle id="port-air_out" data-port="air_out" cx="146" cy="82" r="3" fill="#cbd5e1" />
+  <circle id="port-fabric_ew_p1" data-port="fabric_ew_p1" cx="146" cy="34" r="3" fill="#76b900" />
+  <circle id="port-fabric_ew_p2" data-port="fabric_ew_p2" cx="146" cy="48" r="3" fill="#76b900" />
+  <circle id="port-fabric_ns_a" data-port="fabric_ns_a" cx="146" cy="62" r="3" fill="#a78bfa" />
+  <circle id="port-fabric_ns_b" data-port="fabric_ns_b" cx="146" cy="72" r="3" fill="#a78bfa" />
+  <circle id="port-oob_mgmt" data-port="oob_mgmt" cx="90" cy="100" r="3" fill="#34d399" />
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP DCF 列顶高密交流母线槽段 (1600A)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">3000x240x160 mm | 400/480V 3P+N+PE | 1600 A</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">ocp-busway-tap-ac</text>
+  <circle id="port-in" data-port="in" cx="90.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-out" data-port="out" cx="45.2" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-tap_1" data-port="tap_1" cx="67.6" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-tap_2" data-port="tap_2" cx="90.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-tap_3" data-port="tap_3" cx="112.4" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-tap_4" data-port="tap_4" cx="134.8" cy="98" r="3.2" fill="#34d399" />
+</svg>

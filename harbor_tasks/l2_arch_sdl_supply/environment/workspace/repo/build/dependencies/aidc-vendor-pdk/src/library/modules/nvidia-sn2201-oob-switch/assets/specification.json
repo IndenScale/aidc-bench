@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "NVIDIA",
+  "model_number": "SN2201",
+  "basis": "NVIDIA Spectrum SN2201 Hardware User Manual & NVL72 AI Factory Enterprise RA (2026-03)",
+  "envelope_m": [0.428, 0.432, 0.0439],
+  "mass_kg": 7.41,
+  "clearances_m": {
+    "front_patch_cord_m": 0.12,
+    "rear_psu_service_m": 0.25
+  },
+  "frame": {
+    "origin": "chassis-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {"position_m": [0.1, 0.432, 0.022], "normal": [0, 1, 0], "spec": "100-240 VAC (standalone) or 50V DC busbar (in-rack GB300) feed A"},
+    "power_b": {"position_m": [0.32, 0.432, 0.022], "normal": [0, 1, 0], "spec": "1+1 redundant feed B"},
+    "air_in": {"position_m": [0.214, 0.0, 0.022], "normal": [0, -1, 0], "spec": "Reversible P2C / C2P intake"},
+    "air_out": {"position_m": [0.214, 0.432, 0.022], "normal": [0, 1, 0], "spec": "Hot-swap fan exhaust"},
+    "mgmt_1g": {"position_m": [0.16, 0.0, 0.022], "normal": [0, -1, 0], "spec": "48x 1GbE RJ45 BMC/OOB access ports"},
+    "uplink_100g": {"position_m": [0.36, 0.0, 0.022], "normal": [0, -1, 0], "spec": "4x 100GbE QSFP28 uplinks (2x100G HA per RA)"}
+  },
+  "properties": {
+    "rack_units": 1,
+    "ports": "48x 1G Base-T RJ45 + 4x 100GbE QSFP28",
+    "redundancy": "1+1 hot-swap PSU"
+  },
+  "limitations": "机柜内嵌版本由 GB300 NVL72 50V DC 母排直供，独立管理柜版本采用 100–240 VAC 供电；具体型号选型须核对电源模块料号。"
+}

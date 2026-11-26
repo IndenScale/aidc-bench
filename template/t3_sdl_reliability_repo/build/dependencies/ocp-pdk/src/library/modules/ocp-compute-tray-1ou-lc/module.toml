@@ -1,0 +1,62 @@
+schema_version = 1
+name = "OCP ORv3 1OU 液冷算力托盘 (6.5 kW)"
+version = "0.1.0"
+entry = "ocp-compute-tray-1ou-lc.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+fidelity = "21英寸 1OU 液冷托盘三维包络与后部盲插水电接口"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+fidelity = "液冷算力托盘工程符号与液/电/互连端口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+fidelity = "1OU 尺寸、90% 液冷热分配与额定 8.5 L/min 工况"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+fidelity = "直冷托盘热电水耦合契约"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+fidelity = "(负载率, 供液温度) 二维流量与托盘压降表"
+
+[port_bindings.dc_in]
+geometry = "/Module/Ports/dc_in"
+symbol = "port-dc_in"
+
+[port_bindings.bmqc_supply]
+geometry = "/Module/Ports/bmqc_supply"
+symbol = "port-bmqc_supply"
+
+[port_bindings.bmqc_return]
+geometry = "/Module/Ports/bmqc_return"
+symbol = "port-bmqc_return"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.fabric_ew]
+geometry = "/Module/Ports/fabric_ew"
+symbol = "port-fabric_ew"
+
+[port_bindings.bmc_interlock]
+geometry = "/Module/Ports/bmc_interlock"
+symbol = "port-bmc_interlock"

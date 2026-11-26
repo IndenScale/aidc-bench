@@ -1,0 +1,54 @@
+schema_version = 1
+name = "Schneider Electric Trihal 2500 kVA 浇注式干式变压器 (EU Tier 2)"
+version = "0.1.0"
+entry = "schneider-trihal-2500kva-transformer.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Schneider Electric Trihal 2500 kVA IP31 公开目录外形包络（2550x1500x2750 mm）"
+fidelity = "IP31 金属外壳、三相环氧浇注铁心绕组轮廓与高/低压出线接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "IEC 60076-11 Dyn11 干式变压器工程符号与 Trihal 公开参数"
+fidelity = "功能符号与中压进线、低压母排输出、接地及自然风冷端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Schneider Electric Trihal Catalogue & EU Regulation 2019/1783 (EcoDesign Tier 2, IEC 60076-11)"
+fidelity = "IP31 外形尺寸、质量、检修与通风净距、绝缘/局放等级与接口定义"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "EU Regulation 2019/1783 Tier 2 (P0=2790 W, Pk=19000 W @ 120 degC, uk=6%)"
+fidelity = "IEC 60076 负载损耗、效率与电压调整率解析模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "EU Regulation 2019/1783 (EcoDesign Tier 2 A0-10%/Ak) & IEC 60076-11 Trihal 2500 kVA 解析标定表"
+fidelity = "二维稳态工况查表（load_fraction x power_factor -> efficiency / total_loss_kw / voltage_regulation_pct）"
+
+[port_bindings.mv_in]
+geometry = "/Module/Ports/mv_in"
+symbol = "port-mv_in"
+
+[port_bindings.lv_out]
+geometry = "/Module/Ports/lv_out"
+symbol = "port-lv_out"
+
+[port_bindings.pe_ground]
+geometry = "/Module/Ports/pe_ground"
+symbol = "port-pe_ground"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"

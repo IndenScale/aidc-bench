@@ -1,0 +1,58 @@
+schema_version = 1
+name = "Schneider Electric Galaxy VL 500 kW 模块化 UPS"
+version = "0.1.0"
+entry = "schneider-galaxy-vl-500kw-ups.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Schneider Electric Galaxy VL 200-500 kW Technical Datasheet（850x925x1970 mm）"
+fidelity = "高密模块化 UPS 柜体包络、热插拔功率模块区与顶部母排/电池接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Schneider Electric Galaxy VL 公开规格书与双变换/旁路电气符号"
+fidelity = "功能符号与主输入、旁路输入、关键输出、直流电池母排及风侧端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Schneider Electric Galaxy VL 500 kW Datasheet & ENERGY STAR Public Certified Data"
+fidelity = "精确外形尺寸（850x925x1970 mm）、满配质量（778 kg）、前后检修净空与接口参数"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Schneider Electric Galaxy VL 500 kW Datasheet & ENERGY STAR Certified Efficiency"
+fidelity = "双变换模式与 eConversion 模式的负荷率-效率-发热量模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Schneider Electric Galaxy VL 500 kW ENERGY STAR 公开认证效率曲线（双变换 96.3–97.2% / eConversion 98.9–99.5%）"
+fidelity = "一维稳态工况查表（load_fraction -> efficiency / econversion_efficiency / heat_rejection_fraction）"
+
+[port_bindings.ac_main_in]
+geometry = "/Module/Ports/ac_main_in"
+symbol = "port-ac_main_in"
+
+[port_bindings.ac_bypass_in]
+geometry = "/Module/Ports/ac_bypass_in"
+symbol = "port-ac_bypass_in"
+
+[port_bindings.ac_critical_out]
+geometry = "/Module/Ports/ac_critical_out"
+symbol = "port-ac_critical_out"
+
+[port_bindings.dc_battery_bus]
+geometry = "/Module/Ports/dc_battery_bus"
+symbol = "port-dc_battery_bus"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"

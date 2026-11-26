@@ -1,0 +1,637 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SysDA zonal airflow exchange v1",
+  "definitions": {
+    "face": {
+      "type": "object",
+      "properties": {
+        "axis": {
+          "enum": [
+            "x",
+            "y"
+          ]
+        },
+        "station_m": {
+          "type": "number"
+        },
+        "span_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "elevation_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "area_m2": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "axis",
+        "station_m",
+        "span_m",
+        "elevation_m",
+        "area_m2"
+      ]
+    },
+    "zone": {
+      "type": "object",
+      "properties": {
+        "prim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "use": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bounds_m": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "neighbors": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/face"
+          }
+        }
+      },
+      "required": [
+        "prim",
+        "use",
+        "bounds_m",
+        "neighbors"
+      ]
+    },
+    "opening": {
+      "type": "object",
+      "properties": {
+        "ends": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "prim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "axis": {
+          "enum": [
+            "x",
+            "y"
+          ]
+        },
+        "station_m": {
+          "type": "number"
+        },
+        "span_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "elevation_m": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "area_m2": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "ends",
+        "prim",
+        "axis",
+        "station_m",
+        "span_m",
+        "elevation_m",
+        "area_m2"
+      ]
+    },
+    "characteristic": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coefficient_m3_h_pa_n": {
+          "type": "number",
+          "minimum": 0
+        },
+        "exponent": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "source",
+        "state",
+        "coefficient_m3_h_pa_n",
+        "exponent"
+      ]
+    },
+    "duty": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flows_m3_h": {
+          "type": "object",
+          "properties": {
+            "supply": {
+              "type": "number",
+              "minimum": 0
+            },
+            "return": {
+              "type": "number",
+              "minimum": 0
+            },
+            "exhaust": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "supply",
+            "return",
+            "exhaust"
+          ]
+        },
+        "target_outdoor_pa": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "source",
+        "flows_m3_h"
+      ]
+    },
+    "case": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "reference_pa": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "rooms": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/duty"
+          }
+        },
+        "openings": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/characteristic"
+          }
+        }
+      },
+      "required": [
+        "source",
+        "complete",
+        "reference_pa",
+        "rooms",
+        "openings"
+      ]
+    },
+    "roomResult": {
+      "type": "object",
+      "properties": {
+        "net_mechanical_m3_h": {
+          "type": "number"
+        },
+        "flow_balance_residual_m3_h": {
+          "type": "number"
+        },
+        "room_pressure_pa": {
+          "type": "number"
+        },
+        "flow_m3_h": {
+          "type": "object",
+          "properties": {
+            "supply": {
+              "type": "number",
+              "minimum": 0
+            },
+            "return": {
+              "type": "number",
+              "minimum": 0
+            },
+            "exhaust": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "supply",
+            "return",
+            "exhaust"
+          ]
+        },
+        "schedule_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "references": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "reference_pressure_pa": {
+                "type": "number"
+              },
+              "difference_pa": {
+                "type": "number"
+              },
+              "interface": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/face"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "leakage_out_m3_h": {
+                "type": "number"
+              },
+              "path_flows_m3_h": {
+                "type": "object",
+                "propertyNames": {
+                  "minLength": 1
+                },
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "reference_pressure_pa",
+              "difference_pa",
+              "interface",
+              "leakage_out_m3_h",
+              "path_flows_m3_h"
+            ]
+          }
+        },
+        "target_outdoor_pa": {
+          "type": "number"
+        },
+        "required_net_mechanical_m3_h": {
+          "type": "number"
+        },
+        "target_path_flows_out_m3_h": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "net_mechanical_m3_h",
+        "flow_balance_residual_m3_h",
+        "room_pressure_pa",
+        "flow_m3_h",
+        "schedule_source",
+        "references"
+      ]
+    },
+    "solvedCase": {
+      "type": "object",
+      "properties": {
+        "rooms": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/roomResult"
+          }
+        },
+        "pressure_pa": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "net_outflow_m3_h": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "openings": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/opening"
+              },
+              {
+                "$ref": "#/definitions/characteristic"
+              }
+            ]
+          }
+        },
+        "path_flows_m3_h": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "maxItems": 0
+        }
+      },
+      "required": [
+        "rooms",
+        "pressure_pa",
+        "net_outflow_m3_h",
+        "source",
+        "openings",
+        "path_flows_m3_h",
+        "unresolved"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "airflow-boundaries"
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "zones": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/zone"
+          }
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "openings": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/opening"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "frame",
+        "baseline",
+        "kind",
+        "domain",
+        "scene_digest",
+        "complete",
+        "unresolved",
+        "zones",
+        "scope",
+        "openings"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "airflow-cases"
+        },
+        "cases": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/case"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "frame",
+        "baseline",
+        "kind",
+        "cases"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "zonal-pressure-study"
+        },
+        "domain": {
+          "const": "hvac"
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "zones": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/definitions/zone"
+          }
+        },
+        "cases": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/solvedCase"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "unresolved": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "unresolved"
+                ]
+              }
+            ]
+          }
+        },
+        "schedule_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "frame",
+        "baseline",
+        "kind",
+        "domain",
+        "scene_digest",
+        "complete",
+        "unresolved",
+        "zones",
+        "cases"
+      ]
+    }
+  ]
+}

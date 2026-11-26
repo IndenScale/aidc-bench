@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-orv3-power-shelf-33kw-efficiency",
+  "state": "calibrated-reference",
+  "source": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP ORv3 Power Shelf Specification",
+    "ocp_revision": "Rev 1.0",
+    "load_fraction_range": [
+      0.25,
+      1.0
+    ],
+    "input_voltage_v_range": [
+      400.0,
+      480.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ]
+    },
+    {
+      "name": "input_voltage_v",
+      "unit": "V",
+      "values": [
+        400.0,
+        480.0
+      ]
+    }
+  ],
+  "outputs": {
+    "efficiency": {
+      "unit": "1",
+      "min_bound": 0.9,
+      "max_bound": 0.99,
+      "values": [
+        [
+          0.962,
+          0.966
+        ],
+        [
+          0.974,
+          0.977
+        ],
+        [
+          0.972,
+          0.975
+        ],
+        [
+          0.965,
+          0.969
+        ]
+      ]
+    },
+    "dc_output_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          8.25,
+          8.25
+        ],
+        [
+          16.5,
+          16.5
+        ],
+        [
+          24.75,
+          24.75
+        ],
+        [
+          33.0,
+          33.0
+        ]
+      ]
+    },
+    "heat_loss_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          0.326,
+          0.29
+        ],
+        [
+          0.44,
+          0.388
+        ],
+        [
+          0.713,
+          0.635
+        ],
+        [
+          1.197,
+          1.056
+        ]
+      ]
+    }
+  },
+  "limitations": "不含单 PSU 热插拔毫秒瞬态谐波；单柜需按 N+1 或 N+N 配置冗余框。"
+}

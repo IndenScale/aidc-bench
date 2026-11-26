@@ -1,0 +1,62 @@
+schema_version = 1
+name = "Cummins C2750 D5 备用柴油发电机组 (2750 kVA / 2200 kW)"
+version = "0.1.0"
+entry = "cummins-c2750d5-genset.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Cummins Power Generation C2750 D5 50 Hz Open-Set Specification Sheet（5670x2305x2708 mm）"
+fidelity = "底座、QSK78-G9 V18 柴油机本体、同步发电机与散热水箱包络及接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Cummins C2750 D5 Specification Sheet 备用发电机组功能符号"
+fidelity = "功能符号与供电输出、燃油供回、排烟、进排风及黑启动联锁信号端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Cummins C2750 D5 50 Hz Specification Sheet (Standby 2750 kVA / 2200 kW, Prime 2500 kVA / 2000 kW)"
+fidelity = "精确外形尺寸、干重/湿重（18549/19145 kg）、机房检修净空与接口边界"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Cummins C2750 D5 50 Hz Specification Sheet (Fuel rate: 163/284/404/524 L/h)"
+fidelity = "备用工况燃油消耗与 12 h / 24 h 储油核算模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Cummins C2750 D5 50 Hz Specification Sheet Standby Fuel Curve (25%: 163, 50%: 284, 75%: 404, 100%: 524 L/h)"
+fidelity = "一维稳态工况查表（load_fraction -> fuel_rate_lph / electric_output_kw / specific_fuel_l_per_kwh）"
+
+[port_bindings.power_out]
+geometry = "/Module/Ports/power_out"
+symbol = "port-power_out"
+
+[port_bindings.fuel_supply]
+geometry = "/Module/Ports/fuel_supply"
+symbol = "port-fuel_supply"
+
+[port_bindings.fuel_return]
+geometry = "/Module/Ports/fuel_return"
+symbol = "port-fuel_return"
+
+[port_bindings.exhaust_out]
+geometry = "/Module/Ports/exhaust_out"
+symbol = "port-exhaust_out"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.start_cmd]
+geometry = "/Module/Ports/start_cmd"
+symbol = "port-start_cmd"

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Installed drainage paths, static tailwater cases and hydraulic observations v1",
+  "type": "object",
+  "required": ["schema_version", "kind", "frame", "scene_digest"],
+  "properties": {
+    "schema_version": {"const": 1}, "frame": {"$ref": "#/definitions/id"}, "scene_digest": {"$ref": "#/definitions/id"}
+  },
+  "definitions": {
+    "id": {"type": "string", "minLength": 1},
+    "point": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+    "path": {"type": "object", "required": ["room", "drain_elevation_m", "segments"], "properties": {
+      "room": {"$ref": "#/definitions/id"}, "drain_elevation_m": {"type": "number"},
+      "segments": {"type": "array", "items": {"type": "object", "required": ["pipe", "start_station_m", "scene_prim"], "properties": {
+        "pipe": {"$ref": "#/definitions/id"}, "start_station_m": {"type": "number", "minimum": 0}, "scene_prim": {"$ref": "#/definitions/id"}
+      }}}
+    }},
+    "installedValve": {"type": "object", "required": ["pipe", "ports_xyz_m", "scene_prim", "device_type", "inlet_station_m", "outlet_station_m"], "properties": {
+      "pipe": {"type": ["string", "null"]}, "scene_prim": {"$ref": "#/definitions/id"}, "device_type": {"type": ["string", "null"]},
+      "ports_xyz_m": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/definitions/point"}},
+      "inlet_station_m": {"type": ["number", "null"], "minimum": 0}, "outlet_station_m": {"type": ["number", "null"], "minimum": 0}
+    }},
+    "case": {"type": "object", "required": ["available_valves", "outfalls"], "properties": {
+      "available_valves": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/definitions/id"}},
+      "outfalls": {"type": "object", "additionalProperties": {
+        "type": "object", "required": ["tailwater_elevation_m"], "properties": {"tailwater_elevation_m": {"type": "number"}}
+      }}
+    }},
+    "observedDrain": {"type": "object", "required": ["room", "drain", "outlet_path", "drain_elevation_m", "pipe_prims", "valves"], "properties": {
+      "room": {"$ref": "#/definitions/id"}, "drain": {"$ref": "#/definitions/id"}, "drain_elevation_m": {"type":"number"},
+      "outlet_path": {"type":"array", "items":{"$ref":"#/definitions/id"}}, "pipe_prims": {"type":"array", "items":{"$ref":"#/definitions/id"}},
+      "tailwater_elevation_m": {"type": "number"}, "observed_freeboard_m": {"type": "number"}, "valves": {"type": "array", "items": {
+        "allOf": [{"$ref": "#/definitions/installedValve"}, {
+          "required": ["valve", "aligned_with_discharge", "available", "head_at_valve_m", "maximum_static_head_m", "rating_source", "rating_margin_m"],
+          "properties": {"valve": {"$ref": "#/definitions/id"}, "aligned_with_discharge": {"type":["boolean","null"]}, "available": {"type":"boolean"},
+            "head_at_valve_m":{"type":"number","minimum":0}, "maximum_static_head_m":{"type":["number","null"],"exclusiveMinimum":0},
+            "rating_source":{"type":["string","null"]}, "rating_margin_m":{"type":["number","null"]}}
+        }]
+      }}
+    }}
+  },
+  "oneOf": [
+    {"required":["complete","station_tolerance_m","outfalls","drains","pipes","valves"],"properties":{
+      "kind":{"const":"drainage-layout"}, "outfalls":{"type":"array","uniqueItems":true,"items":{"$ref":"#/definitions/id"}},
+      "complete":{"type":"boolean"}, "station_tolerance_m":{"type":"number","minimum":0},
+      "pipes":{"type":"object","additionalProperties":{"type":"object","required":["scene_prim","centerline_xyz_m"],"properties":{
+        "scene_prim":{"$ref":"#/definitions/id"}, "centerline_xyz_m":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/point"}}
+      }}},
+      "valves":{"type":"object","additionalProperties":{"type":"object","required":["pipe","ports_xyz_m","scene_prim","device_type"],"properties":{
+        "pipe":{"type":["string","null"]},"scene_prim":{"$ref":"#/definitions/id"},"device_type":{"type":["string","null"]},
+        "ports_xyz_m":{"type":"array","minItems":2,"maxItems":2,"items":{"$ref":"#/definitions/point"}}
+      }}},
+      "drains":{"type":"object","additionalProperties":{"type":"object","required":["room","position_xyz_m","outlet_path"],"properties":{
+        "room":{"$ref":"#/definitions/id"},"position_xyz_m":{"$ref":"#/definitions/point"},
+        "outlet_path":{"type":"array","items":{"$ref":"#/definitions/id"}}
+      }}}
+    }},
+    {"required":["complete","station_tolerance_m","outfalls","drains","valves"],"properties":{
+      "kind":{"const":"drainage-paths"}, "outfalls":{"type":"array","uniqueItems":true,"items":{"$ref":"#/definitions/id"}}, "complete":{"type":"boolean"}, "station_tolerance_m":{"type":"number","minimum":0},
+      "drains":{"type":"object","additionalProperties":{"$ref":"#/definitions/path"}},
+      "valves":{"type":"object","additionalProperties":{"$ref":"#/definitions/installedValve"}}
+    }},
+    {"required":["source","cases","valves"],"properties":{
+      "kind":{"const":"tailwater-cases"}, "source":{"$ref":"#/definitions/id"},
+      "cases":{"type":"object","additionalProperties":{"$ref":"#/definitions/case"}},
+      "valves":{"type":"object","additionalProperties":{"type":"object","required":["maximum_static_head_m","source"],"properties":{
+        "maximum_static_head_m":{"type":"number","exclusiveMinimum":0}, "source":{"$ref":"#/definitions/id"}
+      }}}
+    }},
+    {"required":["domain","source","paths_digest","schedule_digest","cases","complete","unresolved"],"properties":{
+      "kind":{"const":"tailwater-study"}, "domain":{"const":"hydraulic"}, "source":{"$ref":"#/definitions/id"},
+      "paths_digest":{"$ref":"#/definitions/id"}, "schedule_digest":{"$ref":"#/definitions/id"},
+      "cases":{"type":"object","additionalProperties":{"type":"object","additionalProperties":{"$ref":"#/definitions/observedDrain"}}},
+      "complete":{"type":"boolean"}, "unresolved":{"type":"array","items":{"type":"object","required":["reason"]}}
+    }}
+  ]
+}

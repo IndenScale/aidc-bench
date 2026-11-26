@@ -1,0 +1,29 @@
+schema_version = 1
+
+[project]
+name = "aidc-vendor-pdk"
+version = "0.1.0"
+
+[layout]
+source = "src"
+assets = "assets"
+build = "build"
+
+[dependencies.ocp-pdk]
+path = "../ocp-pdk"
+version = "0.1.0"
+
+[package]
+kind = "component"
+description = "基于厂商公开技术资料与参考架构标定的 AIDC 全链路多视图灰盒 PDK 标准单元库（12 族：NVIDIA GB300 NVL72 / Spectrum-X / Vertiv XDU 1350 / YORK YZ / BAC FXV-1218 / Grundfos NK / Schneider Galaxy VL, Trihal, Canalis KTC / Cummins C2750 D5）"
+capabilities = ["models", "geometry", "liberty"]
+scope = "依据厂商公开参考架构、用户指南与公开产品规格书构建多视图标准单元（LEF 几何与端口、Symbol 符号、多维 Liberty 性能曲线与行为契约）；参数标注 calibrated-reference 及文档出处，不替代具体项目的现场实测或商务承诺。"
+include = ["README.md"]
+
+[package.runtime]
+api_version = 1
+modules = ["texsys_aidc_vendor_pdk"]
+requires = ["texsys>=0.1,<0.2"]
+
+[package.exports]
+components = ["src/library"]

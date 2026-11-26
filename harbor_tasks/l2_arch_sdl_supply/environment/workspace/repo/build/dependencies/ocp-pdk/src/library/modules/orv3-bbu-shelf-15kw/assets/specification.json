@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-BBU-SHELF-15KW",
+  "ocp_spec": "OCP ORv3 BBU Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0",
+  "envelope_m": [
+    0.538,
+    0.75,
+    0.096
+  ],
+  "mass_kg": 48.0,
+  "clearances_m": {
+    "front_hot_swap_m": 0.9
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "dc_bus": {
+      "position_m": [
+        0.269,
+        0.75,
+        0.048
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear 48V-50V DC blind-mate busbar clip"
+    },
+    "mgmt": {
+      "position_m": [
+        0.08,
+        0.0,
+        0.048
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front BMS state-of-health telemetry port"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 2OU / 21-inch",
+    "rated_discharge_kw": 15.0,
+    "nominal_energy_kwh": 1.1,
+    "nominal_autonomy_s": 240.0
+  },
+  "limitations": "未包含电芯长期老化容量衰减与热失控泄压风道设计。"
+}

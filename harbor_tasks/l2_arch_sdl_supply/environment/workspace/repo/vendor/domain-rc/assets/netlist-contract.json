@@ -1,0 +1,472 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SysDA port netlist exchange v1",
+  "$defs": {
+    "port": {
+      "type": "object",
+      "properties": {
+        "instance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interface": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "instance",
+        "interface"
+      ]
+    },
+    "end": {
+      "type": "object",
+      "properties": {
+        "port": {
+          "type": "string",
+          "minLength": 1
+        },
+        "joint": {
+          "const": "point-mate"
+        },
+        "interface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "xyz_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number"
+          }
+        },
+        "tolerance_m": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "dependentRequired": {
+        "joint": [
+          "interface",
+          "xyz_m",
+          "tolerance_m"
+        ]
+      },
+      "not": {
+        "required": [
+          "port",
+          "joint"
+        ]
+      }
+    },
+    "pair": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "domain": {
+          "enum": [
+            "electrical",
+            "thermal",
+            "hydraulic",
+            "hvac",
+            "spatial"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "domain-schematic"
+        },
+        "ports": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/port"
+          }
+        },
+        "connections": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/pair"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "domain",
+        "scope",
+        "baseline",
+        "complete",
+        "kind",
+        "ports",
+        "connections"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "domain": {
+          "enum": [
+            "electrical",
+            "thermal",
+            "hydraulic",
+            "hvac",
+            "spatial"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "domain-selection"
+        },
+        "interfaces": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "model_digest": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "domain",
+        "scope",
+        "baseline",
+        "complete",
+        "kind",
+        "interfaces",
+        "model_digest"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "domain": {
+          "enum": [
+            "electrical",
+            "thermal",
+            "hydraulic",
+            "hvac",
+            "spatial"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "port-layout"
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ports": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "instance": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interface": {
+                "type": "string",
+                "minLength": 1
+              },
+              "xyz_m": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "instance",
+              "interface"
+            ]
+          }
+        },
+        "routes": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "ends": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/end"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "required": [
+              "ends"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "domain",
+        "scope",
+        "baseline",
+        "complete",
+        "kind",
+        "frame",
+        "ports",
+        "routes"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "domain": {
+          "enum": [
+            "electrical",
+            "thermal",
+            "hydraulic",
+            "hvac",
+            "spatial"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "kind": {
+          "const": "domain-netlist"
+        },
+        "ports": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/port"
+          }
+        },
+        "connections": {
+          "type": "object",
+          "propertyNames": {
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "ports": {
+                "$ref": "#/$defs/pair"
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "ports",
+              "evidence"
+            ]
+          }
+        },
+        "granularity": {
+          "const": "port"
+        },
+        "source_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "origin": {
+          "enum": [
+            "schematic",
+            "physical"
+          ]
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "domain",
+        "scope",
+        "baseline",
+        "complete",
+        "kind",
+        "ports",
+        "connections",
+        "granularity",
+        "source_digest",
+        "origin",
+        "unresolved"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "kind": {
+          "const": "cable-terminations"
+        },
+        "domain": {
+          "const": "electrical"
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "feeders": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "minLength": 1
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "feed_end": {
+                "enum": [
+                  0,
+                  1,
+                  null
+                ]
+              },
+              "cores": {
+                "type": "object",
+                "propertyNames": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 2,
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "required": [
+              "cores"
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "domain",
+        "baseline",
+        "scope",
+        "frame",
+        "source",
+        "complete",
+        "feeders"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 110">
+  <rect x="30" y="20" width="110" height="70" rx="4" fill="#182621" stroke="#3dcd58" stroke-width="1.5" />
+  <text x="85" y="41" text-anchor="middle" fill="#86efac" font-size="8.5" font-weight="bold">Galaxy VL 500 kW</text>
+  <text x="85" y="56" text-anchor="middle" fill="#e2e8f0" font-size="7.5">97.2% DC | 99.5% eConv</text>
+  <text x="85" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">Live Swap Modular UPS</text>
+  <circle id="port-ac_main_in" data-port="ac_main_in" cx="30" cy="36" r="3" fill="#f6c453" />
+  <circle id="port-ac_bypass_in" data-port="ac_bypass_in" cx="30" cy="56" r="3" fill="#fbbf24" />
+  <circle id="port-ac_critical_out" data-port="ac_critical_out" cx="140" cy="44" r="3" fill="#3dcd58" />
+  <circle id="port-dc_battery_bus" data-port="dc_battery_bus" cx="85" cy="90" r="3" fill="#f97316" />
+  <circle id="port-air_in" data-port="air_in" cx="30" cy="76" r="3" fill="#94a3b8" />
+  <circle id="port-air_out" data-port="air_out" cx="140" cy="76" r="3" fill="#cbd5e1" />
+</svg>

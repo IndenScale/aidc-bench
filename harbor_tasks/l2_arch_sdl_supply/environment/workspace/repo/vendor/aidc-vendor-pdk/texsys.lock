@@ -1,0 +1,11 @@
+schema_version = 1
+manifest_digest = "sha256:89792126d4f3e1dd324b8b3fb92f80e097df4eb9561d1094c24b6d4b30e493b7"
+
+[[packages]]
+name = "ocp-pdk"
+version = "0.1.0"
+source = "path"
+path = "../ocp-pdk"
+digest = "sha256:e3cca779fa5fcdab8ba4cea4ca141065c3451e36c87f99e74e4e3b97ccf12ef8"
+direct = true
+dependencies = []

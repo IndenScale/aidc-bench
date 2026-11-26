@@ -1,0 +1,46 @@
+schema_version = 1
+name = "OCP ORv3 HPR 48V/50V 盲插直流母排 (3000A)"
+version = "0.1.0"
+entry = "orv3-busbar-48v-hpr.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+fidelity = "机柜后部垂直 48V/50V 盲插母排包络"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+fidelity = "直流母排汇流符号与电源/BBU/托盘端口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+fidelity = "50V 标称电压、3000A 额定电流与盲插分区坐标"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+fidelity = "焦耳损耗与直流压降模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0"
+fidelity = "(电流, 环境温度) 二维压降与温升查找表"
+
+[port_bindings.power_shelf_in]
+geometry = "/Module/Ports/power_shelf_in"
+symbol = "port-power_shelf_in"
+
+[port_bindings.bbu_in]
+geometry = "/Module/Ports/bbu_in"
+symbol = "port-bbu_in"
+
+[port_bindings.tray_tap]
+geometry = "/Module/Ports/tray_tap"
+symbol = "port-tray_tap"

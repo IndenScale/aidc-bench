@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "nvidia-sn5610-800g-switch",
+  "parameters": {
+    "osfp_800g_port_count": "count",
+    "breakout_400g_port_count": "count",
+    "typical_passive_power_kw": "kW",
+    "rack_units": "U",
+    "chassis_mass_kg": "kg"
+  },
+  "method": "整机功耗由 Spectrum-4 ASIC 与风扇基础功耗（无源铜缆满口约 920 W）叠加上插 800G OSFP 有源光模块功耗（按 16 W/只标定）构成；100% 转化为风侧显热。",
+  "limitations": "未包含光模块老化温漂及高于 35 degC 进风温度下的风扇满速附加功耗。"
+}

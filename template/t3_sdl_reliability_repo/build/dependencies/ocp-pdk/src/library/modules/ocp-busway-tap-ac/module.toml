@@ -1,0 +1,58 @@
+schema_version = 1
+name = "OCP DCF 列顶高密交流母线槽段 (1600A)"
+version = "0.1.0"
+entry = "ocp-busway-tap-ac.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+fidelity = "3m 标准长度列顶母线槽与 4 路底部插接位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+fidelity = "架空母线槽工程符号与馈电/插接锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+fidelity = "1600A 铜导体单位长度阻抗参数"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+fidelity = "三相交流阻抗压降与铜损模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+fidelity = "(母线电流, 功率因数) 二维单位米损耗与压降表"
+
+[port_bindings.in]
+geometry = "/Module/Ports/in"
+symbol = "port-in"
+
+[port_bindings.out]
+geometry = "/Module/Ports/out"
+symbol = "port-out"
+
+[port_bindings.tap_1]
+geometry = "/Module/Ports/tap_1"
+symbol = "port-tap_1"
+
+[port_bindings.tap_2]
+geometry = "/Module/Ports/tap_2"
+symbol = "port-tap_2"
+
+[port_bindings.tap_3]
+geometry = "/Module/Ports/tap_3"
+symbol = "port-tap_3"
+
+[port_bindings.tap_4]
+geometry = "/Module/Ports/tap_4"
+symbol = "port-tap_4"

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-acs-rack-manifold-hydraulics",
+  "parameters": {
+    "inner_diameter_mm": "mm",
+    "length_m": "m",
+    "rated_flow_lpm": "L/min"
+  },
+  "method": "计算 DN32 不锈钢立管歧管在 PG25 液冷工质下的沿程阻力与管内流速。",
+  "limitations": "单相 PG25-water 稳态流动；高瞬态水锤需配合特征线法（MOC）模型复核。"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "schneider-canalis-ktc1600-cu-line-impedance",
+  "parameters": {
+    "rated_current_a": "A",
+    "resistance_35c_mohm_per_m": "mOhm/m",
+    "reactance_50hz_mohm_per_m": "mOhm/m",
+    "icw_1s_ka": "kA",
+    "mass_per_m_kg": "kg/m"
+  },
+  "method": "依据 Canalis KTC 1600A 铜导体公开工作电阻 R1=0.029 mOhm/m 与 50 Hz 感抗 X1=0.015 mOhm/m，计算每米三相压降 dV = sqrt(3)*I*(R1*cos(phi)+X1*sin(phi)) 及焦耳热损 P = 3*I^2*R1。",
+  "limitations": "未计入接头接触电阻增量、高次谐波集肤效应及热通道环境温度高于 35 degC 时的温升修正。"
+}

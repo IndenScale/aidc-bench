@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "vertiv-liebert-xdu1350-n-plus-1",
+  "state": "calibrated-reference",
+  "source": "Vertiv Liebert XDU 1350 Official Technical Datasheet (1368 kW @ 4.0 K ATD, 1200 L/min, 244 kPa ext DP, 13.7 kW dual-pump max)",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "rated_capacity_kw": 1368.0,
+    "nominal_approach_k": 4.0,
+    "nominal_flow_lpm": 1200.0,
+    "nominal_ext_dp_kpa": 244.0,
+    "dual_pump_max_kw": 13.7,
+    "fluid_primary": "water",
+    "fluid_secondary": "pg25-water",
+    "fws_supply_range_c": [18.0, 34.0]
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [0.2, 0.4, 0.6, 0.8, 1.0]
+    },
+    {
+      "name": "fws_supply_c",
+      "unit": "degC",
+      "values": [18.0, 22.0, 26.0, 30.0, 34.0]
+    }
+  ],
+  "outputs": {
+    "approach_k": {
+      "unit": "K",
+      "min_bound": 0.5,
+      "values": [
+        [1.05, 1.08, 1.12, 1.16, 1.2],
+        [1.62, 1.68, 1.74, 1.82, 1.9],
+        [2.28, 2.36, 2.45, 2.55, 2.66],
+        [3.02, 3.12, 3.22, 3.35, 3.48],
+        [3.78, 3.88, 4.0, 4.14, 4.3]
+      ]
+    },
+    "pump_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.5,
+      "values": [
+        [1.1, 1.15, 1.2, 1.25, 1.32],
+        [2.45, 2.55, 2.65, 2.75, 2.88],
+        [4.8, 4.95, 5.15, 5.35, 5.6],
+        [8.4, 8.65, 8.95, 9.3, 9.7],
+        [12.9, 13.3, 13.7, 14.1, 14.6]
+      ]
+    },
+    "max_cooling_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [1460.0, 1415.0, 1368.0, 1315.0, 1255.0],
+        [1460.0, 1415.0, 1368.0, 1315.0, 1255.0],
+        [1460.0, 1415.0, 1368.0, 1315.0, 1255.0],
+        [1460.0, 1415.0, 1368.0, 1315.0, 1255.0],
+        [1460.0, 1415.0, 1368.0, 1315.0, 1255.0]
+      ]
+    },
+    "internal_dp_kpa": {
+      "unit": "kPa",
+      "min_bound": 1.0,
+      "values": [
+        [4.5, 4.6, 4.7, 4.8, 5.0],
+        [13.5, 13.8, 14.1, 14.5, 14.9],
+        [27.5, 28.0, 28.6, 29.3, 30.1],
+        [46.0, 47.0, 48.0, 49.2, 50.5],
+        [70.0, 71.5, 73.0, 74.8, 76.8]
+      ]
+    },
+    "max_ext_dp_kpa": {
+      "unit": "kPa",
+      "min_bound": 50.0,
+      "values": [
+        [295.0, 295.0, 295.0, 295.0, 295.0],
+        [286.0, 286.0, 286.0, 286.0, 286.0],
+        [274.0, 274.0, 274.0, 274.0, 274.0],
+        [260.0, 260.0, 260.0, 260.0, 260.0],
+        [244.0, 244.0, 244.0, 244.0, 244.0]
+      ]
+    }
+  },
+  "limitations": "以 26 degC 一次侧供水、4.0 K 端差、1368 kW 标称换热量与 1200 L/min @ 244 kPa（13.7 kW N+1 双泵上限）为核心锚点构造；高乙二醇浓度或三泵 1800 L/min 工况须另行查表。"
+}

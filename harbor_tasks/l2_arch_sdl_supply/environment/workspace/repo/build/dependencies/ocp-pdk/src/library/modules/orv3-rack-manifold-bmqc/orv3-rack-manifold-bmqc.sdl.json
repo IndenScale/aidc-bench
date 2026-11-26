@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "root": "OcpOrv3RackManifoldBmqc",
+  "components": {
+    "OcpOrv3RackManifoldBmqc": {
+      "ports": {
+        "supply_in": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "return_out": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "branch_supply": {
+          "direction": "out",
+          "kind": "tcs-bmqc",
+          "max_connections": 24
+        },
+        "branch_return": {
+          "direction": "in",
+          "kind": "tcs-bmqc",
+          "max_connections": 24
+        },
+        "pressure_sense": {
+          "direction": "out",
+          "kind": "control-signal",
+          "max_connections": 4
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1",
+        "parameters": {
+          "inner_diameter_mm": {
+            "value": 34.8,
+            "unit": "mm",
+            "state": "known",
+            "source": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+          },
+          "length_m": {
+            "value": 2.2,
+            "unit": "m",
+            "state": "known",
+            "source": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+          },
+          "rated_flow_lpm": {
+            "value": 140.0,
+            "unit": "L/min",
+            "state": "known",
+            "source": "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+          }
+        }
+      }
+    }
+  }
+}

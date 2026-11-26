@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SysDA electrical terminal designations and installed feeder observations v1",
+  "type": "object",
+  "required": ["kind", "schema_version", "domain", "scope", "baseline", "complete"],
+  "properties": {
+    "schema_version": { "const": 1 }, "domain": { "const": "electrical" },
+    "scope": { "$ref": "#/definitions/text" }, "baseline": { "$ref": "#/definitions/text" },
+    "complete": { "type": "boolean" }
+  },
+  "oneOf": [
+    {
+      "required": ["source", "terminals"],
+      "properties": {
+        "kind": { "const": "terminal-designations" }, "source": { "$ref": "#/definitions/text" },
+        "terminals": { "type": "object", "additionalProperties": { "$ref": "#/definitions/nullableRole" } }
+      }
+    },
+    {
+      "required": ["netlist_digest", "designation_source", "feeders", "unresolved"],
+      "properties": {
+        "kind": { "const": "feeder-conductors" }, "netlist_digest": { "$ref": "#/definitions/text" },
+        "designation_source": { "$ref": "#/definitions/text" },
+        "feeders": { "type": "object", "additionalProperties": { "$ref": "#/definitions/feeder" } },
+        "unresolved": { "type": "array", "items": { "type": "object", "required": ["reason"], "properties": { "reason": { "$ref": "#/definitions/text" } } } }
+      }
+    }
+  ],
+  "definitions": {
+    "text": { "type": "string", "minLength": 1 },
+    "ids": { "type": "array", "items": { "$ref": "#/definitions/text" }, "uniqueItems": true },
+    "role": { "enum": ["L", "N", "PE", "PEN", "DC+", "DC-"] },
+    "nullableRole": { "anyOf": [{ "$ref": "#/definitions/role" }, { "type": "null" }] },
+    "core": {
+      "type": "object", "required": ["ports", "terminal_roles", "evidence"],
+      "properties": {
+        "ports": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/definitions/text" } },
+        "terminal_roles": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/definitions/nullableRole" } },
+        "evidence": { "$ref": "#/definitions/text" }
+      }
+    },
+    "feeder": {
+      "type": "object", "required": ["cores", "conductors", "conflicts", "unknown_cores", "complete"],
+      "properties": {
+        "cores": { "type": "object", "additionalProperties": { "$ref": "#/definitions/core" } },
+        "conductors": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/definitions/role" } },
+        "conflicts": { "$ref": "#/definitions/ids" }, "unknown_cores": { "$ref": "#/definitions/ids" },
+        "complete": { "type": "boolean" }
+      }
+    }
+  }
+}

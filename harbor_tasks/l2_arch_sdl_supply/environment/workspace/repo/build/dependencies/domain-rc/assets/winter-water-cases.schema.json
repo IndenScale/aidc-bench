@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Winter condenser-water cases",
+  "type": "object",
+  "required": ["schema_version", "kind", "frame", "baseline", "scene_digest", "cases"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "kind": { "const": "winter-water-cases" },
+    "frame": { "$ref": "#/definitions/name" },
+    "baseline": { "$ref": "#/definitions/name" },
+    "scene_digest": { "$ref": "#/definitions/name" },
+    "cases": { "type": "object", "additionalProperties": { "$ref": "#/definitions/duty" } }
+  },
+  "definitions": {
+    "name": { "type": "string", "minLength": 1 },
+    "interval": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "duty": {
+      "type": "object",
+      "required": ["season", "duration_h", "outdoor_design_c", "source", "sections"],
+      "properties": {
+        "season": { "const": "winter" },
+        "duration_h": { "type": "number", "exclusiveMinimum": 0 },
+        "outdoor_design_c": { "type": "number" },
+        "source": { "$ref": "#/definitions/name" },
+        "sections": { "type": "object", "additionalProperties": { "$ref": "#/definitions/section" } }
+      }
+    },
+    "section": {
+      "type": "object",
+      "required": ["source", "complete", "measures"],
+      "properties": {
+        "source": { "$ref": "#/definitions/name" },
+        "complete": { "type": "boolean" },
+        "measures": { "type": "object", "additionalProperties": { "$ref": "#/definitions/measure" } }
+      }
+    },
+    "measure": {
+      "type": "object",
+      "required": ["method", "action", "source", "window_h"],
+      "properties": {
+        "method": { "$ref": "#/definitions/name" },
+        "action": { "$ref": "#/definitions/name" },
+        "source": { "$ref": "#/definitions/name" },
+        "window_h": { "$ref": "#/definitions/interval" },
+        "minimum_fluid_c": { "$ref": "#/definitions/interval" },
+        "freezing_point_c": { "$ref": "#/definitions/interval" },
+        "fluid_source": { "$ref": "#/definitions/name" },
+        "residual_volume_l": { "$ref": "#/definitions/interval" }
+      },
+      "allOf": [
+        { "if": { "properties": { "method": { "const": "fluid-temperature" } } }, "then": { "required": ["minimum_fluid_c", "freezing_point_c", "fluid_source"] } },
+        { "if": { "properties": { "method": { "const": "drain-down" } } }, "then": { "required": ["residual_volume_l"] } }
+      ]
+    }
+  }
+}

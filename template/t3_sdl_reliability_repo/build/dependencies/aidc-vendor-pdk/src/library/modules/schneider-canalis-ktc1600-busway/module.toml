@@ -1,0 +1,54 @@
+schema_version = 1
+name = "Schneider Electric Canalis KTC 1600A 铜导体高密母线槽 (3L+N+PE)"
+version = "0.1.0"
+entry = "schneider-canalis-ktc1600-busway.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Schneider Electric Canalis KTC 1600A 公开目录截面尺寸（3000x244x164 mm 标准 3 m 直线段）"
+fidelity = "3 m 标准母线槽直线段包络、绝缘护套轮廓及进/出线与插接箱接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Schneider Electric Canalis KTC 1600A Technical Catalogue (DEBU024EN)"
+fidelity = "功能符号与干线进/出、双路插接箱及保护接地接口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Schneider Electric Canalis KTC 1600A Technical Catalogue (3L+N+PE, 35 kg/m, Icw=65 kA)"
+fidelity = "截面尺寸、单位米重、短路耐受、线阻抗参数与吊装净空"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Schneider Electric Canalis KTC 1600A Design Guide (R1=0.029, X1=0.015 mOhm/m @ 35 degC 50 Hz)"
+fidelity = "供 PEX 寄生提取与压降/热损耗计算复用的单位米级电气阻抗模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Schneider Electric Canalis KTC 1600A Copper (R1=0.029 mOhm/m, X1=0.015 mOhm/m) 公开阻抗解析标定表"
+fidelity = "二维稳态工况查表（current_a x power_factor -> voltage_drop_v_per_m / power_loss_w_per_m）"
+
+[port_bindings.bus_in]
+geometry = "/Module/Ports/bus_in"
+symbol = "port-bus_in"
+
+[port_bindings.bus_out]
+geometry = "/Module/Ports/bus_out"
+symbol = "port-bus_out"
+
+[port_bindings.tap_off_1]
+geometry = "/Module/Ports/tap_off_1"
+symbol = "port-tap_off_1"
+
+[port_bindings.tap_off_2]
+geometry = "/Module/Ports/tap_off_2"
+symbol = "port-tap_off_2"
+
+[port_bindings.pe_ground]
+geometry = "/Module/Ports/pe_ground"
+symbol = "port-pe_ground"

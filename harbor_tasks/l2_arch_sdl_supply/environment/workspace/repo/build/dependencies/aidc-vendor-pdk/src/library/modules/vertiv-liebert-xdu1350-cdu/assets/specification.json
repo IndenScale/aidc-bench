@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Vertiv",
+  "model_number": "Liebert-XDU-1350",
+  "ocp_base_unit": "@ocp-pdk/library/modules/ocp-cdu-inrow-1mw",
+  "ocp_compliance_profile": "OCP-ACS-CDU",
+  "ocp_port_map": {
+    "fws_supply": "fws_supply",
+    "fws_return": "fws_return",
+    "tcs_supply": "tcs_supply",
+    "tcs_return": "tcs_return",
+    "power_a": "power_a",
+    "power_b": "power_b"
+  },
+  "basis": "Vertiv Liebert XDU 1350 Official Technical Datasheet & Vertiv 360AI Blueprint for NVIDIA GB200/GB300 NVL72",
+  "envelope_m": [0.9, 1.243, 2.069],
+  "mass_kg": 650.0,
+  "operating_mass_kg": 780.0,
+  "clearances_m": {
+    "front_pump_and_hx_service_m": 1.2,
+    "rear_piping_service_m": 0.9,
+    "top_header_tie_in_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "fws_supply": {"position_m": [0.2, 0.96, 2.069], "normal": [0, 0, 1], "spec": "4-inch (DN100) primary facility water supply (top/bottom option)"},
+    "fws_return": {"position_m": [0.38, 0.96, 2.069], "normal": [0, 0, 1], "spec": "4-inch (DN100) primary facility water return"},
+    "tcs_supply": {"position_m": [0.56, 0.96, 2.069], "normal": [0, 0, 1], "spec": "4-inch (DN100) secondary TCS coolant supply (1200 L/min N+1)"},
+    "tcs_return": {"position_m": [0.74, 0.96, 2.069], "normal": [0, 0, 1], "spec": "4-inch (DN100) secondary TCS coolant return"},
+    "power_a": {"position_m": [0.24, 0.3, 2.069], "normal": [0, 0, 1], "spec": "400V/480V 3-phase 50/60Hz feed A (ATS redundant)"},
+    "power_b": {"position_m": [0.66, 0.3, 2.069], "normal": [0, 0, 1], "spec": "400V/480V 3-phase 50/60Hz feed B"}
+  },
+  "properties": {
+    "pump_configuration": "3x VFD pumps (2 active N+1 nominal / 3 active N peak)",
+    "pipe_connection_size": "4-inch (DN100)",
+    "rated_capacity_kw": 1368.0,
+    "nominal_approach_k": 4.0,
+    "nominal_flow_lpm": 1200.0,
+    "max_flow_lpm": 1800.0
+  },
+  "limitations": "干重 650 kg 为公开规格书直出值，充液运行重量 780 kg 按内部板换与 DN100 管段容积估算；实际现场顶部或底部接管方向、微米级过滤器压降增长与防腐液配比须在施工图复核。"
+}

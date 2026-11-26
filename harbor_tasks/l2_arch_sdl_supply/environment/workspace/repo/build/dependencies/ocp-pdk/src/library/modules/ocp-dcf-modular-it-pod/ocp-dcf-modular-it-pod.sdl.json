@@ -1,0 +1,280 @@
+{
+  "schema_version": 2,
+  "root": "OcpDcfModularItPod",
+  "components": {
+    "TcsSupplyHeader": {
+      "ports": {
+        "in": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "out_1": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "out_2": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        }
+      }
+    },
+    "TcsReturnHeader": {
+      "ports": {
+        "in_1": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "in_2": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "out": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        }
+      }
+    },
+    "OcpDcfModularItPod": {
+      "ports": {
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "fws_supply": {
+          "direction": "in",
+          "kind": "fws",
+          "max_connections": 2
+        },
+        "fws_return": {
+          "direction": "out",
+          "kind": "fws",
+          "max_connections": 2
+        },
+        "oob_mgmt": {
+          "direction": "inout",
+          "kind": "ethernet-100g-oob",
+          "max_connections": 2
+        },
+        "alarm": {
+          "direction": "out",
+          "kind": "signal",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0",
+        "parameters": {
+          "rated_it_kw": {
+            "value": 416.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+          },
+          "racks_per_pod": {
+            "value": 4.0,
+            "unit": "count",
+            "state": "known",
+            "source": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+          },
+          "liquid_cooling_fraction": {
+            "value": 0.9,
+            "unit": "1",
+            "state": "known",
+            "source": "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+          }
+        }
+      },
+      "instances": {
+        "cdu_a": {
+          "component": "OcpCdu"
+        },
+        "cdu_b": {
+          "component": "OcpCdu"
+        },
+        "tcs_sup_a": {
+          "component": "TcsSupplyHeader"
+        },
+        "tcs_ret_a": {
+          "component": "TcsReturnHeader"
+        },
+        "tcs_sup_b": {
+          "component": "TcsSupplyHeader"
+        },
+        "tcs_ret_b": {
+          "component": "TcsReturnHeader"
+        },
+        "bus_a": {
+          "component": "OcpBusway"
+        },
+        "bus_b": {
+          "component": "OcpBusway"
+        },
+        "rack_01": {
+          "component": "OcpRack"
+        },
+        "rack_02": {
+          "component": "OcpRack"
+        },
+        "rack_03": {
+          "component": "OcpRack"
+        },
+        "rack_04": {
+          "component": "OcpRack"
+        }
+      },
+      "connections": [
+        {
+          "id": "link-001",
+          "from": "bus_a.tap_1",
+          "to": "rack_01.power_a"
+        },
+        {
+          "id": "link-002",
+          "from": "bus_b.tap_1",
+          "to": "rack_01.power_b"
+        },
+        {
+          "id": "link-003",
+          "from": "bus_a.tap_2",
+          "to": "rack_02.power_a"
+        },
+        {
+          "id": "link-004",
+          "from": "bus_b.tap_2",
+          "to": "rack_02.power_b"
+        },
+        {
+          "id": "link-005",
+          "from": "bus_a.tap_3",
+          "to": "rack_03.power_a"
+        },
+        {
+          "id": "link-006",
+          "from": "bus_b.tap_3",
+          "to": "rack_03.power_b"
+        },
+        {
+          "id": "link-007",
+          "from": "bus_a.tap_4",
+          "to": "rack_04.power_a"
+        },
+        {
+          "id": "link-008",
+          "from": "bus_b.tap_4",
+          "to": "rack_04.power_b"
+        },
+        {
+          "id": "link-009",
+          "from": "cdu_a.tcs_supply",
+          "to": "tcs_sup_a.in"
+        },
+        {
+          "id": "link-010",
+          "from": "tcs_ret_a.out",
+          "to": "cdu_a.tcs_return"
+        },
+        {
+          "id": "link-011",
+          "from": "tcs_sup_a.out_1",
+          "to": "rack_01.tcs_supply"
+        },
+        {
+          "id": "link-012",
+          "from": "rack_01.tcs_return",
+          "to": "tcs_ret_a.in_1"
+        },
+        {
+          "id": "link-013",
+          "from": "tcs_sup_a.out_2",
+          "to": "rack_02.tcs_supply"
+        },
+        {
+          "id": "link-014",
+          "from": "rack_02.tcs_return",
+          "to": "tcs_ret_a.in_2"
+        },
+        {
+          "id": "link-015",
+          "from": "cdu_b.tcs_supply",
+          "to": "tcs_sup_b.in"
+        },
+        {
+          "id": "link-016",
+          "from": "tcs_ret_b.out",
+          "to": "cdu_b.tcs_return"
+        },
+        {
+          "id": "link-017",
+          "from": "tcs_sup_b.out_1",
+          "to": "rack_03.tcs_supply"
+        },
+        {
+          "id": "link-018",
+          "from": "rack_03.tcs_return",
+          "to": "tcs_ret_b.in_1"
+        },
+        {
+          "id": "link-019",
+          "from": "tcs_sup_b.out_2",
+          "to": "rack_04.tcs_supply"
+        },
+        {
+          "id": "link-020",
+          "from": "rack_04.tcs_return",
+          "to": "tcs_ret_b.in_2"
+        }
+      ],
+      "nets": {
+        "PodAcDistribution": {
+          "kind": "ac-power",
+          "connections": [
+            "link-001",
+            "link-002",
+            "link-003",
+            "link-004",
+            "link-005",
+            "link-006",
+            "link-007",
+            "link-008"
+          ]
+        },
+        "PodTcsLoop": {
+          "kind": "tcs",
+          "connections": [
+            "link-009",
+            "link-010",
+            "link-011",
+            "link-012",
+            "link-013",
+            "link-014",
+            "link-015",
+            "link-016",
+            "link-017",
+            "link-018",
+            "link-019",
+            "link-020"
+          ]
+        }
+      }
+    }
+  },
+  "imports": {
+    "OcpRack": "library/modules/ocp-orv3-liquid-rack-assembly/ocp-orv3-liquid-rack-assembly.sdl.json",
+    "OcpCdu": "library/modules/ocp-cdu-inrow-1mw/ocp-cdu-inrow-1mw.sdl.json",
+    "OcpBusway": "library/modules/ocp-busway-tap-ac/ocp-busway-tap-ac.sdl.json"
+  }
+}

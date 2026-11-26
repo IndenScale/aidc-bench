@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "root": "OcpComputeTray1OuLc",
+  "components": {
+    "OcpComputeTray1OuLc": {
+      "ports": {
+        "dc_in": {
+          "direction": "in",
+          "kind": "dc-48v-busbar",
+          "max_connections": 1
+        },
+        "bmqc_supply": {
+          "direction": "in",
+          "kind": "tcs-bmqc",
+          "max_connections": 1
+        },
+        "bmqc_return": {
+          "direction": "out",
+          "kind": "tcs-bmqc",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "fabric_ew": {
+          "direction": "inout",
+          "kind": "ethernet-400g-plane",
+          "max_connections": 4
+        },
+        "bmc_interlock": {
+          "direction": "inout",
+          "kind": "control-signal",
+          "max_connections": 2
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0",
+        "parameters": {
+          "rated_it_kw": {
+            "value": 6.5,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+          },
+          "nominal_flow_lpm": {
+            "value": 8.5,
+            "unit": "L/min",
+            "state": "known",
+            "source": "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+          },
+          "liquid_cooling_fraction": {
+            "value": 0.9,
+            "unit": "1",
+            "state": "known",
+            "source": "OCP ORv3 21-inch 1OU Liquid-Cooled Compute Tray Reference Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

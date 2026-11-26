@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "root": "SchneiderTrihal2500KvaTransformer",
+  "components": {
+    "SchneiderTrihal2500KvaTransformer": {
+      "ports": {
+        "mv_in": {
+          "direction": "in",
+          "kind": "mv-power",
+          "max_connections": 1
+        },
+        "lv_out": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "pe_ground": {
+          "direction": "inout",
+          "kind": "earthing",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Schneider Electric Trihal Catalogue & EU Regulation 2019/1783 (EcoDesign Tier 2, IEC 60076-11)",
+        "parameters": {
+          "rated_apparent_kva": {
+            "value": 2500.0,
+            "unit": "kVA",
+            "state": "known",
+            "source": "Trihal 2500 kVA AN (Air Natural) IEC 60076-11 rating"
+          },
+          "primary_voltage_kv": {
+            "value": 20.0,
+            "unit": "kV",
+            "state": "known",
+            "source": "Trihal Um <= 24 kV primary class (10/15/20 kV standard)"
+          },
+          "secondary_voltage_v": {
+            "value": 400.0,
+            "unit": "V",
+            "state": "known",
+            "source": "Trihal 400V 3-phase Dyn11 secondary rating"
+          },
+          "no_load_loss_kw": {
+            "value": 2.79,
+            "unit": "kW",
+            "state": "known",
+            "source": "EU Regulation 2019/1783 Tier 2 (A0 - 10%) maximum no-load loss P0 = 2,790 W"
+          },
+          "load_loss_120c_kw": {
+            "value": 19.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "EU Regulation 2019/1783 Tier 2 (Ak) maximum load loss Pk = 19,000 W at 120 degC"
+          },
+          "impedance_pct": {
+            "value": 6.0,
+            "unit": "%",
+            "state": "known",
+            "source": "IEC 60076-11 & Trihal 2500 kVA standard short-circuit impedance uk = 6%"
+          },
+          "enclosure_mass_kg": {
+            "value": 6200.0,
+            "unit": "kg",
+            "state": "assumed",
+            "source": "Trihal 2500 kVA IP31 enclosure public catalog midpoint mass (5,500-7,000 kg range)"
+          }
+        }
+      }
+    }
+  }
+}

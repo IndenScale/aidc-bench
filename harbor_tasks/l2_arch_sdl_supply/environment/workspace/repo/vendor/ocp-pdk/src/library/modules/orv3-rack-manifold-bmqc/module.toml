@@ -1,0 +1,54 @@
+schema_version = 1
+name = "OCP ACS 机柜液冷盲插歧管 (DN32 / BMQC)"
+version = "0.1.0"
+entry = "orv3-rack-manifold-bmqc.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+fidelity = "DN32 垂直液冷歧管三维外形与盲插接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+fidelity = "机柜液冷供回歧管符号与压差测点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+fidelity = "316L 不锈钢内径、24 路 BMQC 接口与耐压上限"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+fidelity = "立管水力压降与流速约束模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ACS Cold Plate Rack Manifold & Blind-Mate Interface Specification Rev 1.1"
+fidelity = "(总流量, 供液温度) 二维歧管压降与流速曲线"
+
+[port_bindings.supply_in]
+geometry = "/Module/Ports/supply_in"
+symbol = "port-supply_in"
+
+[port_bindings.return_out]
+geometry = "/Module/Ports/return_out"
+symbol = "port-return_out"
+
+[port_bindings.branch_supply]
+geometry = "/Module/Ports/branch_supply"
+symbol = "port-branch_supply"
+
+[port_bindings.branch_return]
+geometry = "/Module/Ports/branch_return"
+symbol = "port-branch_return"
+
+[port_bindings.pressure_sense]
+geometry = "/Module/Ports/pressure_sense"
+symbol = "port-pressure_sense"

@@ -1,0 +1,53 @@
+{
+  "schema_version": 3,
+  "row_count": 6,
+  "cold_aisle_m": 1.6,
+  "hot_aisle_m": 1.6,
+  "cdu_topology": "end-of-row",
+  "cdu_count": 6,
+  "tcs_header_dn_mm": 150,
+  "busway_rating_a": 1600,
+  "buffer_tank_m3": 10.0,
+  "buffer_tank_xy": [
+    2.0,
+    2.0
+  ],
+  "spine_placements": [
+    [
+      1.0,
+      1.0
+    ],
+    [
+      1.0,
+      21.0
+    ],
+    [
+      20.0,
+      1.0
+    ],
+    [
+      20.0,
+      21.0
+    ]
+  ],
+  "pod_row_mapping": {
+    "pod_1": [
+      0
+    ],
+    "pod_2": [
+      1
+    ],
+    "pod_3": [
+      2
+    ],
+    "pod_4": [
+      3
+    ],
+    "pod_5": [
+      4
+    ],
+    "pod_6": [
+      5
+    ]
+  }
+}

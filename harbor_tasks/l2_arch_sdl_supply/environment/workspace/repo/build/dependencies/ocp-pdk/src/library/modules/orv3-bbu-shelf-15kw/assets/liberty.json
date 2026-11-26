@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-orv3-bbu-shelf-15kw-discharge",
+  "state": "calibrated-reference",
+  "source": "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP ORv3 BBU Specification",
+    "ocp_revision": "Rev 1.0",
+    "discharge_power_kw_range": [
+      5.0,
+      15.0
+    ],
+    "soc_fraction_range": [
+      0.5,
+      1.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "discharge_power_kw",
+      "unit": "kW",
+      "values": [
+        5.0,
+        10.0,
+        15.0
+      ]
+    },
+    {
+      "name": "soc_fraction",
+      "unit": "1",
+      "values": [
+        0.5,
+        0.8,
+        1.0
+      ]
+    }
+  ],
+  "outputs": {
+    "autonomy_s": {
+      "unit": "s",
+      "min_bound": 0.0,
+      "values": [
+        [
+          360.0,
+          576.0,
+          720.0
+        ],
+        [
+          180.0,
+          288.0,
+          360.0
+        ],
+        [
+          120.0,
+          192.0,
+          240.0
+        ]
+      ]
+    },
+    "efficiency": {
+      "unit": "1",
+      "min_bound": 0.9,
+      "max_bound": 0.99,
+      "values": [
+        [
+          0.975,
+          0.978,
+          0.98
+        ],
+        [
+          0.968,
+          0.971,
+          0.974
+        ],
+        [
+          0.958,
+          0.962,
+          0.965
+        ]
+      ]
+    },
+    "heat_loss_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [
+          0.128,
+          0.112,
+          0.102
+        ],
+        [
+          0.331,
+          0.299,
+          0.267
+        ],
+        [
+          0.658,
+          0.593,
+          0.544
+        ]
+      ]
+    }
+  },
+  "limitations": "未包含电芯长期老化容量衰减与热失控泄压风道设计。"
+}

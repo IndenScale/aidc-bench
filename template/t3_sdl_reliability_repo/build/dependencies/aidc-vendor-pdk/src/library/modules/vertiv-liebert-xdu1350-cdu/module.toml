@@ -1,0 +1,58 @@
+schema_version = 1
+name = "Vertiv Liebert XDU 1350 液-液冷却分配单元 (1368 kW)"
+version = "0.1.0"
+entry = "vertiv-liebert-xdu1350-cdu.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Vertiv Liebert XDU 1350 公开规格书（900x1243x2069 mm, 4-inch / DN100 接口）"
+fidelity = "整机包络、板式换热器舱、三泵变频舱与顶部 DN100 一次/二次侧接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Vertiv Liebert XDU 1350 & 360AI for NVIDIA GB200/GB300 NVL72 参考设计"
+fidelity = "功能符号与 FWS 一次侧、TCS 二次侧及双路三相配电端口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Vertiv Liebert XDU 1350 Official Technical Datasheet (1368 kW @ 4.0 K ATD, 650 kg dry)"
+fidelity = "外形尺寸、干重/湿重、检修净空、4-inch 接口坐标与运行包络"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Vertiv Liebert XDU 1350 Official Technical Datasheet"
+fidelity = "N+1 双泵（1200 L/min @ 244 kPa, 13.7 kW）与 N 三泵（1800 L/min @ 198 kPa, 20.5 kW）稳态换热模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Vertiv Liebert XDU 1350 公开规格书标定点（1368 kW @ 4.0 K ATD, 1200 L/min, 244 kPa 机外压头, 13.7 kW N+1 双泵上限）"
+fidelity = "二维稳态工况查表（approach_k / pump_power_kw / max_cooling_kw / internal_dp_kpa / max_ext_dp_kpa）"
+
+[port_bindings.fws_supply]
+geometry = "/Module/Ports/fws_supply"
+symbol = "port-fws_supply"
+
+[port_bindings.fws_return]
+geometry = "/Module/Ports/fws_return"
+symbol = "port-fws_return"
+
+[port_bindings.tcs_supply]
+geometry = "/Module/Ports/tcs_supply"
+symbol = "port-tcs_supply"
+
+[port_bindings.tcs_return]
+geometry = "/Module/Ports/tcs_return"
+symbol = "port-tcs_return"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"

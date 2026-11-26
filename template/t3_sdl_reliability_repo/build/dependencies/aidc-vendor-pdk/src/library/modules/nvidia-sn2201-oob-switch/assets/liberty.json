@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "nvidia-sn2201-48x1g-4x100g",
+  "state": "calibrated-reference",
+  "source": "NVIDIA Spectrum SN2201 Hardware User Manual (94-100 W ATIS typical power)",
+  "uncertainty_pct": 5.0,
+  "operating_envelope": {
+    "typical_power_w": 97.0,
+    "inlet_air_temp_range_c": [18.0, 40.0]
+  },
+  "axes": [
+    {
+      "name": "active_port_fraction",
+      "unit": "1",
+      "values": [0.25, 0.5, 0.75, 1.0]
+    }
+  ],
+  "outputs": {
+    "chassis_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.05,
+      "values": [0.082, 0.089, 0.095, 0.1]
+    },
+    "heat_rejection_kw": {
+      "unit": "kW",
+      "min_bound": 0.05,
+      "values": [0.082, 0.089, 0.095, 0.1]
+    },
+    "airflow_cfm": {
+      "unit": "CFM",
+      "min_bound": 15.0,
+      "values": [24.0, 28.0, 32.0, 36.0]
+    }
+  },
+  "limitations": "适用于标准 1GbE RJ45 带外管理与 2x100G 上联稳态工况；不含 PoE 供电。"
+}

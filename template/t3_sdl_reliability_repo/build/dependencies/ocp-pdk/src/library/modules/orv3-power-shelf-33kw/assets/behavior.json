@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-power-shelf-rectifier",
+  "parameters": {
+    "rated_dc_kw": "kW",
+    "output_voltage_v": "V",
+    "psu_count": "count"
+  },
+  "method": "三相交流整流至 50V DC 直流输出，随负载率与输入线电压查算转换效率与散热量。",
+  "limitations": "不含单 PSU 热插拔毫秒瞬态谐波；单柜需按 N+1 或 N+N 配置冗余框。"
+}

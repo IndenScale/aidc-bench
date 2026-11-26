@@ -1,0 +1,66 @@
+schema_version = 1
+name = "NVIDIA Spectrum-4 SN5610 800GbE 64口 AI 交换机"
+version = "0.1.0"
+entry = "nvidia-sn5610-switch.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "NVIDIA Spectrum-4 SN5610 公开硬件手册（2U, 438x775x88 mm）"
+fidelity = "2U 机箱包络、前部 64xOSFP 面板与后部冗余电源/风扇口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "NVIDIA NVL72 AI Factory Enterprise RA (2026-03) §NVIDIA SN5610 Switch"
+fidelity = "功能符号与 400G/800G 端口、供电、气流及带外管理锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "NVIDIA Spectrum-4 SN5610 Hardware User Manual & NVL72 Enterprise RA (2026-03)"
+fidelity = "尺寸、质量、电源冗余、气流方向与接口规范"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "NVIDIA Spectrum-4 SN5610 公开规格（900–940 W 无源铜缆典型功耗）"
+fidelity = "端口利用率与光模块占比联合功耗/散热模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "NVIDIA Spectrum-4 SN5610 公开典型功耗（920 W 无源）与 800G OSFP 光模块功耗增量标定表"
+fidelity = "二维稳态工况查表（chassis_power_kw / heat_rejection_kw / airflow_cfm）"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.air_in]
+geometry = "/Module/Ports/air_in"
+symbol = "port-air_in"
+
+[port_bindings.air_out]
+geometry = "/Module/Ports/air_out"
+symbol = "port-air_out"
+
+[port_bindings.downlink_400g]
+geometry = "/Module/Ports/downlink_400g"
+symbol = "port-downlink_400g"
+
+[port_bindings.converged_400g]
+geometry = "/Module/Ports/converged_400g"
+symbol = "port-converged_400g"
+
+[port_bindings.uplink_800g]
+geometry = "/Module/Ports/uplink_800g"
+symbol = "port-uplink_800g"
+
+[port_bindings.oob_mgmt]
+geometry = "/Module/Ports/oob_mgmt"
+symbol = "port-oob_mgmt"

@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "root": "NvidiaGb300DualSuPod",
+  "imports": {
+    "Gb300Rack": "library/modules/nvidia-gb300-nvl72-rack/nvidia-gb300-nvl72-rack.sdl.json",
+    "Sn5610": "library/modules/nvidia-sn5610-switch/nvidia-sn5610-switch.sdl.json",
+    "Sn2201": "library/modules/nvidia-sn2201-oob-switch/nvidia-sn2201-oob-switch.sdl.json"
+  },
+  "components": {
+    "NvidiaGb300DualSuPod": {
+      "ports": {
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tcs_supply": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "tcs_return": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "spine_ew_uplink": {
+          "direction": "inout",
+          "kind": "ethernet-800g-spine",
+          "max_connections": 8
+        },
+        "core_ns_uplink": {
+          "direction": "inout",
+          "kind": "ethernet-800g-spine",
+          "max_connections": 2
+        },
+        "core_oob_uplink": {
+          "direction": "inout",
+          "kind": "ethernet-100g-oob",
+          "max_connections": 2
+        }
+      },
+      "instances": {
+        "su_1": {"component": "Gb300Rack"},
+        "su_2": {"component": "Gb300Rack"},
+        "ew_p1_rail1": {"component": "Sn5610"},
+        "ew_p1_rail2": {"component": "Sn5610"},
+        "ew_p1_rail3": {"component": "Sn5610"},
+        "ew_p1_rail4": {"component": "Sn5610"},
+        "ew_p2_rail1": {"component": "Sn5610"},
+        "ew_p2_rail2": {"component": "Sn5610"},
+        "ew_p2_rail3": {"component": "Sn5610"},
+        "ew_p2_rail4": {"component": "Sn5610"},
+        "ns_sw_a": {"component": "Sn5610"},
+        "ns_sw_b": {"component": "Sn5610"},
+        "oob_agg_a": {"component": "Sn2201"},
+        "oob_agg_b": {"component": "Sn2201"}
+      },
+      "connections": [
+        {"from": "su_1.fabric_ew_p1", "to": "ew_p1_rail1.downlink_400g"},
+        {"from": "su_1.fabric_ew_p1", "to": "ew_p1_rail2.downlink_400g"},
+        {"from": "su_1.fabric_ew_p1", "to": "ew_p1_rail3.downlink_400g"},
+        {"from": "su_1.fabric_ew_p1", "to": "ew_p1_rail4.downlink_400g"},
+        {"from": "su_2.fabric_ew_p1", "to": "ew_p1_rail1.downlink_400g"},
+        {"from": "su_2.fabric_ew_p1", "to": "ew_p1_rail2.downlink_400g"},
+        {"from": "su_2.fabric_ew_p1", "to": "ew_p1_rail3.downlink_400g"},
+        {"from": "su_2.fabric_ew_p1", "to": "ew_p1_rail4.downlink_400g"},
+        {"from": "su_1.fabric_ew_p2", "to": "ew_p2_rail1.downlink_400g"},
+        {"from": "su_1.fabric_ew_p2", "to": "ew_p2_rail2.downlink_400g"},
+        {"from": "su_1.fabric_ew_p2", "to": "ew_p2_rail3.downlink_400g"},
+        {"from": "su_1.fabric_ew_p2", "to": "ew_p2_rail4.downlink_400g"},
+        {"from": "su_2.fabric_ew_p2", "to": "ew_p2_rail1.downlink_400g"},
+        {"from": "su_2.fabric_ew_p2", "to": "ew_p2_rail2.downlink_400g"},
+        {"from": "su_2.fabric_ew_p2", "to": "ew_p2_rail3.downlink_400g"},
+        {"from": "su_2.fabric_ew_p2", "to": "ew_p2_rail4.downlink_400g"},
+        {"from": "su_1.fabric_ns_a", "to": "ns_sw_a.converged_400g"},
+        {"from": "su_2.fabric_ns_a", "to": "ns_sw_a.converged_400g"},
+        {"from": "su_1.fabric_ns_b", "to": "ns_sw_b.converged_400g"},
+        {"from": "su_2.fabric_ns_b", "to": "ns_sw_b.converged_400g"},
+        {"from": "su_1.oob_mgmt", "to": "oob_agg_a.uplink_100g"},
+        {"from": "su_1.oob_mgmt", "to": "oob_agg_b.uplink_100g"},
+        {"from": "su_2.oob_mgmt", "to": "oob_agg_a.uplink_100g"},
+        {"from": "su_2.oob_mgmt", "to": "oob_agg_b.uplink_100g"},
+        {"from": "ew_p1_rail1.oob_mgmt", "to": "oob_agg_a.mgmt_1g"},
+        {"from": "ew_p1_rail2.oob_mgmt", "to": "oob_agg_a.mgmt_1g"},
+        {"from": "ew_p1_rail3.oob_mgmt", "to": "oob_agg_a.mgmt_1g"},
+        {"from": "ew_p1_rail4.oob_mgmt", "to": "oob_agg_a.mgmt_1g"},
+        {"from": "ew_p2_rail1.oob_mgmt", "to": "oob_agg_b.mgmt_1g"},
+        {"from": "ew_p2_rail2.oob_mgmt", "to": "oob_agg_b.mgmt_1g"},
+        {"from": "ew_p2_rail3.oob_mgmt", "to": "oob_agg_b.mgmt_1g"},
+        {"from": "ew_p2_rail4.oob_mgmt", "to": "oob_agg_b.mgmt_1g"},
+        {"from": "ns_sw_a.oob_mgmt", "to": "oob_agg_a.mgmt_1g"},
+        {"from": "ns_sw_b.oob_mgmt", "to": "oob_agg_b.mgmt_1g"}
+      ],
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), §2 Racks, 36 Trays with 144 Blackwell Ultra GPUs",
+        "parameters": {
+          "su_rack_count": {
+            "value": 2,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.25: Two GB300 NVL72 scalable units"
+          },
+          "total_gpu_count": {
+            "value": 144,
+            "unit": "count",
+            "state": "known",
+            "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03), p.25: 144 Blackwell Ultra GPUs"
+          },
+          "nominal_pod_power_kw": {
+            "value": 298.5,
+            "unit": "kW",
+            "state": "assumed",
+            "source": "2x 142 kW GB300 NVL72 racks + 10x SN5610 (optical) + 2x SN2201 aggregated power"
+          },
+          "pod_mass_kg": {
+            "value": 3454.0,
+            "unit": "kg",
+            "state": "assumed",
+            "source": "2x 1,497 kg GB300 NVL72 + 1x network cabinet (~460 kg with 10x SN5610 & 2x SN2201)"
+          }
+        }
+      }
+    }
+  }
+}

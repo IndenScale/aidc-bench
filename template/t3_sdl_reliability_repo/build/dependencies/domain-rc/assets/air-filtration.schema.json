@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Air supply filtration network and path exchange",
+  "definitions": {
+    "system": {
+      "type": "object",
+      "properties": {
+        "kind": {"enum": ["recirculation", "outdoor-air", "all-air"]},
+        "source": {"type": "string", "minLength": 1},
+        "precision_air_units": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "complete": {"type": "boolean"},
+        "nodes": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "kind": {"enum": ["intake", "branch", "fan", "filter", "terminal"]},
+              "grade": {"enum": ["primary", "medium", "sub-high", "chemical", null]},
+              "room": {"type": "string", "minLength": 1},
+              "upstream_gauge_pa": {"type": "number"},
+              "pressure_source": {"type": "string", "minLength": 1}
+            },
+            "required": ["kind"]
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 2, "maxItems": 2},
+              {
+                "type": "object",
+                "properties": {
+                  "from": {"type": "string", "minLength": 1},
+                  "to": {"type": "string", "minLength": 1},
+                  "state": {"enum": ["open", "closed", "unknown"]}
+                },
+                "required": ["from", "to", "state"]
+              }
+            ]
+          }
+        }
+      },
+      "required": ["kind", "source", "precision_air_units", "complete", "nodes", "edges"]
+    },
+    "extractedSystem": {
+      "type": "object",
+      "properties": {
+        "kind": {"enum": ["recirculation", "outdoor-air", "all-air"]},
+        "source": {"type": "string", "minLength": 1},
+        "precision_air_units": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "terminals": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"$ref": "#/definitions/terminal"}
+        },
+        "filters": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"$ref": "#/definitions/filter"}
+        },
+        "unresolved": {"type": "string", "minLength": 1}
+      },
+      "required": [],
+      "oneOf": [{"required": ["terminals", "filters"]}, {"required": ["unresolved"]}]
+    },
+    "terminal": {
+      "type": "object",
+      "properties": {
+        "room": {"type": "string", "minLength": 1},
+        "paths": {"type": "array", "items": {"$ref": "#/definitions/path"}},
+        "final_filters": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"type": "boolean"}
+        }
+      },
+      "required": ["room", "paths", "final_filters"]
+    },
+    "path": {
+      "type": "object",
+      "properties": {
+        "known_stages": {"type": "array", "items": {"enum": ["primary", "medium"]}, "uniqueItems": true},
+        "distinct_stages_min": {"type": "integer", "minimum": 0, "maximum": 2},
+        "distinct_stages_max": {"type": "integer", "minimum": 0, "maximum": 2},
+        "confirmed_open": {"type": "boolean"},
+        "nodes": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 2}
+      },
+      "required": ["known_stages", "distinct_stages_min", "distinct_stages_max", "confirmed_open", "nodes"]
+    },
+    "filter": {
+      "type": "object",
+      "properties": {
+        "grade": {"enum": ["primary", "medium", "sub-high", "chemical", null]},
+        "upstream_gauge_pa": {"type": "number"},
+        "pressure_source": {"type": "string", "minLength": 1}
+      },
+      "required": []
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {"const": 1},
+        "baseline": {"type": "string", "minLength": 1},
+        "frame": {"type": "string", "minLength": 1},
+        "case": {"type": "string", "minLength": 1},
+        "scene_digests": {
+          "type": "object",
+          "properties": {"building": {"type": "string", "minLength": 1}, "equipment": {"type": "string", "minLength": 1}},
+          "required": ["building", "equipment"]
+        },
+        "systems_complete": {"type": "boolean"},
+        "kind": {"const": "air-supply-network"},
+        "systems": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"$ref": "#/definitions/system"}
+        }
+      },
+      "required": ["schema_version", "baseline", "frame", "case", "scene_digests", "systems_complete", "kind", "systems"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {"const": 1},
+        "baseline": {"type": "string", "minLength": 1},
+        "frame": {"type": "string", "minLength": 1},
+        "case": {"type": "string", "minLength": 1},
+        "scene_digests": {
+          "type": "object",
+          "properties": {"building": {"type": "string", "minLength": 1}, "equipment": {"type": "string", "minLength": 1}},
+          "required": ["building", "equipment"]
+        },
+        "systems_complete": {"type": "boolean"},
+        "kind": {"const": "air-filtration-paths"},
+        "domain": {"const": "hvac"},
+        "network_digest": {"type": "string", "minLength": 1},
+        "paths_digest": {"type": "string", "minLength": 1},
+        "systems": {
+          "type": "object",
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"$ref": "#/definitions/extractedSystem"}
+        },
+        "unresolved": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      },
+      "required": [
+        "schema_version",
+        "baseline",
+        "frame",
+        "case",
+        "scene_digests",
+        "systems_complete",
+        "kind",
+        "domain",
+        "network_digest",
+        "paths_digest",
+        "systems",
+        "unresolved"
+      ]
+    }
+  ]
+}

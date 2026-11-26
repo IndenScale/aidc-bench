@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 120">
+  <rect x="30" y="18" width="150" height="84" rx="5" fill="#151f28" stroke="#76b900" stroke-width="1.6" />
+  <rect x="38" y="26" width="38" height="44" rx="2" fill="#1f2c37" stroke="#38bdf8" stroke-width="0.9" />
+  <text x="57" y="51" text-anchor="middle" fill="#e2e8f0" font-size="7.5">SU-1</text>
+  <rect x="84" y="26" width="42" height="44" rx="2" fill="#233142" stroke="#a78bfa" stroke-width="0.9" />
+  <text x="105" y="45" text-anchor="middle" fill="#c4b5fd" font-size="7">10x SN5610</text>
+  <text x="105" y="57" text-anchor="middle" fill="#6ee7b7" font-size="6.5">2x SN2201</text>
+  <rect x="134" y="26" width="38" height="44" rx="2" fill="#1f2c37" stroke="#38bdf8" stroke-width="0.9" />
+  <text x="153" y="51" text-anchor="middle" fill="#e2e8f0" font-size="7.5">SU-2</text>
+  <text x="105" y="83" text-anchor="middle" fill="#a8e036" font-size="8" font-weight="bold">GB300 2-SU Pod (144 GPUs)</text>
+  <text x="105" y="95" text-anchor="middle" fill="#94a3b8" font-size="7">~298.5 kW | Dual-Plane Spectrum-X</text>
+  <circle id="port-power_a" data-port="power_a" cx="65" cy="18" r="3" fill="#f6c453" />
+  <circle id="port-power_b" data-port="power_b" cx="145" cy="18" r="3" fill="#f6c453" />
+  <circle id="port-tcs_supply" data-port="tcs_supply" cx="30" cy="40" r="3" fill="#38bdf8" />
+  <circle id="port-tcs_return" data-port="tcs_return" cx="30" cy="64" r="3" fill="#f87171" />
+  <circle id="port-air_in" data-port="air_in" cx="30" cy="86" r="3" fill="#94a3b8" />
+  <circle id="port-air_out" data-port="air_out" cx="180" cy="86" r="3" fill="#cbd5e1" />
+  <circle id="port-spine_ew_uplink" data-port="spine_ew_uplink" cx="180" cy="36" r="3" fill="#76b900" />
+  <circle id="port-core_ns_uplink" data-port="core_ns_uplink" cx="180" cy="54" r="3" fill="#a78bfa" />
+  <circle id="port-core_oob_uplink" data-port="core_oob_uplink" cx="105" cy="102" r="3" fill="#34d399" />
+</svg>

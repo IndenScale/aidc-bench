@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "root": "CumminsC2750D5Genset",
+  "components": {
+    "CumminsC2750D5Genset": {
+      "ports": {
+        "power_out": {
+          "direction": "out",
+          "kind": "mv-power",
+          "max_connections": 1
+        },
+        "fuel_supply": {
+          "direction": "in",
+          "kind": "diesel-fuel",
+          "max_connections": 1
+        },
+        "fuel_return": {
+          "direction": "out",
+          "kind": "diesel-fuel",
+          "max_connections": 1
+        },
+        "exhaust_out": {
+          "direction": "out",
+          "kind": "flue-gas",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "start_cmd": {
+          "direction": "in",
+          "kind": "control-signal",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Cummins Power Generation C2750 D5 50 Hz Specification Sheet",
+        "parameters": {
+          "standby_power_kw": {
+            "value": 2200.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz datasheet: Standby rating 2,750 kVA / 2,200 kW"
+          },
+          "standby_apparent_kva": {
+            "value": 2750.0,
+            "unit": "kVA",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz datasheet: Standby rating 2,750 kVA"
+          },
+          "prime_power_kw": {
+            "value": 2000.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz datasheet: Prime rating 2,500 kVA / 2,000 kW"
+          },
+          "fuel_rate_100pct_lph": {
+            "value": 524.0,
+            "unit": "L/h",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz datasheet: 100% standby fuel consumption 524 L/hr (138.3 US gph)"
+          },
+          "dry_mass_kg": {
+            "value": 18549.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz open-set dry weight = 18,549 kg"
+          },
+          "wet_mass_kg": {
+            "value": 19145.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "Cummins C2750 D5 50 Hz open-set wet weight = 19,145 kg"
+          }
+        }
+      }
+    }
+  }
+}

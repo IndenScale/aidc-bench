@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "root": "OcpUqdBmqcCoupler",
+  "components": {
+    "OcpUqdBmqcCoupler": {
+      "ports": {
+        "inlet": {
+          "direction": "in",
+          "kind": "tcs-bmqc",
+          "max_connections": 1
+        },
+        "outlet": {
+          "direction": "out",
+          "kind": "tcs-bmqc",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0",
+        "parameters": {
+          "nominal_cv": {
+            "value": 2.6,
+            "unit": "1",
+            "state": "known",
+            "source": "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+          },
+          "max_dynamic_pressure_kpa_g": {
+            "value": 450.0,
+            "unit": "kPa",
+            "state": "known",
+            "source": "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0"
+          }
+        }
+      }
+    }
+  }
+}

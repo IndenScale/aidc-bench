@@ -1,0 +1,54 @@
+schema_version = 1
+name = "YORK YZ 磁悬浮变频离心式冷水机组 (600 RT / 2110 kW)"
+version = "0.1.0"
+entry = "york-yz-600rt-chiller.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "Johnson Controls YORK YZ Engineering Guide 公开外形包络（600 RT 级：3900x2050x2550 mm）"
+fidelity = "蒸发器/冷凝器双筒体、无油磁悬浮压缩机、机载 VSD 变频柜与法兰接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "Johnson Controls YORK YZ 工程设计指南与标准冷机端口语义"
+fidelity = "功能符号与冷冻水/冷却水进出口及变频电源接口锚点"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "Johnson Controls YORK YZ Magnetic Bearing Centrifugal Chiller Public Engineering Guide (R-1233zd(E), 600 RT)"
+fidelity = "外形尺寸、运输/运行重量、抽管检修净距（3.9 m）、DN200/DN250 接口与运行边界"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "Johnson Controls YORK YZ & AHRI 550/590 公开性能指标（满载 COP 6.1–6.6，IPLV 0.33–0.40 kW/RT）"
+fidelity = "三维稳态 COP 与容量修正模型（兼容 AIDC 中高温冷源工况）"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "Johnson Controls YORK YZ 600 RT R-1233zd(E) 磁悬浮变频冷机公开 AHRI 550/590 满载/部分负荷参考曲线"
+fidelity = "三维稳态工况查表（load_fraction x wet_bulb_c x chw_supply_c -> cop / capacity_factor）"
+
+[port_bindings.chw_in]
+geometry = "/Module/Ports/chw_in"
+symbol = "port-chw_in"
+
+[port_bindings.chw_out]
+geometry = "/Module/Ports/chw_out"
+symbol = "port-chw_out"
+
+[port_bindings.cw_in]
+geometry = "/Module/Ports/cw_in"
+symbol = "port-cw_in"
+
+[port_bindings.cw_out]
+geometry = "/Module/Ports/cw_out"
+symbol = "port-cw_out"
+
+[port_bindings.power_in]
+geometry = "/Module/Ports/power_in"
+symbol = "port-power_in"

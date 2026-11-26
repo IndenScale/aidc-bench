@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "root": "OcpCduInRow1Mw",
+  "components": {
+    "OcpCduInRow1Mw": {
+      "ports": {
+        "fws_supply": {
+          "direction": "in",
+          "kind": "fws",
+          "max_connections": 1
+        },
+        "fws_return": {
+          "direction": "out",
+          "kind": "fws",
+          "max_connections": 1
+        },
+        "tcs_supply": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "tcs_return": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "dp_ctrl": {
+          "direction": "inout",
+          "kind": "control-signal",
+          "max_connections": 4
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ACS Liquid-to-Liquid CDU Requirements Specification Rev 1.0",
+        "parameters": {
+          "rated_capacity_kw": {
+            "value": 1000.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ACS Liquid-to-Liquid CDU Requirements Specification Rev 1.0"
+          },
+          "nominal_approach_k": {
+            "value": 4.0,
+            "unit": "K",
+            "state": "known",
+            "source": "OCP ACS Liquid-to-Liquid CDU Requirements Specification Rev 1.0"
+          },
+          "nominal_flow_lpm": {
+            "value": 1000.0,
+            "unit": "L/min",
+            "state": "known",
+            "source": "OCP ACS Liquid-to-Liquid CDU Requirements Specification Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

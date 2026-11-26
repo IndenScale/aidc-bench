@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-dcf-busway-1600a-copper",
+  "state": "calibrated-reference",
+  "source": "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP DCF Overhead Busway Reference",
+    "ocp_revision": "Rev 1.0",
+    "current_a_range": [
+      400.0,
+      1600.0
+    ],
+    "power_factor_range": [
+      0.85,
+      1.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "current_a",
+      "unit": "A",
+      "values": [
+        400.0,
+        800.0,
+        1200.0,
+        1600.0
+      ]
+    },
+    {
+      "name": "power_factor",
+      "unit": "1",
+      "values": [
+        0.85,
+        0.9,
+        0.95,
+        1.0
+      ]
+    }
+  ],
+  "outputs": {
+    "power_loss_w_per_m": {
+      "unit": "W/m",
+      "min_bound": 0.0,
+      "values": [
+        [
+          13.92,
+          13.92,
+          13.92,
+          13.92
+        ],
+        [
+          55.68,
+          55.68,
+          55.68,
+          55.68
+        ],
+        [
+          125.28,
+          125.28,
+          125.28,
+          125.28
+        ],
+        [
+          222.72,
+          222.72,
+          222.72,
+          222.72
+        ]
+      ]
+    },
+    "voltage_drop_v_per_m": {
+      "unit": "V/m",
+      "min_bound": 0.0,
+      "values": [
+        [
+          0.02256,
+          0.02261,
+          0.02233,
+          0.02009
+        ],
+        [
+          0.04512,
+          0.04521,
+          0.04467,
+          0.04018
+        ],
+        [
+          0.06768,
+          0.06782,
+          0.067,
+          0.06028
+        ],
+        [
+          0.09024,
+          0.09042,
+          0.08933,
+          0.08037
+        ]
+      ]
+    }
+  },
+  "limitations": "覆盖 400–1600 A 连续工作区，短路热稳定与插接箱分断须配合开关选型复核。"
+}

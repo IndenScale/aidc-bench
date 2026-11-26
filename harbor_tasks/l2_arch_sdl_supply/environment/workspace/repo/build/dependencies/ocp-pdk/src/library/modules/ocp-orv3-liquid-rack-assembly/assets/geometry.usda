@@ -1,0 +1,92 @@
+#usda 1.0
+(
+    defaultPrim = "Module"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Module"
+{
+    def Scope "Geometry"
+    {
+        def Cube "Cabinet"
+        {
+            color3f[] primvars:displayColor = [(0.14, 0.19, 0.26)]
+            double size = 1
+            double3 xformOp:scale = (0.6, 1.2, 2.495)
+            double3 xformOp:translate = (0.3, 0.6, 1.2475)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "PowerZone"
+        {
+            color3f[] primvars:displayColor = [(0.85, 0.55, 0.18)]
+            double size = 1
+            double3 xformOp:scale = (0.54, 0.78, 0.56)
+            double3 xformOp:translate = (0.30000000000000004, 0.41000000000000003, 0.43000000000000005)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+
+        def Cube "ComputeZone"
+        {
+            color3f[] primvars:displayColor = [(0.16, 0.54, 0.74)]
+            double size = 1
+            double3 xformOp:scale = (0.54, 0.9, 1.5)
+            double3 xformOp:translate = (0.30000000000000004, 0.47000000000000003, 1.51)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Ports"
+    {
+        def Xform "power_a"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.16, 1, 2.495)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "power_b"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.44, 1, 2.495)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "tcs_supply"
+        {
+            custom double3 texsys:normal = (0, 1, 0)
+            double3 xformOp:translate = (0.46, 1.2, 2.35)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "tcs_return"
+        {
+            custom double3 texsys:normal = (0, 1, 0)
+            double3 xformOp:translate = (0.54, 1.2, 2.35)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_in"
+        {
+            custom double3 texsys:normal = (0, -1, 0)
+            double3 xformOp:translate = (0.3, 0, 1.25)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "air_out"
+        {
+            custom double3 texsys:normal = (0, 1, 0)
+            double3 xformOp:translate = (0.3, 1.2, 1.25)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "oob_mgmt"
+        {
+            custom double3 texsys:normal = (0, 0, 1)
+            double3 xformOp:translate = (0.55, 0.24, 2.495)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

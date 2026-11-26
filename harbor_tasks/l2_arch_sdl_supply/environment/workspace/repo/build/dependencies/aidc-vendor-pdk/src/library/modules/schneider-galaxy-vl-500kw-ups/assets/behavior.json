@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "schneider-galaxy-vl-500kw-modular-ups",
+  "parameters": {
+    "rated_power_kw": "kW",
+    "rated_apparent_kva": "kVA",
+    "double_conversion_eff_100pct": "1",
+    "econversion_eff_100pct": "1",
+    "populated_mass_kg": "kg"
+  },
+  "method": "主效率字段 efficiency 对应保守的双变换在线模式（96.3–97.2%），同时在 Liberty 表提供 eConversion 节能模式效率（98.9–99.5%）与散热损耗比 (1/eff - 1)。",
+  "limitations": "不包含外部电池充放电损耗、隔离变压器附件及环境温度超过 40 degC 时的降容系数。"
+}

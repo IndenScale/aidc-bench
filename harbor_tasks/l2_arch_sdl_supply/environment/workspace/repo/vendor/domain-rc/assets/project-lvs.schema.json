@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project LVS coverage v1",
+  "type": "object",
+  "required": ["kind", "schema_version", "scope", "baseline", "source", "spec_digest", "inventory_complete", "status", "counts", "conclusive_fraction", "matched_fraction", "ports", "members", "unresolved"],
+  "properties": {
+    "kind": {"const": "project-lvs-coverage"}, "schema_version": {"const": 1},
+    "scope": {"type": "string"}, "baseline": {"type": "string"}, "source": {"type": "string"},
+    "spec_digest": {"type": "string"}, "inventory_complete": {"type": "boolean"},
+    "status": {"$ref": "#/definitions/status"}, "counts": {"$ref": "#/definitions/counts"},
+    "ports": {"type": "array", "items": {"type": "object", "required": ["asset", "member", "instance", "port", "interface", "requires_connection", "binding_source", "status", "reasons"],
+      "properties": {"asset": {"type": "string"}, "member": {"type": "string"}, "instance": {"type": "string"}, "port": {"type": "string"}, "interface": {"type": "string"}, "requires_connection": {"type": "boolean"}, "status": {"$ref": "#/definitions/status"}, "reasons": {"type": "array", "items": {"type": "string"}}}}},
+    "members": {"type": "object", "additionalProperties": {"type": "object", "required": ["domain", "scope", "baseline", "counts"], "properties": {"counts": {"$ref": "#/definitions/counts"}}}},
+    "unresolved": {"type": "array"}, "conclusive_fraction": {"$ref": "#/definitions/fraction"}, "matched_fraction": {"$ref": "#/definitions/fraction"}
+  },
+  "definitions": {
+    "status": {"enum": ["pass", "fail", "indeterminate"]},
+    "fraction": {"type": ["null", "number"], "minimum": 0, "maximum": 1},
+    "counts": {"type": "object", "required": ["declared_ports", "matched", "mismatched", "indeterminate"], "additionalProperties": {"type": "integer", "minimum": 0}}
+  }
+}

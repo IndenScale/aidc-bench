@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "NVIDIA",
+  "model_number": "GB300-NVL72-SU",
+  "ocp_base_unit": "@ocp-pdk/library/modules/ocp-orv3-liquid-rack-assembly",
+  "ocp_compliance_profile": "OCP-ORv3-HPR",
+  "basis": "NVIDIA NVL72 AI Factory Enterprise RA with GB300 NVL72 and Spectrum-X (2026-03), NVIDIA DGX GB Rack Scale User Guide (2026-09), and public OEM GB300 NVL72 rack mechanical/cooling specifications",
+  "envelope_m": [0.6, 1.068, 2.495],
+  "mass_kg": 1497.0,
+  "clearances_m": {
+    "front_service_m": 1.2,
+    "rear_manifold_and_backplane_m": 1.2,
+    "top_cable_and_busway_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "power_a": {"position_m": [0.16, 0.9, 2.495], "normal": [0, 0, 1], "spec": "IEC 60309 560P6W 3-phase feed A (4x33 kW shelves, N+N)"},
+    "power_b": {"position_m": [0.44, 0.9, 2.495], "normal": [0, 0, 1], "spec": "IEC 60309 560P6W 3-phase feed B (4x33 kW shelves, N+N)"},
+    "tcs_supply": {"position_m": [0.46, 1.068, 2.35], "normal": [0, 1, 0], "spec": "Rear rack manifold supply inlet (PG25/treated water, 25-45 degC)"},
+    "tcs_return": {"position_m": [0.54, 1.068, 2.35], "normal": [0, 1, 0], "spec": "Rear rack manifold return outlet"},
+    "air_in": {"position_m": [0.3, 0.0, 1.25], "normal": [0, -1, 0], "spec": "Front perforated cold-aisle intake (~10% residual air cooling)"},
+    "air_out": {"position_m": [0.3, 1.068, 1.25], "normal": [0, 1, 0], "spec": "Rear hot-aisle exhaust"},
+    "fabric_ew_p1": {"position_m": [0.14, 0.24, 2.495], "normal": [0, 0, 1], "spec": "72x400G Compute E-W Plane 1 (18 trays x 4 rails via ConnectX-8 2x400G breakout)"},
+    "fabric_ew_p2": {"position_m": [0.28, 0.24, 2.495], "normal": [0, 0, 1], "spec": "72x400G Compute E-W Plane 2 (mirrored rail-optimized Spectrum-X fabric)"},
+    "fabric_ns_a": {"position_m": [0.4, 0.24, 2.495], "normal": [0, 0, 1], "spec": "18x400G Converged N-S Storage/In-band rail A (BlueField-3 B3240)"},
+    "fabric_ns_b": {"position_m": [0.48, 0.24, 2.495], "normal": [0, 0, 1], "spec": "18x400G Converged N-S Storage/In-band rail B (BlueField-3 B3240)"},
+    "oob_mgmt": {"position_m": [0.55, 0.24, 2.495], "normal": [0, 0, 1], "spec": "2x100G HA uplinks from 2x in-rack DC-powered SN2201 OOB switches (54x1GbE in-rack)"}
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 / NVIDIA MGX Rack Scale",
+    "compute_trays": 18,
+    "nvswitch_trays": 9,
+    "in_rack_oob_switches": 2,
+    "power_shelves": 8,
+    "internal_dc_bus_v": 50.5,
+    "nvlink_domain_bandwidth_tb_s": 130.0,
+    "leak_detection": "Integrated tray-level and rack-level liquid leakage detection"
+  },
+  "limitations": "外形尺寸、质量与液冷流阻曲线取自公开参考架构与 OEM 公开选型资料（calibrated-reference）；不同 OEM（HPE/Lenovo/Supermicro 等）的机柜高度、歧管快接头规格与电源鞭接口在施工图阶段须按中标厂商图纸复核。"
+}

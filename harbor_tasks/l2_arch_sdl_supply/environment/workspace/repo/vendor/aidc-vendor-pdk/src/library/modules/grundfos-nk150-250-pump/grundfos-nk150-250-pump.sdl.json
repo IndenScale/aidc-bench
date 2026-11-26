@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "root": "GrundfosNk150250Pump",
+  "components": {
+    "GrundfosNk150250Pump": {
+      "ports": {
+        "water_in": {
+          "direction": "in",
+          "kind": "cw",
+          "max_connections": 1
+        },
+        "water_out": {
+          "direction": "out",
+          "kind": "cw",
+          "max_connections": 1
+        },
+        "power_in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "vfd_speed_cmd": {
+          "direction": "in",
+          "kind": "control-signal",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Grundfos NK 150-250/242 1450 rpm 50 Hz Public Specification (EN 733 / ISO 5199)",
+        "parameters": {
+          "rated_flow_m3_h": {
+            "value": 350.0,
+            "unit": "m3/h",
+            "state": "known",
+            "source": "Grundfos NK 150-250/242 1450 rpm rated duty flow (~350 m3/h / 97 L/s)"
+          },
+          "rated_head_m": {
+            "value": 15.0,
+            "unit": "m",
+            "state": "known",
+            "source": "Grundfos NK 150-250/242 1450 rpm rated duty head (14.9-15.1 m)"
+          },
+          "motor_rated_p2_kw": {
+            "value": 22.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "Grundfos NK 150-250/242 4-pole IE3 motor rated power P2 = 22 kW"
+          },
+          "bep_hydraulic_efficiency": {
+            "value": 0.825,
+            "unit": "1",
+            "state": "assumed",
+            "source": "Grundfos NK 150-250 published BEP efficiency band (76%-85.5%)"
+          },
+          "inlet_dn_mm": {
+            "value": 200,
+            "unit": "mm",
+            "state": "known",
+            "source": "Grundfos NK 150-250 EN 1092-2 inlet flange DN200"
+          },
+          "outlet_dn_mm": {
+            "value": 150,
+            "unit": "mm",
+            "state": "known",
+            "source": "Grundfos NK 150-250 EN 1092-2 discharge flange DN150"
+          },
+          "unit_mass_kg": {
+            "value": 355.0,
+            "unit": "kg",
+            "state": "assumed",
+            "source": "Grundfos NK 150-250/242 complete baseframe + motor weight midpoint (330-380 kg)"
+          }
+        }
+      }
+    }
+  }
+}

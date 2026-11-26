@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-uqd04-bmqc-pair-dp",
+  "state": "calibrated-reference",
+  "source": "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP UQD / BMQC Specification",
+    "ocp_revision": "Rev 2.0",
+    "flow_lpm_range": [
+      4.0,
+      16.0
+    ],
+    "coolant_temp_c_range": [
+      25.0,
+      45.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "flow_lpm",
+      "unit": "L/min",
+      "values": [
+        4.0,
+        8.0,
+        12.0,
+        16.0
+      ]
+    },
+    {
+      "name": "coolant_temp_c",
+      "unit": "degC",
+      "values": [
+        25.0,
+        35.0,
+        45.0
+      ]
+    }
+  ],
+  "outputs": {
+    "coupler_dp_kpa": {
+      "unit": "kPa",
+      "min_bound": 0.1,
+      "values": [
+        [
+          1.65,
+          1.54,
+          1.45
+        ],
+        [
+          6.6,
+          6.16,
+          5.8
+        ],
+        [
+          14.85,
+          13.86,
+          13.05
+        ],
+        [
+          26.4,
+          24.64,
+          23.2
+        ]
+      ]
+    },
+    "cv_effective": {
+      "unit": "1",
+      "min_bound": 1.0,
+      "values": [
+        [
+          2.52,
+          2.6,
+          2.66
+        ],
+        [
+          2.52,
+          2.6,
+          2.66
+        ],
+        [
+          2.52,
+          2.6,
+          2.66
+        ],
+        [
+          2.52,
+          2.6,
+          2.66
+        ]
+      ]
+    }
+  },
+  "limitations": "仅覆盖完全锁紧导通态稳态流阻，热插拔瞬态阀芯闭合特征由动态子模型处理。"
+}

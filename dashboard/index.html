@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AIDC-Bench — Frontier AI Data Center Engineering Benchmark</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem("aidc_theme") || "light";
+    var isDark = t === "dark" || (t === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle("light", !isDark);
+    var lang = localStorage.getItem("aidc_lang") || "en";
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+  } catch (_) {}
+})();
+</script>
+  <script type="module" crossorigin src="/assets/index-DVzLwJms.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C6Veaa2Z.css">
+</head>
+<body>
+
+<div class="site-shell">
+  <header class="topbar" id="topbar"></header>
+  <main id="app" class="site-main"></main>
+  <footer class="site-footer" id="footer"></footer>
+</div>
+
+<div id="tooltip" class="tooltip hidden" role="tooltip"></div>
+
+</body>
+</html>

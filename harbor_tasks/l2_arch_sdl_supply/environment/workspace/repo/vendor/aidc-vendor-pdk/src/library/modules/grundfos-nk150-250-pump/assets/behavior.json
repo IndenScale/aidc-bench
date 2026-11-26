@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "grundfos-nk150-250-affinity-pump",
+  "parameters": {
+    "rated_flow_m3_h": "m3/h",
+    "rated_head_m": "m",
+    "motor_rated_p2_kw": "kW",
+    "bep_hydraulic_efficiency": "1",
+    "unit_mass_kg": "kg"
+  },
+  "method": "以 Grundfos NK 150-250/242 1450 rpm 额定点（350 m3/h @ 15.0 m, 关死扬程 19.8 m, BEP 82.5%）为锚点，按离心泵相似律构建 (flow_m3_h, speed_fraction) 二维 H-Q-eta-P2 Liberty 查表。",
+  "limitations": "输出为泵轴功率 shaft_power_kw，计算电网电耗时须叠加电机效率（~93% IE3）与变频器效率（~97%）；不涵盖汽蚀边界与水锤瞬态。"
+}

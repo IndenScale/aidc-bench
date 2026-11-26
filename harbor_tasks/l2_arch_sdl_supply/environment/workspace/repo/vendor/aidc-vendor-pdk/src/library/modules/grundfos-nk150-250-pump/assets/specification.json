@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Grundfos",
+  "model_number": "NK-150-250/242-22kW-4P",
+  "basis": "Grundfos NK 150-250/242 1450 rpm 50 Hz Public Specification (EN 733 / ISO 5199 / ISO 3661 baseframe)",
+  "envelope_m": [1.55, 0.65, 0.82],
+  "mass_kg": 355.0,
+  "clearances_m": {
+    "back_pull_out_service_m": 0.9,
+    "sides_inspection_m": 0.7,
+    "overhead_hoist_m": 1.0
+  },
+  "frame": {
+    "origin": "baseframe-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "water_in": {"position_m": [0.0, 0.325, 0.42], "normal": [-1, 0, 0], "spec": "EN 1092-2 PN16 DN200 horizontal end-suction inlet"},
+    "water_out": {"position_m": [0.24, 0.325, 0.82], "normal": [0, 0, 1], "spec": "EN 1092-2 PN16 DN150 vertical top discharge"},
+    "power_in": {"position_m": [1.12, 0.325, 0.6], "normal": [0, 0, 1], "spec": "400V 3-phase 50 Hz VFD-fed 22 kW 4-pole IE3 motor"},
+    "vfd_speed_cmd": {"position_m": [1.28, 0.65, 0.42], "normal": [0, 1, 0], "spec": "0-10V / Modbus VFD speed reference (60-100% envelope)"}
+  },
+  "properties": {
+    "standard": "EN 733 / ISO 5199 back pull-out long-coupled centrifugal pump",
+    "speed_rpm": 1450,
+    "rated_flow_m3_h": 350.0,
+    "rated_head_m": 15.0,
+    "motor_kw": 22.0
+  },
+  "limitations": "外形按 ISO 3661 通用底座与 IEC 180L 电机典型包络给出；实际汽蚀余量 NPSHr、叶轮切割直径及电机变频器柜体损耗须以 Grundfos Product Center 出厂选型单复核。"
+}

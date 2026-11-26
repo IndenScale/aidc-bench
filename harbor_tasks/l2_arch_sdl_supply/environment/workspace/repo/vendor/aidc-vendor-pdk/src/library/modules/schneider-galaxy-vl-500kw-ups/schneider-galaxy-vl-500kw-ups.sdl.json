@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "root": "SchneiderGalaxyVl500KwUps",
+  "components": {
+    "SchneiderGalaxyVl500KwUps": {
+      "ports": {
+        "ac_main_in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "ac_bypass_in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "ac_critical_out": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "dc_battery_bus": {
+          "direction": "inout",
+          "kind": "dc-battery",
+          "max_connections": 1
+        },
+        "air_in": {
+          "direction": "in",
+          "kind": "room-air",
+          "max_connections": 1
+        },
+        "air_out": {
+          "direction": "out",
+          "kind": "room-air",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Schneider Electric Galaxy VL 200-500 kW Datasheet & ENERGY STAR Public Certified Data",
+        "parameters": {
+          "rated_power_kw": {
+            "value": 500.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "Schneider Electric Galaxy VL 500 kW rated active power (PF = 1.0)"
+          },
+          "rated_apparent_kva": {
+            "value": 500.0,
+            "unit": "kVA",
+            "state": "known",
+            "source": "Schneider Electric Galaxy VL 500 kVA unity power factor rating"
+          },
+          "nominal_voltage_v": {
+            "value": 400.0,
+            "unit": "V",
+            "state": "known",
+            "source": "Schneider Electric Galaxy VL 400V 3-phase IEC configuration"
+          },
+          "double_conversion_eff_100pct": {
+            "value": 0.972,
+            "unit": "1",
+            "state": "known",
+            "source": "ENERGY STAR public certified Galaxy VL double-conversion efficiency at 100% load (97.2%)"
+          },
+          "econversion_eff_100pct": {
+            "value": 0.995,
+            "unit": "1",
+            "state": "known",
+            "source": "ENERGY STAR public certified Galaxy VL eConversion efficiency at 100% load (99.5%)"
+          },
+          "populated_mass_kg": {
+            "value": 778.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "Schneider Electric Galaxy VL 500 kW fully populated cabinet mass (778 kg / 1,715 lbs)"
+          }
+        }
+      }
+    }
+  }
+}

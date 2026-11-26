@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "domain": "orv3-rack-mechanical",
+  "spec": "OCP Open Rack v3 Base & HPR Specification",
+  "revision": "Rev 1.0",
+  "rules": {
+    "OCP-ORV3-MECH-001": {
+      "clause": "ORv3 §4.1 Rack Width, 21-inch Rail & 48 mm OU Pitch",
+      "title": "ORv3 机柜外部宽度与 21 英寸 / 48 mm OU 模数",
+      "limits": {
+        "rack_width_m": 0.6,
+        "width_tolerance_m": 0.005,
+        "mounting_width_in": 21,
+        "unit_pitch_m": 0.048,
+        "pitch_tolerance_m": 0.0005
+      },
+      "quote": "Open Rack v3 outer cabinet width is nominally 600 mm with 21-inch (538 mm) internal equipment bay and 48 mm OpenU (OU) vertical pitch."
+    },
+    "OCP-ORV3-MECH-002": {
+      "clause": "ORv3 §4.3 Static Load Rating & Hall Floor Bearing",
+      "title": "ORv3 整机柜满载质量及机房等效楼板荷载上限",
+      "limits": {
+        "base_max_mass_kg": 1600.0,
+        "hpr_max_mass_kg": 1800.0,
+        "default_aisle_footprint_multiplier": 2.5
+      },
+      "quote": "Standard ORv3 supports up to 1600 kg static load; ORv3 HPR supports up to 1800 kg, subject to hall distributed floor-load limit."
+    },
+    "OCP-ORV3-MECH-003": {
+      "clause": "ORv3 §4.5 Front & Rear Service Clearances",
+      "title": "ORv3 前部维护与后部盲插母排/歧管检修净距",
+      "limits": {
+        "min_front_clearance_m": 1.2,
+        "min_rear_clearance_m": 1.2
+      },
+      "quote": "Provide minimum 1.2 m front service aisle for 21-inch tray extraction and 1.2 m rear aisle for busbar/manifold maintenance."
+    },
+    "OCP-ORV3-MECH-004": {
+      "clause": "ORv3 §4.6 Overhead Busway & Manifold Tie-In Clearance",
+      "title": "ORv3 顶部母线插接与液冷总管检修净空",
+      "limits": {
+        "min_top_clearance_m": 0.6
+      },
+      "quote": "Maintain at least 0.6 m overhead clearance above the rack top plane for busway whips, blind-mate headers and optical trays."
+    }
+  }
+}

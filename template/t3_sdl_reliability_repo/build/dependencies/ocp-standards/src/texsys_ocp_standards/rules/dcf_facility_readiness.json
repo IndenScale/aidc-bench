@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "domain": "dcf-facility-readiness",
+  "spec": "OCP Data Center Facility (DCF) Interoperability & Governance",
+  "revision": "Rev 1.0",
+  "rules": {
+    "OCP-DCF-001": {
+      "clause": "OCP DCF §3.1 Derived Module Port Compatibility",
+      "title": "衍生模块与 OCP 标准单元端口签名兼容性",
+      "limits": {
+        "require_exact_kind_and_direction": true
+      },
+      "quote": "Any vendor or project cell declaring an ocp_base_unit must preserve compatible external port kinds and directions."
+    },
+    "OCP-DCF-002": {
+      "clause": "OCP DCF §5.1 Facility PUE Target & Residual Air Heat Budget",
+      "title": "设施能效目标（PUE）与残余风冷热负荷预算",
+      "limits": {
+        "max_aidc_pue": 1.35
+      },
+      "quote": "Liquid-cooled OCP facilities must declare an enforceable PUE envelope (<= 1.35) and explicit residual air heat rejection capacity."
+    },
+    "OCP-DCF-003": {
+      "clause": "OCP DCF §7.1 Provenance & Non-Extrapolation Governance",
+      "title": "数据来源状态声明与越界禁止静默通过治理",
+      "limits": {
+        "allowed_states": ["known", "calibrated-reference", "assumed"]
+      },
+      "quote": "All specifications and Liberty tables must declare explicit provenance state; missing or out-of-envelope values yield indeterminate."
+    }
+  }
+}

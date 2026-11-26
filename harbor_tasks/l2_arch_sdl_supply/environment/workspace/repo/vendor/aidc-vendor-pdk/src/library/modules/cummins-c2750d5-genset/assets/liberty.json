@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "cummins-c2750d5-50hz-standby",
+  "state": "calibrated-reference",
+  "source": "Cummins Power Generation C2750 D5 50 Hz Specification Sheet (Standby 2200 kW: 25%=163, 50%=284, 75%=404, 100%=524 L/h)",
+  "uncertainty_pct": 3.0,
+  "operating_envelope": {
+    "standby_kw": 2200.0,
+    "prime_kw": 2000.0,
+    "frequency_hz": 50.0,
+    "engine": "QSK78-G9"
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [0.25, 0.5, 0.75, 1.0]
+    }
+  ],
+  "outputs": {
+    "fuel_rate_lph": {
+      "unit": "L/h",
+      "min_bound": 100.0,
+      "values": [163.0, 284.0, 404.0, 524.0]
+    },
+    "electric_output_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [550.0, 1100.0, 1650.0, 2200.0]
+    },
+    "specific_fuel_l_per_kwh": {
+      "unit": "L/kWh",
+      "min_bound": 0.18,
+      "values": [0.29636, 0.25818, 0.24485, 0.23818]
+    }
+  },
+  "limitations": "对应 ISO 8528 备用工况 25–100% 负荷率；严禁长期低于 25% 轻载运行（湿堆风险），低于 0.25 负荷查询严格返回 indeterminate。"
+}

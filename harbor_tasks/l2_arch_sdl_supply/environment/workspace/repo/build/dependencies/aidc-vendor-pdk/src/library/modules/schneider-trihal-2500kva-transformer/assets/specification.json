@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "Schneider Electric",
+  "model_number": "Trihal-2500kVA-Tier2-IP31",
+  "basis": "Schneider Electric Trihal Cast-Resin Dry-Type Transformer Public Catalogue & EU Regulation 2019/1783 (EcoDesign Tier 2, IEC 60076-11)",
+  "envelope_m": [2.55, 1.5, 2.75],
+  "mass_kg": 6200.0,
+  "clearances_m": {
+    "front_access_m": 1.2,
+    "sides_ventilation_m": 0.8,
+    "top_busduct_and_plume_m": 1.0
+  },
+  "frame": {
+    "origin": "enclosure-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "mv_in": {"position_m": [0.0, 0.75, 1.85], "normal": [-1, 0, 0], "spec": "10/20 kV 3-phase MV cable entry (Um <= 24 kV, +/-2x2.5% tap)"},
+    "lv_out": {"position_m": [1.85, 0.75, 2.75], "normal": [0, 0, 1], "spec": "400V 3-phase 3,608 A LV busduct top flange (Dyn11)"},
+    "pe_ground": {"position_m": [0.35, 1.5, 0.15], "normal": [0, 1, 0], "spec": "Neutral and enclosure protective earthing lug"},
+    "air_in": {"position_m": [1.275, 0.0, 0.4], "normal": [0, -1, 0], "spec": "AN (Air Natural) lower louver intake"},
+    "air_out": {"position_m": [1.275, 0.75, 2.75], "normal": [0, 0, 1], "spec": "AN natural convection top exhaust"}
+  },
+  "properties": {
+    "cooling_class": "AN (Air Natural, optional AF +25% forced air)",
+    "vector_group": "Dyn11",
+    "environmental_climatic_fire_class": "E4 / C2 / F1 (IEC 60076-11)",
+    "partial_discharge_pc": "<= 10 pC at 1.3 Um"
+  },
+  "limitations": "损耗按 EU 2019/1783 Tier 2 强制上限（0% 正偏差）精确标定；IP31 外壳尺寸与质量取公开系列中值，具体铝/铜绕组与一次电压等级须在施工图核对厂家出厂总装图。"
+}

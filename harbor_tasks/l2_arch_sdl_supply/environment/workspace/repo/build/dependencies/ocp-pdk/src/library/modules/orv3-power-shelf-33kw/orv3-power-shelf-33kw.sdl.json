@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "root": "OcpOrv3PowerShelf33Kw",
+  "components": {
+    "OcpOrv3PowerShelf33Kw": {
+      "ports": {
+        "ac_in_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "ac_in_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "dc_out": {
+          "direction": "out",
+          "kind": "dc-48v-busbar",
+          "max_connections": 1
+        },
+        "mgmt": {
+          "direction": "inout",
+          "kind": "signal",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0",
+        "parameters": {
+          "rated_dc_kw": {
+            "value": 33.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+          },
+          "output_voltage_v": {
+            "value": 50.0,
+            "unit": "V",
+            "state": "known",
+            "source": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+          },
+          "psu_count": {
+            "value": 6.0,
+            "unit": "count",
+            "state": "known",
+            "source": "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "nvidia-gb300-nvl72-142kw-rack",
+  "state": "calibrated-reference",
+  "source": "NVIDIA NVL72 AI Factory Enterprise RA (2026-03, 142 kW max rack) & OEM public GB200/GB300 NVL72 liquid cooling curve (25-45 degC: 59/71/89/119/177 LPM; 2.3/3.2/4.9/8.5/18.4 psi)",
+  "uncertainty_pct": 4.0,
+  "operating_envelope": {
+    "nominal_rack_power_kw": 142.0,
+    "peak_edpp_power_kw": 155.0,
+    "busway_provision_kw": 192.0,
+    "liquid_cooling_fraction": 0.9,
+    "air_cooling_fraction": 0.1,
+    "coolant": "PG25-water",
+    "tcs_supply_range_c": [25.0, 45.0]
+  },
+  "axes": [
+    {
+      "name": "load_fraction",
+      "unit": "1",
+      "values": [0.25, 0.5, 0.75, 1.0]
+    },
+    {
+      "name": "tcs_supply_c",
+      "unit": "degC",
+      "values": [25.0, 30.0, 35.0, 40.0, 45.0]
+    }
+  ],
+  "outputs": {
+    "required_flow_lpm": {
+      "unit": "L/min",
+      "min_bound": 20.0,
+      "values": [
+        [23.6, 28.4, 35.6, 47.6, 70.8],
+        [33.04, 39.76, 49.84, 66.64, 99.12],
+        [46.02, 55.38, 69.42, 92.82, 138.06],
+        [59.0, 71.0, 89.0, 119.0, 177.0]
+      ]
+    },
+    "rack_dp_kpa": {
+      "unit": "kPa",
+      "min_bound": 1.0,
+      "values": [
+        [2.54, 3.53, 5.4, 9.38, 20.3],
+        [4.97, 6.92, 10.59, 18.38, 39.78],
+        [9.65, 13.42, 20.55, 35.66, 77.18],
+        [15.86, 22.06, 33.78, 58.61, 126.86]
+      ]
+    },
+    "liquid_heat_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [38.34, 38.34, 38.34, 38.34, 38.34],
+        [69.03, 69.03, 69.03, 69.03, 69.03],
+        [98.37, 98.37, 98.37, 98.37, 98.37],
+        [127.8, 127.8, 127.8, 127.8, 127.8]
+      ]
+    },
+    "air_heat_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [4.26, 4.26, 4.26, 4.26, 4.26],
+        [7.67, 7.67, 7.67, 7.67, 7.67],
+        [10.93, 10.93, 10.93, 10.93, 10.93],
+        [14.2, 14.2, 14.2, 14.2, 14.2]
+      ]
+    },
+    "total_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.0,
+      "values": [
+        [42.6, 42.6, 42.6, 42.6, 42.6],
+        [76.7, 76.7, 76.7, 76.7, 76.7],
+        [109.3, 109.3, 109.3, 109.3, 109.3],
+        [142.0, 142.0, 142.0, 142.0, 142.0]
+      ]
+    }
+  },
+  "limitations": "满载点位直接对齐公开 25–45 degC 直冷流量与压降数据；低负荷按 40% 最低流量下限与 Q^2 压降律插值。供液温度超过 45 degC 或低于 25 degC（存在结露风险）时严禁外推。"
+}

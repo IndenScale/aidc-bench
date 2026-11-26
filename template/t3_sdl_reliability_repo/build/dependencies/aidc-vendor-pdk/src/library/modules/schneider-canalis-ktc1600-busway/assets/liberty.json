@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "schneider-canalis-ktc1600-cu",
+  "state": "calibrated-reference",
+  "source": "Schneider Electric Canalis KTC 1600A Copper Technical Catalogue (R1=0.029 mOhm/m, X1=0.015 mOhm/m @ 35 degC 50 Hz)",
+  "uncertainty_pct": 2.0,
+  "operating_envelope": {
+    "rated_current_a": 1600.0,
+    "ambient_ref_c": 35.0,
+    "frequency_hz": 50.0,
+    "icw_1s_ka": 65.0
+  },
+  "axes": [
+    {
+      "name": "current_a",
+      "unit": "A",
+      "values": [400.0, 800.0, 1200.0, 1600.0]
+    },
+    {
+      "name": "power_factor",
+      "unit": "1",
+      "values": [0.85, 0.9, 0.95, 1.0]
+    }
+  ],
+  "outputs": {
+    "voltage_drop_v_per_m": {
+      "unit": "V/m",
+      "min_bound": 0.0,
+      "values": [
+        [0.02255, 0.02261, 0.02233, 0.02009],
+        [0.04511, 0.04523, 0.04466, 0.04018],
+        [0.06766, 0.06784, 0.067, 0.06028],
+        [0.09021, 0.09045, 0.08933, 0.08037]
+      ]
+    },
+    "power_loss_w_per_m": {
+      "unit": "W/m",
+      "min_bound": 0.0,
+      "values": [
+        [13.92, 13.92, 13.92, 13.92],
+        [55.68, 55.68, 55.68, 55.68],
+        [125.28, 125.28, 125.28, 125.28],
+        [222.72, 222.72, 222.72, 222.72]
+      ]
+    }
+  },
+  "limitations": "对应集中末端负载单位米压降与损耗；沿线均匀插接多台机柜时，实际压降与损耗须在 PEX/综合器中按分布系数折算。"
+}

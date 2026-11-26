@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "nvidia-sn2201-oob-switch",
+  "parameters": {
+    "rj45_1g_port_count": "count",
+    "qsfp28_100g_uplink_count": "count",
+    "typical_power_kw": "kW",
+    "rack_units": "U",
+    "chassis_mass_kg": "kg"
+  },
+  "method": "按带外端口占用比例在 82–100 W 区间插值计算稳态电耗与风侧显热。",
+  "limitations": "未单独区分 100G 上联采用无源 DAC 与有源光模块导致的约 8–12 W 细微差异。"
+}

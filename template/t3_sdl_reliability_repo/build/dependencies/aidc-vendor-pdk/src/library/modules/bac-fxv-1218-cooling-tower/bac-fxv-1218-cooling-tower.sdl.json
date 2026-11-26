@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "root": "BacFxv1218CoolingTower",
+  "components": {
+    "BacFxv1218CoolingTower": {
+      "ports": {
+        "cw_in": {
+          "direction": "in",
+          "kind": "cw",
+          "max_connections": 1
+        },
+        "cw_out": {
+          "direction": "out",
+          "kind": "cw",
+          "max_connections": 1
+        },
+        "makeup_in": {
+          "direction": "in",
+          "kind": "makeup-water",
+          "max_connections": 1
+        },
+        "drain_out": {
+          "direction": "out",
+          "kind": "drain",
+          "max_connections": 1
+        },
+        "power_in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Baltimore Aircoil Company FXV Closed Circuit Cooling Tower Product & Application Handbook",
+        "parameters": {
+          "nominal_heat_rejection_kw": {
+            "value": 1400.0,
+            "unit": "kW",
+            "state": "assumed",
+            "source": "BAC FXV-1218 single-cell representative AIDC condenser heat rejection duty (1,400 kW @ 26 degC WB)"
+          },
+          "fan_motor_total_kw": {
+            "value": 22.4,
+            "unit": "kW",
+            "state": "known",
+            "source": "BAC FXV-1218 two fan motors driving three axial fans (30 HP / 22.4 kW class)"
+          },
+          "spray_pump_kw": {
+            "value": 5.5,
+            "unit": "kW",
+            "state": "assumed",
+            "source": "BAC FXV-1218 integral spray water pump typical power"
+          },
+          "coil_connection_dn_mm": {
+            "value": 200,
+            "unit": "mm",
+            "state": "known",
+            "source": "BAC FXV-1218 catalog 8-inch (DN200) riser/process connection"
+          },
+          "shipping_mass_kg": {
+            "value": 6100.0,
+            "unit": "kg",
+            "state": "assumed",
+            "source": "BAC FXV-1218 public shipping weight range (~12,000-14,000+ lbs / ~6,100 kg)"
+          },
+          "operating_mass_kg": {
+            "value": 10800.0,
+            "unit": "kg",
+            "state": "assumed",
+            "source": "BAC FXV-1218 estimated operating mass including cold-water basin and coil water"
+          }
+        }
+      }
+    }
+  }
+}

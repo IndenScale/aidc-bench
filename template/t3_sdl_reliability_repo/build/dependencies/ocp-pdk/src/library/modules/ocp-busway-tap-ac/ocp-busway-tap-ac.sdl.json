@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "root": "OcpBuswayTapAc",
+  "components": {
+    "OcpBuswayTapAc": {
+      "ports": {
+        "in": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "out": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_1": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_2": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_3": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "tap_4": {
+          "direction": "out",
+          "kind": "ac-power",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0",
+        "parameters": {
+          "rated_current_a": {
+            "value": 1600.0,
+            "unit": "A",
+            "state": "known",
+            "source": "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+          },
+          "segment_length_m": {
+            "value": 3.0,
+            "unit": "m",
+            "state": "known",
+            "source": "OCP Data Center Facility (DCF) Overhead Busway Distribution Reference Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

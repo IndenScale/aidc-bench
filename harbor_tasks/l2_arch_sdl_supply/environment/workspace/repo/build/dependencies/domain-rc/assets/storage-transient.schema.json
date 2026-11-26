@@ -1,0 +1,868 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Sensible cooling storage network, inventory, operating sequences and study v1",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/inventory"
+    },
+    {
+      "$ref": "#/definitions/schedule"
+    },
+    {
+      "$ref": "#/definitions/network"
+    },
+    {
+      "$ref": "#/definitions/study"
+    }
+  ],
+  "definitions": {
+    "tank": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minimum_level_m": {
+          "type": "number"
+        },
+        "initial_level_m": {
+          "type": "number"
+        },
+        "usable_delta_k": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "usable_fraction": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "heat_capacity_kwh_m3_k": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_discharge_kw": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "source",
+        "minimum_level_m",
+        "initial_level_m",
+        "usable_delta_k",
+        "usable_fraction",
+        "heat_capacity_kwh_m3_k",
+        "max_discharge_kw"
+      ]
+    },
+    "terminal": {
+      "type": "object",
+      "properties": {
+        "load_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "other_delivered_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "dispatch_fraction": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      },
+      "required": [
+        "load_kw",
+        "dispatch_fraction"
+      ]
+    },
+    "interval": {
+      "type": "object",
+      "properties": {
+        "start_min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "end_min": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unavailable_segments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "available_discharge_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "terminals": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/terminal"
+          }
+        }
+      },
+      "required": [
+        "start_min",
+        "end_min",
+        "source",
+        "unavailable_segments",
+        "available_discharge_kw",
+        "terminals"
+      ]
+    },
+    "path": {
+      "type": "object",
+      "properties": {
+        "supply": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "return": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "available": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "supply",
+        "return",
+        "available"
+      ]
+    },
+    "step": {
+      "type": "object",
+      "properties": {
+        "requested_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "available_kw": {
+          "type": "number",
+          "minimum": 0
+        },
+        "discharged_kwh": {
+          "type": "number",
+          "minimum": 0
+        },
+        "depleted_at_min": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "assigned_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      },
+      "required": [
+        "requested_kw",
+        "available_kw",
+        "discharged_kwh",
+        "depleted_at_min",
+        "assigned_kw"
+      ]
+    },
+    "trace": {
+      "type": "object",
+      "properties": {
+        "start_min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "end_min": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gross_load_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "storage_demand_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "other_delivered_kw": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "initial_kwh": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "final_kwh": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "stores": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/step"
+          }
+        },
+        "unserved_kwh": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "transfer_paths": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/definitions/path"
+            }
+          }
+        },
+        "unavailable_segments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "energy_balance_residual_kwh": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "start_min",
+        "end_min",
+        "source",
+        "gross_load_kw",
+        "storage_demand_kw",
+        "other_delivered_kw",
+        "initial_kwh",
+        "final_kwh",
+        "stores",
+        "unserved_kwh",
+        "transfer_paths",
+        "unavailable_segments",
+        "energy_balance_residual_kwh"
+      ]
+    },
+    "track": {
+      "type": "object",
+      "properties": {
+        "confirmed_through_min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "first_shortfall_min": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "shortfall_by_min": {
+          "description": "Latest possible onset of the first shortfall, including evidence after an unresolved interval.",
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "shortfall_witness": {
+          "type": ["object", "null"],
+          "required": ["by_min", "reason", "tank", "source", "interval_min"],
+          "properties": {
+            "by_min": {"type": "number", "minimum": 0},
+            "reason": {"enum": ["no-round-trip", "discharge-power", "stored-energy"]},
+            "tank": {"type": "string", "minLength": 1},
+            "source": {"type": "string", "minLength": 1},
+            "interval_min": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number", "minimum": 0}},
+            "no_charge_source": {"type": "string", "pattern": "\\S"}
+          }
+        },
+        "remaining_kwh": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "intervals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/trace"
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "confirmed_through_min",
+        "first_shortfall_min",
+        "remaining_kwh",
+        "intervals",
+        "unresolved"
+      ]
+    },
+    "inventory": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "storage-inventory"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "tanks": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/tank"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "scope",
+        "frame",
+        "baseline",
+        "complete",
+        "tanks"
+      ]
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "cooling-sequences"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "no_charge_source": {
+                "type": "string", "pattern": "\\S",
+                "description": "Case-wide evidence that none of the modeled tanks can recharge, including during record gaps."
+              },
+              "intervals": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/interval"
+                }
+              }
+            },
+            "required": [
+              "source",
+              "intervals"
+            ]
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "scope",
+        "frame",
+        "baseline",
+        "cases"
+      ]
+    },
+    "network": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "domain-netlist"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "thermal"
+        },
+        "origin": {
+          "const": "physical"
+        },
+        "granularity": {
+          "const": "port"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          }
+        },
+        "ports": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "instance": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interface": {
+                "const": "sensible-cooling"
+              }
+            },
+            "required": [
+              "instance",
+              "interface"
+            ]
+          }
+        },
+        "connections": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "ports": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "supply": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "return": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "ports",
+              "evidence",
+              "supply",
+              "return"
+            ]
+          }
+        },
+        "stores": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bounds_m": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "required": [
+              "kind",
+              "prim",
+              "bounds_m"
+            ]
+          }
+        },
+        "terminals": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "bounds_m": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "required": [
+              "kind",
+              "prim",
+              "bounds_m"
+            ]
+          }
+        },
+        "junctions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "hydraulic_topology": {
+          "type": "object",
+          "properties": {
+            "supply": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "return": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "required": [
+            "supply",
+            "return"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "scope",
+        "frame",
+        "baseline",
+        "domain",
+        "origin",
+        "granularity",
+        "complete",
+        "scene_digest",
+        "source_digest",
+        "unresolved",
+        "ports",
+        "connections",
+        "stores",
+        "terminals",
+        "junctions",
+        "hydraulic_topology"
+      ]
+    },
+    "study": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "storage-transient"
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "baseline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "domain": {
+          "const": "thermal"
+        },
+        "scene_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "water_netlist_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "network_digest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "stores": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "object": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "volume_m3": {
+                "type": "number",
+                "minimum": 0
+              },
+              "usable_delta_k": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "usable_fraction": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "energy_kwh": {
+                "type": "number",
+                "minimum": 0
+              },
+              "max_discharge_kw": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "object",
+              "prim",
+              "source",
+              "volume_m3",
+              "usable_delta_k",
+              "usable_fraction",
+              "energy_kwh",
+              "max_discharge_kw"
+            ]
+          }
+        },
+        "terminals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "cases": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "case_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+              "service": {
+                "$ref": "#/definitions/track"
+              },
+              "storage_only": {
+                "$ref": "#/definitions/track"
+              }
+            },
+            "required": [
+              "source",
+              "service",
+              "storage_only"
+            ]
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "scope",
+        "frame",
+        "baseline",
+        "domain",
+        "scene_digest",
+        "water_netlist_digest",
+        "network_digest",
+        "complete",
+        "unresolved",
+        "stores",
+        "terminals",
+        "cases"
+      ]
+    }
+  }
+}

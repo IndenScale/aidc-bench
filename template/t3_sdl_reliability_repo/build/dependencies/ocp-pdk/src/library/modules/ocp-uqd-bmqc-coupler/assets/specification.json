@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "OCP-UQD-BMQC-COUPLER",
+  "ocp_spec": "OCP UQD / BMQC Specification",
+  "ocp_revision": "Rev 2.0",
+  "basis": "OCP Universal Quick Disconnect (UQD / BMQC) Specification Rev 2.0",
+  "envelope_m": [
+    0.04,
+    0.08,
+    0.04
+  ],
+  "mass_kg": 0.35,
+  "clearances_m": {
+    "blind_mate_float_mm": 2.0
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "inlet": {
+      "position_m": [
+        0.02,
+        0.0,
+        0.02
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Manifold-side BMQC socket"
+    },
+    "outlet": {
+      "position_m": [
+        0.02,
+        0.08,
+        0.02
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Tray-side BMQC plug"
+    }
+  },
+  "properties": {
+    "coupler_family": "UQD04 / BMQC",
+    "nominal_cv": 2.6,
+    "max_dynamic_pressure_kpa_g": 450.0,
+    "spillage_ml_per_disconnect": 0.05
+  },
+  "limitations": "仅覆盖完全锁紧导通态稳态流阻，热插拔瞬态阀芯闭合特征由动态子模型处理。"
+}

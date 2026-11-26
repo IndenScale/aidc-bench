@@ -1,0 +1,58 @@
+schema_version = 1
+name = "OCP DCF 液冷模块化 IT Pod (4x ORv3 + 2x CDU)"
+version = "0.1.0"
+entry = "ocp-dcf-modular-it-pod.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+fidelity = "OCP DCF 4 柜液冷模块化 Pod 整体包络与接口位姿"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+fidelity = "模块化 IT Pod 工程符号与设施水电接口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+fidelity = "Pod 级 N+1 CDU 与 2N 母线配置边界"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+fidelity = "Pod 级聚合热量与供电耦合模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP Data Center Facility (DCF) Liquid-Cooled Modular IT Pod Reference Rev 1.0"
+fidelity = "(负载率, FWS 供水温度) Pod 总电耗与液/风热分配表"
+
+[port_bindings.power_a]
+geometry = "/Module/Ports/power_a"
+symbol = "port-power_a"
+
+[port_bindings.power_b]
+geometry = "/Module/Ports/power_b"
+symbol = "port-power_b"
+
+[port_bindings.fws_supply]
+geometry = "/Module/Ports/fws_supply"
+symbol = "port-fws_supply"
+
+[port_bindings.fws_return]
+geometry = "/Module/Ports/fws_return"
+symbol = "port-fws_return"
+
+[port_bindings.oob_mgmt]
+geometry = "/Module/Ports/oob_mgmt"
+symbol = "port-oob_mgmt"
+
+[port_bindings.alarm]
+geometry = "/Module/Ports/alarm"
+symbol = "port-alarm"

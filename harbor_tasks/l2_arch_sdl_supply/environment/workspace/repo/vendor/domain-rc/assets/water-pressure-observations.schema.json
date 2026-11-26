@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Chilled-water steady observations, transfer trials and project acceptance plan",
+  "oneOf": [
+    {"$ref": "#/definitions/observations"},
+    {"$ref": "#/definitions/requirements"}
+  ],
+  "definitions": {
+    "id": {"type": "string", "pattern": "\\S"},
+    "nonnegative": {"type": "number", "minimum": 0},
+    "reading": {
+      "type": "object", "required": ["value", "unit", "meter", "source", "uncertainty"],
+      "properties": {
+        "value": {"type": "number"}, "uncertainty": {"$ref": "#/definitions/nonnegative"},
+        "unit": {"enum": ["kPa", "L/s"]}, "meter": {"$ref": "#/definitions/id"}, "source": {"$ref": "#/definitions/id"},
+        "run_id": {"$ref": "#/definitions/id"}
+      }
+    },
+    "pressures": {"type": "object", "additionalProperties": {"allOf": [
+      {"$ref": "#/definitions/reading"}, {"properties": {"unit": {"const": "kPa"}}}
+    ]}},
+    "flows": {"type": "object", "additionalProperties": {"allOf": [
+      {"$ref": "#/definitions/reading"}, {"properties": {"unit": {"const": "L/s"}}}
+    ]}},
+    "point": {
+      "type": "object", "required": ["asset", "quantity"],
+      "properties": {"asset": {"$ref": "#/definitions/id"}},
+      "oneOf": [
+        {"properties": {"quantity": {"const": "terminal-dp"}, "unit": {"const": "kPa"},
+                        "direction": {"enum": [["supply","return"], ["return","supply"]]}}},
+        {"required": ["circuit"], "properties": {"quantity": {"const": "pipe-flow"}, "unit": {"const": "L/s"},
+          "circuit": {"enum": ["supply", "return"]}, "direction": {"type": "array", "items": {"$ref": "#/definitions/id"},
+          "minItems": 2, "maxItems": 2, "uniqueItems": true}}}
+      ]
+    },
+    "observations": {
+      "type": "object", "required": ["schema_version", "kind", "scene_digest", "water_netlist_digest",
+        "schedule_digest", "scope", "frame", "baseline"],
+      "anyOf": [{"required": ["cases"]}, {"required": ["transfers"]}],
+      "properties": {
+        "kind": {"const": "water-pressure-observations"}, "schema_version": {"const": 1},
+        "scene_digest": {"$ref": "#/definitions/id"}, "water_netlist_digest": {"$ref": "#/definitions/id"},
+        "schedule_digest": {"$ref": "#/definitions/id"}, "scope": {"$ref": "#/definitions/id"},
+        "baseline": {"$ref": "#/definitions/id"}, "frame": {"$ref": "#/definitions/id"},
+        "transfers": {"type": "object", "additionalProperties": {"$ref": "#/definitions/transfer"}},
+        "cases": {"type": "object", "additionalProperties": {"$ref": "#/definitions/snapshot"}}
+      }
+    },
+    "snapshot": {
+      "type": "object", "required": ["run_id", "steady", "source", "pressure_datum", "valve_source", "pipe_states",
+                                    "plant_supply_kpa", "plant_return_kpa", "terminal_flow_lps", "readings"],
+      "properties": {
+        "run_id": {"$ref": "#/definitions/id"}, "steady": {"type": "boolean"}, "source": {"$ref": "#/definitions/id"},
+        "pressure_datum": {"$ref": "#/definitions/id"}, "valve_source": {"$ref": "#/definitions/id"},
+        "pipe_states": {"type": "object", "additionalProperties": {"enum": ["open","closed"]}},
+        "plant_supply_kpa": {"$ref": "#/definitions/pressures"}, "plant_return_kpa": {"$ref": "#/definitions/pressures"},
+        "terminal_flow_lps": {"$ref": "#/definitions/flows"},
+        "readings": {"type": "object", "additionalProperties": {"allOf": [
+          {"$ref": "#/definitions/point"}, {"$ref": "#/definitions/reading"}, {"required": ["direction"]}
+        ]}}
+      }
+    },
+    "window": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+    "feedback": {
+      "type": "object", "required": ["source", "run_id", "clock", "time_s", "time_error_s", "pipe_states"],
+      "properties": {
+        "source": {"$ref": "#/definitions/id"}, "run_id": {"$ref": "#/definitions/id"}, "clock": {"$ref": "#/definitions/id"},
+        "time_s": {"type": "number"}, "time_error_s": {"$ref": "#/definitions/nonnegative"},
+        "pipe_states": {"type": "object", "additionalProperties": {"enum": ["open", "closed"]}}
+      }
+    },
+    "flow_trace": {
+      "type": "object", "required": ["asset", "kind", "unit", "direction", "run_id", "clock", "meter", "source",
+                                    "calibration_source", "edge_error_s", "absolute_error_lps", "intervals"],
+      "properties": {
+        "asset": {"$ref": "#/definitions/id"}, "kind": {"const": "continuous-extrema"}, "unit": {"const": "L/s"},
+        "direction": {"enum": ["supply-to-return", "return-to-supply"]},
+        "run_id": {"$ref": "#/definitions/id"}, "clock": {"$ref": "#/definitions/id"}, "meter": {"$ref": "#/definitions/id"},
+        "source": {"$ref": "#/definitions/id"}, "calibration_source": {"$ref": "#/definitions/id"},
+        "edge_error_s": {"$ref": "#/definitions/nonnegative"}, "absolute_error_lps": {"$ref": "#/definitions/nonnegative"},
+        "intervals": {"type": "array", "items": {"type": "object", "required": ["window_s"],
+          "properties": {"window_s": {"$ref": "#/definitions/window"}, "minimum_lps": {"type": ["number", "null"]},
+                         "maximum_lps": {"type": ["number", "null"]}}}}
+      }
+    },
+    "transfer": {
+      "type": "object", "required": ["case", "run_id", "clock", "source", "before", "after", "terminals"],
+      "properties": {
+        "case": {"$ref": "#/definitions/id"}, "run_id": {"$ref": "#/definitions/id"}, "clock": {"$ref": "#/definitions/id"},
+        "source": {"$ref": "#/definitions/id"}, "before": {"$ref": "#/definitions/feedback"}, "after": {"$ref": "#/definitions/feedback"},
+        "terminals": {"type": "object", "additionalProperties": {"$ref": "#/definitions/flow_trace"}}
+      }
+    },
+    "transfer_plan": {
+      "type": "object", "required": ["source", "cases"],
+      "properties": {
+        "source": {"$ref": "#/definitions/id"},
+        "cases": {"type": "object", "minProperties": 1, "additionalProperties": {
+          "type": "object", "required": ["run_id", "run_digest", "clock", "window_s", "terminals"],
+          "properties": {
+            "run_id": {"$ref": "#/definitions/id"}, "run_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+            "clock": {"$ref": "#/definitions/id"}, "window_s": {"$ref": "#/definitions/window"},
+            "terminals": {"type": "object", "minProperties": 1, "additionalProperties": {
+              "type": "object", "required": ["minimum_flow_lps", "maximum_deficit_s"],
+              "properties": {"minimum_flow_lps": {"type": "number", "exclusiveMinimum": 0},
+                             "maximum_deficit_s": {"$ref": "#/definitions/nonnegative"}}
+            }}
+          }
+        }}
+      }
+    },
+    "requirements": {
+      "type": "object", "required": ["source", "schedule_digest", "required_cases"],
+      "properties": {
+        "flow_transfers": {"$ref": "#/definitions/transfer_plan"},
+        "source": {"$ref": "#/definitions/id"}, "schedule_digest": {"$ref": "#/definitions/id"},
+        "required_cases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/definitions/id"}},
+        "field_comparison": {
+          "type": "object", "required": ["source", "boundary_tolerance_lps", "boundary_tolerance_kpa", "cases"],
+          "properties": {
+            "source": {"$ref": "#/definitions/id"}, "boundary_tolerance_lps": {"$ref": "#/definitions/nonnegative"},
+            "boundary_tolerance_kpa": {"$ref": "#/definitions/nonnegative"},
+            "cases": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "object", "minProperties": 1,
+              "additionalProperties": {"allOf": [{"$ref": "#/definitions/point"}, {"required": ["absolute_tolerance"],
+                "properties": {"absolute_tolerance": {"$ref": "#/definitions/nonnegative"}}}]}}}
+          }
+        }
+      }
+    }
+  }
+}

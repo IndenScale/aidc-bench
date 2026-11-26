@@ -1,0 +1,21 @@
+name: Web Dashboard CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install web dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
+      - name: Typecheck and build dashboard
+        working-directory: web
+        run: bun run build

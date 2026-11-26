@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "bac-fxv-1218-1400kw-wet",
+  "state": "calibrated-reference",
+  "source": "BAC FXV-1218 Closed Circuit Cooling Tower public handbook (22.4 kW fan affinity cube law & CTI STD-201 wet-mode thermal envelope)",
+  "uncertainty_pct": 5.0,
+  "operating_envelope": {
+    "nominal_heat_rejection_kw": 1400.0,
+    "rated_fan_kw": 22.4,
+    "spray_pump_kw": 5.5,
+    "wet_bulb_range_c": [12.0, 28.0]
+  },
+  "axes": [
+    {
+      "name": "fan_speed_fraction",
+      "unit": "1",
+      "values": [0.3, 0.5, 0.75, 1.0]
+    },
+    {
+      "name": "wet_bulb_c",
+      "unit": "degC",
+      "values": [12.0, 20.0, 26.0, 28.0]
+    }
+  ],
+  "outputs": {
+    "heat_rejection_kw": {
+      "unit": "kW",
+      "min_bound": 200.0,
+      "values": [
+        [720.0, 610.0, 520.0, 480.0],
+        [1080.0, 920.0, 790.0, 730.0],
+        [1520.0, 1290.0, 1110.0, 1020.0],
+        [1920.0, 1630.0, 1400.0, 1290.0]
+      ]
+    },
+    "fan_power_kw": {
+      "unit": "kW",
+      "min_bound": 0.4,
+      "values": [
+        [0.6, 0.6, 0.6, 0.6],
+        [2.8, 2.8, 2.8, 2.8],
+        [9.45, 9.45, 9.45, 9.45],
+        [22.4, 22.4, 22.4, 22.4]
+      ]
+    },
+    "leaving_water_c": {
+      "unit": "degC",
+      "min_bound": 14.0,
+      "values": [
+        [19.5, 26.8, 32.4, 34.3],
+        [17.8, 25.2, 30.8, 32.7],
+        [16.4, 24.0, 29.8, 31.7],
+        [15.6, 23.4, 29.5, 31.5]
+      ]
+    },
+    "evaporation_m3_per_h": {
+      "unit": "m3/h",
+      "min_bound": 0.2,
+      "values": [
+        [1.09, 0.93, 0.79, 0.73],
+        [1.64, 1.4, 1.2, 1.11],
+        [2.31, 1.96, 1.69, 1.55],
+        [2.92, 2.48, 2.13, 1.96]
+      ]
+    }
+  },
+  "limitations": "仅覆盖湿式运行 12–28 degC 湿球温度与 30–100% 变频转速包络；严寒干冷模式及结冰保护切换逻辑需在控制模型中另行约束。"
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-hpr-mechanical-frame",
+  "parameters": {
+    "max_static_load_kg": "kg",
+    "unit_pitch_m": "m",
+    "total_ou": "OU"
+  },
+  "method": "定义 ORv3 HPR 强化框架（1800 kg 静态承重）及顶部/后部液冷歧管与大电流直流母排安装边界。",
+  "limitations": "依据 OCP ORv3 HPR Rev 1.0 标定；不同液冷超节点 OEM 对总高 2278–2495 mm 的微调须在施工图核对。"
+}

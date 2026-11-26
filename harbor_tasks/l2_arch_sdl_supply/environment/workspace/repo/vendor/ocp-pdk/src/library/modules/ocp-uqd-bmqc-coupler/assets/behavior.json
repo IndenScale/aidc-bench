@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-uqd-bmqc-hydraulic-valve",
+  "parameters": {
+    "nominal_cv": "1",
+    "max_dynamic_pressure_kpa_g": "kPa"
+  },
+  "method": "依据流通系数 Cv 计算单对供回盲插快接头在不同流量与 PG25 粘度下的局部压降。",
+  "limitations": "仅覆盖完全锁紧导通态稳态流阻，热插拔瞬态阀芯闭合特征由动态子模型处理。"
+}

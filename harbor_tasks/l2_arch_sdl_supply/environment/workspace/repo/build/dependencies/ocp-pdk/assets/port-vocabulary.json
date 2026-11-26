@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "description": "OCP standardized SDL port kinds used by ocp-pdk and ocp-standards",
+  "ports": {
+    "ac-power": "三相或单相交流供电接口（OCP 设施母线/机柜 PDU/UPS 端口）",
+    "dc-48v-busbar": "OCP ORv3 48V/50V 直流盲插母排汇流接口",
+    "tcs": "OCP ACS 技术冷却水（TCS）一次/机柜级供回液接口",
+    "tcs-bmqc": "OCP ACS UQD/BMQC 盲插快接支路液冷接口",
+    "fws": "OCP DCF 设施冷却水（FWS）供回水接口",
+    "room-air": "机房冷热通道残余风冷换气接口",
+    "rack-mount-ou": "OCP ORv3 21英寸（538 mm）/ 48 mm OU 导轨装配接口",
+    "ethernet-400g-plane": "AI 算力东西向高速互联平面端口",
+    "ethernet-800g-spine": "上行 Spine 交换网络端口",
+    "ethernet-100g-oob": "带外管理上行接口",
+    "signal": "电源框/BBU 管理与告警遥测信号接口",
+    "control-signal": "CDU/歧管/托盘压差闭环与安全联锁控制信号接口"
+  }
+}

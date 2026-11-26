@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "vendor": "OCP",
+  "model_number": "ORV3-HPR-FRAME-48OU",
+  "ocp_spec": "OCP Open Rack v3 HPR Specification",
+  "ocp_revision": "Rev 1.0",
+  "basis": "OCP Open Rack v3 High Power Rack (HPR) Specification Rev 1.0",
+  "envelope_m": [
+    0.6,
+    1.2,
+    2.495
+  ],
+  "mass_kg": 1800.0,
+  "clearances_m": {
+    "front_service_m": 1.2,
+    "rear_manifold_and_busbar_m": 1.2,
+    "top_cable_and_busway_m": 0.6
+  },
+  "frame": {
+    "origin": "cabinet-minimum-corner",
+    "units": "m",
+    "up_axis": "Z"
+  },
+  "interfaces": {
+    "rails_ou": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.24
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "21-inch (538 mm) HPR reinforced 48OU rails"
+    },
+    "busbar_slot": {
+      "position_m": [
+        0.3,
+        1.2,
+        1.24
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear HPR 48V/50V blind-mate busbar bay"
+    },
+    "manifold_slot": {
+      "position_m": [
+        0.52,
+        1.2,
+        1.24
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear dual-manifold liquid cooling bay"
+    },
+    "tcs_header_top": {
+      "position_m": [
+        0.48,
+        1.0,
+        2.495
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "spec": "Top overhead TCS blind-mate header entry"
+    },
+    "air_in": {
+      "position_m": [
+        0.3,
+        0.0,
+        1.1
+      ],
+      "normal": [
+        0,
+        -1,
+        0
+      ],
+      "spec": "Front cold-aisle intake"
+    },
+    "air_out": {
+      "position_m": [
+        0.3,
+        1.2,
+        1.1
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "spec": "Rear hot-aisle exhaust"
+    }
+  },
+  "properties": {
+    "form_factor": "OCP ORv3 HPR 21-inch",
+    "mounting_width_in": 21,
+    "mounting_width_mm": 538.0,
+    "total_ou": 48,
+    "unit_pitch_m": 0.048,
+    "max_static_load_kg": 1800.0,
+    "geometry_parts": {
+      "Frame": {
+        "origin_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "size_m": [
+          0.6,
+          1.2,
+          2.495
+        ],
+        "color": [
+          0.14,
+          0.19,
+          0.25
+        ]
+      },
+      "TopPlenum": {
+        "origin_m": [
+          0.02,
+          0.1,
+          2.35
+        ],
+        "size_m": [
+          0.56,
+          1.0,
+          0.145
+        ],
+        "color": [
+          0.19,
+          0.45,
+          0.62
+        ]
+      }
+    }
+  },
+  "limitations": "依据 OCP ORv3 HPR Rev 1.0 标定；不同液冷超节点 OEM 对总高 2278–2495 mm 的微调须在施工图核对。"
+}

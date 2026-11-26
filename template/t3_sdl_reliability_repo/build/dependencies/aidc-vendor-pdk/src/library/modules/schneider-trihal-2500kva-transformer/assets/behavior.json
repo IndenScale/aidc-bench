@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "iec-60076-11-cast-resin-transformer",
+  "parameters": {
+    "rated_apparent_kva": "kVA",
+    "no_load_loss_kw": "kW",
+    "load_loss_120c_kw": "kW",
+    "impedance_pct": "%",
+    "enclosure_mass_kg": "kg"
+  },
+  "method": "按 IEC 60076 标准损耗公式 P_loss(beta) = P0 + beta^2 * Pk 及近似电压调整率公式构建二维 Liberty 查表（P0=2.79 kW, Pk=19.0 kW, uk=6%）。",
+  "limitations": "假设正弦基波 50 Hz 平衡负载与 120 degC 绕组参考温升；高谐波 K 系数降容与 AF 强迫风冷超载工况未计入本稳态表。"
+}

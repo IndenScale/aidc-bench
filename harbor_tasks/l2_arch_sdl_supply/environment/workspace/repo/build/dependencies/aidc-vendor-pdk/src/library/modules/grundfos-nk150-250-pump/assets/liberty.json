@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "grundfos-nk150-250-242-1450rpm",
+  "state": "calibrated-reference",
+  "source": "Grundfos NK 150-250/242 1450 rpm 50 Hz public duty point (350 m3/h @ 15.0 m, 22 kW 4-pole, 82.5% BEP) affinity-law map",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "rated_flow_m3_h": 350.0,
+    "rated_head_m": 15.0,
+    "motor_p2_kw": 22.0,
+    "speed_range_fraction": [0.6, 1.0]
+  },
+  "axes": [
+    {
+      "name": "flow_m3_h",
+      "unit": "m3/h",
+      "values": [100.0, 200.0, 300.0, 350.0, 420.0]
+    },
+    {
+      "name": "speed_fraction",
+      "unit": "1",
+      "values": [0.6, 0.8, 1.0]
+    }
+  ],
+  "outputs": {
+    "head_m": {
+      "unit": "m",
+      "min_bound": 0.5,
+      "values": [
+        [6.74, 12.28, 19.41],
+        [5.56, 11.1, 18.23],
+        [3.6, 9.15, 16.27],
+        [2.33, 7.87, 15.0],
+        [0.5, 5.76, 12.89]
+      ]
+    },
+    "hydraulic_efficiency": {
+      "unit": "1",
+      "min_bound": 0.3,
+      "max_bound": 0.9,
+      "values": [
+        [0.7005, 0.6375, 0.5935],
+        [0.824, 0.788, 0.7417],
+        [0.7417, 0.8227, 0.8157],
+        [0.6233, 0.7966, 0.825],
+        [0.3712, 0.7116, 0.8068]
+      ]
+    },
+    "shaft_power_kw": {
+      "unit": "kW",
+      "min_bound": 1.0,
+      "values": [
+        [2.61, 5.22, 8.86],
+        [3.66, 7.64, 13.33],
+        [3.95, 9.04, 16.22],
+        [3.54, 9.37, 17.25],
+        [1.53, 9.22, 18.18]
+      ]
+    }
+  },
+  "limitations": "清水（995 kg/m3）定物性相似律工况表；变频转速低于 60% 或流量高于 420 m3/h 越界返回 indeterminate。"
+}

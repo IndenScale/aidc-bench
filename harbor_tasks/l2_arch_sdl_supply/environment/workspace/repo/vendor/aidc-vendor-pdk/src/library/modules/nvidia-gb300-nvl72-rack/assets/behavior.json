@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "nvidia-gb300-nvl72-direct-to-chip-hybrid",
+  "parameters": {
+    "nominal_rack_power_kw": "kW",
+    "peak_edpp_power_kw": "kW",
+    "busway_provision_kw": "kW",
+    "liquid_cooling_fraction": "1",
+    "loaded_mass_kg": "kg",
+    "min_tcs_supply_c": "degC",
+    "max_tcs_supply_c": "degC"
+  },
+  "method": "基于公开直冷热分配（90% 液冷 / 10% 风冷）与 OEM 公开 25–45 degC 供液温度-需求流量-机柜压降表进行稳态工况查表（详见 assets/liberty.json）；压降按流量平方规律随负荷率缩放。",
+  "limitations": "本模型覆盖单相液冷稳态包络及 50V DC 母排上游交流侧总负荷，不包含毫秒级 GPU EDPp 脉冲电流谐波、机柜内部单托盘流量不均与两相沸腾效应。"
+}

@@ -1,0 +1,50 @@
+schema_version = 1
+name = "OCP ORv3 33 kW 电源框 (6x5.5 kW PSU)"
+version = "0.1.0"
+entry = "orv3-power-shelf-33kw.sdl.json"
+
+[assets.geometry]
+kind = "geometry"
+path = "assets/geometry.usda"
+source = "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+fidelity = "21英寸 2OU 33 kW 电源框包络"
+
+[assets.symbol]
+kind = "symbol"
+path = "assets/symbol.svg"
+source = "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+fidelity = "AC-DC 电源框符号与双路进线/母排盲插端口"
+
+[assets.specification]
+kind = "specification"
+path = "assets/specification.json"
+source = "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+fidelity = "6x5.5 kW PSU 配置与 50V DC 输出界限"
+
+[assets.behavior]
+kind = "behavior"
+path = "assets/behavior.json"
+source = "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+fidelity = "AC-DC 整流效率与热耗模型"
+
+[assets.liberty]
+kind = "liberty"
+path = "assets/liberty.json"
+source = "OCP ORv3 48V Power Shelf Specification (33 kW HPR) Rev 1.0"
+fidelity = "(负载率, 输入线电压) 二维效率与损耗曲线"
+
+[port_bindings.ac_in_a]
+geometry = "/Module/Ports/ac_in_a"
+symbol = "port-ac_in_a"
+
+[port_bindings.ac_in_b]
+geometry = "/Module/Ports/ac_in_b"
+symbol = "port-ac_in_b"
+
+[port_bindings.dc_out]
+geometry = "/Module/Ports/dc_out"
+symbol = "port-dc_out"
+
+[port_bindings.mgmt]
+geometry = "/Module/Ports/mgmt"
+symbol = "port-mgmt"

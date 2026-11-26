@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <style>
+    .bg { fill: #09090b; }
+    .fg { fill: #fafafa; }
+    .accent { fill: #14b8a6; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #fafafa; }
+      .fg { fill: #09090b; }
+      .accent { fill: #0d9488; }
+    }
+  </style>
+  <rect class="bg" x="2" y="2" width="60" height="60"/>
+  <path class="fg" fill-rule="evenodd" d="M10 10H54V54H10V10ZM15 15V49H49V15H15Z"/>
+  <rect class="fg" x="20" y="20" width="5" height="24"/>
+  <rect class="fg" x="39" y="20" width="5" height="24"/>
+  <rect class="accent" x="25" y="29" width="14" height="6"/>
+  <rect class="fg" x="29" y="20" width="6" height="5"/>
+  <rect class="fg" x="29" y="39" width="6" height="5"/>
+</svg>

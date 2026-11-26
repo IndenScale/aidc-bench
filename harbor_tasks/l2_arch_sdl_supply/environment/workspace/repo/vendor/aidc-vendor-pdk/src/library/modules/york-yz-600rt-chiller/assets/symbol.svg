@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110">
+  <rect x="28" y="20" width="124" height="70" rx="5" fill="#172536" stroke="#38bdf8" stroke-width="1.5" />
+  <rect x="38" y="30" width="104" height="16" rx="4" fill="#1e3a5f" />
+  <rect x="38" y="54" width="104" height="16" rx="4" fill="#1e3a5f" />
+  <text x="90" y="41" text-anchor="middle" fill="#e0f2fe" font-size="8" font-weight="bold">YORK YZ 600 RT</text>
+  <text x="90" y="65" text-anchor="middle" fill="#7dd3fc" font-size="7.5">2110 kW | MagLev R-1233zd(E)</text>
+  <text x="90" y="83" text-anchor="middle" fill="#94a3b8" font-size="6.8">VSD Oil-Free Centrifugal</text>
+  <circle id="port-chw_in" data-port="chw_in" cx="28" cy="36" r="3" fill="#38bdf8" />
+  <circle id="port-chw_out" data-port="chw_out" cx="28" cy="54" r="3" fill="#0ea5e9" />
+  <circle id="port-cw_in" data-port="cw_in" cx="152" cy="36" r="3" fill="#fb923c" />
+  <circle id="port-cw_out" data-port="cw_out" cx="152" cy="54" r="3" fill="#f97316" />
+  <circle id="port-power_in" data-port="power_in" cx="90" cy="20" r="3" fill="#f6c453" />
+</svg>

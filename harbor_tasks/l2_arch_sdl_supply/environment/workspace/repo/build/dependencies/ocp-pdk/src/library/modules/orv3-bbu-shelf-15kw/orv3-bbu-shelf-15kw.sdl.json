@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "root": "OcpOrv3BbuShelf15Kw",
+  "components": {
+    "OcpOrv3BbuShelf15Kw": {
+      "ports": {
+        "dc_bus": {
+          "direction": "inout",
+          "kind": "dc-48v-busbar",
+          "max_connections": 1
+        },
+        "mgmt": {
+          "direction": "inout",
+          "kind": "signal",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0",
+        "parameters": {
+          "rated_discharge_kw": {
+            "value": 15.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+          },
+          "nominal_autonomy_s": {
+            "value": 240.0,
+            "unit": "s",
+            "state": "known",
+            "source": "OCP ORv3 Battery Backup Unit (BBU) Specification Rev 1.0"
+          }
+        }
+      }
+    }
+  }
+}

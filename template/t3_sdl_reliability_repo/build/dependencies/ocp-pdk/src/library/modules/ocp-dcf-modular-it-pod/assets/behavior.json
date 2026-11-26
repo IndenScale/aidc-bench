@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-dcf-modular-liquid-pod",
+  "parameters": {
+    "rated_it_kw": "kW",
+    "racks_per_pod": "count",
+    "liquid_cooling_fraction": "1"
+  },
+  "method": "OCP DCF 4 柜液冷 IT Pod 宏单元，集成 2×1 MW N+1 CDU 与 A/B 双路架空母线。",
+  "limitations": "概念参考模块化 Pod，具体防火分区、气体灭火与箱体抗震按项目所在地规范深化。"
+}

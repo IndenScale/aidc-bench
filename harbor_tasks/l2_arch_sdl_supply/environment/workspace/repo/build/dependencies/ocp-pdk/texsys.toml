@@ -1,0 +1,25 @@
+schema_version = 1
+
+[project]
+name = "ocp-pdk"
+version = "0.1.0"
+
+[layout]
+source = "src"
+assets = "assets"
+build = "build"
+
+[package]
+kind = "component"
+description = "基于 OCP（Open Compute Project）公开标准构建的 Open Rack v3 / ACS 液冷 / DCF 设施多视图灰盒 PDK 标准单元库（12 族：ORv3 机框、48V 母排、电源框、BBU、液冷歧管、UQD/BMQC 快接头、1OU 液冷托盘、1 MW CDU、母线槽与模块化 IT Pod）"
+capabilities = ["models", "geometry", "liberty"]
+scope = "依据 OCP Open Rack v3（Base/HPR）、OCP Rack & Power（48V/50V Busbar/Power Shelf/BBU）、OCP ACS Cold Plate/CDU 与 OCP DCF 公开规范构建多视图标准单元（LEF 几何与端口、Symbol 符号、多维 Liberty 工况包络表与行为契约）；参数标注 calibrated-reference 及规范出处，查询越界返回 indeterminate，不替代具体项目中标厂商施工图或现场实测验收。"
+include = ["README.md"]
+
+[package.runtime]
+api_version = 1
+modules = ["texsys_ocp_pdk"]
+requires = ["texsys>=0.1,<0.2"]
+
+[package.exports]
+components = ["src/library"]

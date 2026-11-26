@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "ocp-orv3-hpr-liquid-rack-composite",
+  "parameters": {
+    "nominal_rack_power_kw": "kW",
+    "power_shelf_count": "count",
+    "power_shelf_capacity_kw": "kW",
+    "liquid_cooling_fraction": "1",
+    "loaded_mass_kg": "kg",
+    "min_tcs_supply_c": "degC",
+    "max_tcs_supply_c": "degC"
+  },
+  "method": "复合组合 ORv3 HPR 机框、48V 母排、4×33 kW 电源框、2×BBU、DN32 歧管与 16×1OU 液冷托盘。",
+  "limitations": "标准参考整机柜装配，真实项目更换 OEM 超节点时须核对端口兼容与厂商流阻曲线。"
+}

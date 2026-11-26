@@ -1,0 +1,109 @@
+{
+  "schema_version": 2,
+  "root": "VertivLiebertXdu1350Cdu",
+  "imports": {
+    "OcpCdu": "@ocp-pdk/library/modules/ocp-cdu-inrow-1mw/ocp-cdu-inrow-1mw.sdl.json"
+  },
+  "components": {
+    "VertivLiebertXdu1350Cdu": {
+      "instances": {
+        "ocp_core": {"component": "OcpCdu"}
+      },
+      "connections": [],
+      "nets": {},
+      "ports": {
+        "fws_supply": {
+          "direction": "in",
+          "kind": "fws",
+          "max_connections": 1
+        },
+        "fws_return": {
+          "direction": "out",
+          "kind": "fws",
+          "max_connections": 1
+        },
+        "tcs_supply": {
+          "direction": "out",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "tcs_return": {
+          "direction": "in",
+          "kind": "tcs",
+          "max_connections": 1
+        },
+        "power_a": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        },
+        "power_b": {
+          "direction": "in",
+          "kind": "ac-power",
+          "max_connections": 1
+        }
+      },
+      "behavior": {
+        "reference": "assets/behavior.json",
+        "state": "known",
+        "source": "Vertiv Liebert XDU 1350 Official Technical Datasheet",
+        "parameters": {
+          "nominal_cooling_capacity_kw": {
+            "value": 1368.0,
+            "unit": "kW",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 1,368 kW nominal at 4.0 K approach temperature difference"
+          },
+          "nominal_approach_k": {
+            "value": 4.0,
+            "unit": "K",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 7.2 degF (4.0 degC) ATD"
+          },
+          "nominal_secondary_flow_lpm": {
+            "value": 1200.0,
+            "unit": "L/min",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 317 gpm (1,200 L/min) with 2 pumps active (N+1)"
+          },
+          "max_secondary_flow_lpm": {
+            "value": 1800.0,
+            "unit": "L/min",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 475.5 gpm (1,800 L/min) with 3 pumps active (N mode)"
+          },
+          "nominal_external_dp_kpa": {
+            "value": 244.0,
+            "unit": "kPa",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 35.4 psi (2.44 bar / 244 kPa) external DP at 1,200 L/min"
+          },
+          "dual_pump_max_power_kw": {
+            "value": 13.7,
+            "unit": "kW",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 13.7 kW max power in dual-pump (N+1) operation"
+          },
+          "triple_pump_max_power_kw": {
+            "value": 20.5,
+            "unit": "kW",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 20.5 kW max power in triple-pump (N) operation"
+          },
+          "dry_mass_kg": {
+            "value": 650.0,
+            "unit": "kg",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: approx. 1,433 lbs (650 kg) dry weight"
+          },
+          "header_dn_mm": {
+            "value": 100,
+            "unit": "mm",
+            "state": "known",
+            "source": "Vertiv Liebert XDU 1350 datasheet: 4-inch (DN100) low-pressure-drop pipework"
+          }
+        }
+      }
+    }
+  }
+}

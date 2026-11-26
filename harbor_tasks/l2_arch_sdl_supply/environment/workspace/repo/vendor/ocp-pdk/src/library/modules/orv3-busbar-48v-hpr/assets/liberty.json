@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "kind": "liberty-table",
+  "model": "ocp-orv3-busbar-48v-hpr-3000a",
+  "state": "calibrated-reference",
+  "source": "OCP ORv3 HPR 48V/50V Busbar Specification Rev 1.0",
+  "uncertainty_pct": 3.5,
+  "operating_envelope": {
+    "ocp_spec": "OCP ORv3 HPR Busbar Specification",
+    "ocp_revision": "Rev 1.0",
+    "current_a_range": [
+      750.0,
+      3000.0
+    ],
+    "ambient_c_range": [
+      25.0,
+      45.0
+    ]
+  },
+  "axes": [
+    {
+      "name": "current_a",
+      "unit": "A",
+      "values": [
+        750.0,
+        1500.0,
+        2250.0,
+        3000.0
+      ]
+    },
+    {
+      "name": "ambient_c",
+      "unit": "degC",
+      "values": [
+        25.0,
+        35.0,
+        45.0
+      ]
+    }
+  ],
+  "outputs": {
+    "voltage_drop_v": {
+      "unit": "V",
+      "min_bound": 0.0,
+      "values": [
+        [
+          0.045,
+          0.047,
+          0.049
+        ],
+        [
+          0.09,
+          0.094,
+          0.098
+        ],
+        [
+          0.135,
+          0.141,
+          0.147
+        ],
+        [
+          0.18,
+          0.188,
+          0.196
+        ]
+      ]
+    },
+    "joule_loss_w": {
+      "unit": "W",
+      "min_bound": 0.0,
+      "values": [
+        [
+          33.75,
+          35.25,
+          36.75
+        ],
+        [
+          135.0,
+          141.0,
+          147.0
+        ],
+        [
+          303.75,
+          317.25,
+          330.75
+        ],
+        [
+          540.0,
+          564.0,
+          588.0
+        ]
+      ]
+    },
+    "busbar_temp_rise_k": {
+      "unit": "K",
+      "min_bound": 0.0,
+      "values": [
+        [
+          3.2,
+          3.4,
+          3.6
+        ],
+        [
+          11.5,
+          12.1,
+          12.7
+        ],
+        [
+          23.8,
+          25.0,
+          26.2
+        ],
+        [
+          38.5,
+          40.2,
+          42.0
+        ]
+      ]
+    }
+  },
+  "limitations": "稳态 DC 汇流模型，未包含毫秒级 GPU EDPp 脉冲下的寄生电感暂态压降。"
+}

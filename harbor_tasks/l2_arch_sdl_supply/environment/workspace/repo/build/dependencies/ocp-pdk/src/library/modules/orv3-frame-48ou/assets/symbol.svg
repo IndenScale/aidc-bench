@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP ORv3 标准机柜框架 (21" / 48OU)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">600x1068x2278 mm | 1600 kg | 48 mm OU</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">orv3-frame-48ou</text>
+  <circle id="port-air_in" data-port="air_in" cx="90.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-rails_ou" data-port="rails_ou" cx="48.0" cy="98" r="3.2" fill="#f59e0b" />
+  <circle id="port-busbar_slot" data-port="busbar_slot" cx="76.0" cy="98" r="3.2" fill="#f59e0b" />
+  <circle id="port-manifold_slot" data-port="manifold_slot" cx="104.0" cy="98" r="3.2" fill="#f59e0b" />
+  <circle id="port-air_out" data-port="air_out" cx="132.0" cy="98" r="3.2" fill="#34d399" />
+</svg>

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "state": "calibrated-reference",
+  "model": "bac-fxv-1218-closed-circuit-tower",
+  "parameters": {
+    "nominal_heat_rejection_kw": "kW",
+    "fan_motor_total_kw": "kW",
+    "spray_pump_kw": "kW",
+    "coil_connection_dn_mm": "mm",
+    "operating_mass_kg": "kg"
+  },
+  "method": "基于风机相似立方律（P_fan = 22.4 * n^3）及湿球迫近度关系构建二维稳态 Liberty 查表，同步输出单格排热量、风机功耗、出水温度与蒸发耗水量（约 1.52 L/kWh 潜热蒸发）。",
+  "limitations": "适用于湿式蒸发冷却模式；冬季干冷防冻切换点、飘水损失及浓缩倍数排污量须在给排水模型中另行叠加。"
+}

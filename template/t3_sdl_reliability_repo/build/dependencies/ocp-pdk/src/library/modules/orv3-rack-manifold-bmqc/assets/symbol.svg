@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <rect x="24" y="22" width="132" height="76" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="90.0" y="46" text-anchor="middle" fill="#e0f2fe" font-size="8.5" font-weight="bold">OCP ACS 机柜液冷盲插歧管 (DN32 / BMQC)</text>
+  <text x="90.0" y="62" text-anchor="middle" fill="#7dd3fc" font-size="7">316L SS | 24x BMQC | 2200 mm Vertical</text>
+  <text x="90.0" y="77" text-anchor="middle" fill="#94a3b8" font-size="6">orv3-rack-manifold-bmqc</text>
+  <circle id="port-supply_in" data-port="supply_in" cx="62.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-branch_return" data-port="branch_return" cx="118.0" cy="22" r="3.2" fill="#38bdf8" />
+  <circle id="port-return_out" data-port="return_out" cx="52.7" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-branch_supply" data-port="branch_supply" cx="90.0" cy="98" r="3.2" fill="#34d399" />
+  <circle id="port-pressure_sense" data-port="pressure_sense" cx="127.3" cy="98" r="3.2" fill="#34d399" />
+</svg>
